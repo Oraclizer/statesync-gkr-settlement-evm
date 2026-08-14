@@ -1,25 +1,29 @@
 # StateSync-GKR Settlement EVM
 
-> **Private, pre-deployment, and unaudited.** This branch contains a local
-> destination-enforcement reference candidate and a frozen cross-language vector.
-> It contains no release, deployed bytecode, approved principals, or deployed address.
-> Do not use it in production or treat it as security-reviewed software.
+> **Private, testnet-deployed, and unaudited.** This branch contains a
+> destination-enforcement reference candidate, a frozen cross-language vector,
+> and Base Sepolia testnet evidence. It contains no release, production
+> activation, approved production principals, or formal security audit. Do not
+> use it in production or treat it as security-reviewed software.
 
 StateSync-GKR Settlement EVM contains a deterministic reference for immutable
 receipt-root authorization and native N=1 settlement consumption. It reproduces
-the Product vector's encodings and fail-closed state transitions without any
-RPC, fork, broadcast, deployment, or real signer.
+the Product vector's encodings and fail-closed state transitions. Its local test
+suite requires no RPC, fork, broadcast, deployment, or real signer.
 
 ## Current status
 
 | Area | Status |
 | --- | --- |
 | Repository policy and Continuous Integration baseline | Present |
-| Solidity contracts | Local predeployment candidate |
+| Solidity contracts | Direct Base Sepolia testnet evidence instances; permanently abandoned and non-activatable |
 | Cross-language vectors | Vendored and SHA-256 pinned |
-| Base Sepolia package | Funding-independent local rehearsal passed; funding and deployment on hold |
+| Base Sepolia package | Four authorized transactions finalized; technical execution 4-of-4 passed |
+| D-50 overall | Conditions 1–5 of 6 passed; condition 6 remote durability open |
+| A11 overall | Hold until exact Product/EVM/Brain evidence audit, commit, and remote durability |
+| Current addresses | Evidence-only; no future signing, registration, consume, or reactivation |
 | Independent security audit | Not performed |
-| Deployment or supported network | None |
+| Production deployment or supported network | None |
 | Release or stable API | None |
 
 Passing Continuous Integration means only that deterministic local checks pass
@@ -91,6 +95,10 @@ Foundry 1.7.1 exposes the deterministic runner seed through `fuzz.seed` and the
 
 - [`evidence/base-sepolia-destination-enforcement-rehearsal-transcript-2026-08-14.json`](evidence/base-sepolia-destination-enforcement-rehearsal-transcript-2026-08-14.json)
   is the normalized local-only block, receipt, event, code-hash, and getter transcript.
+- [`evidence/base-sepolia-destination-enforcement-live-2026-08-15.md`](evidence/base-sepolia-destination-enforcement-live-2026-08-15.md)
+  and its [normalized JSON](evidence/base-sepolia-destination-enforcement-live-2026-08-15.json)
+  freeze the finalized Base Sepolia transactions, deployed code, getters,
+  events, fees, topology, and negative-call invariance.
 
 - [`foundry.toml`](foundry.toml) — compiler, EVM, optimizer, fuzz, invariant,
   formatting, and sandbox settings.
@@ -108,15 +116,30 @@ The root and PFR roles are immutable and disjoint. The root registry is
 append-only; the consumer binds the selected native Route-B statement to raw192,
 then consumes delivery claim and economic settlement identities atomically.
 
-The Base Sepolia preflight does not change the deployment claim: the deployer
-remains unfunded, both predicted addresses have no live code, and no Base
-transaction has been signed or submitted.
+The live receipt supersedes the preflight funding/deployment hold for exactly
+four authorized D0 transactions. The direct Root and Settlement contracts are
+deployed on Base Sepolia and one honest receipt is consumed. A11 remains on
+hold until the exact evidence is independently audited, committed, and remote
+durable across Product, EVM, and Brain; no further transaction or production
+activation is authorized. The two current addresses and epoch-`1` roles are
+permanently abandoned and non-activatable; later approval cannot reactivate
+them.
+
+This permanent boundary is required because the published valid root quorum for
+the skipped `nonce=3` mutation is latent while Root `nextNonce=2`: any accepted
+nonce-`2` registration would make it submit-ready, and the digest does not bind
+a destination chain or contract address. No future D0/root/PFR signing,
+registration, or consume may occur on these addresses. The only possible later
+path is separately approved epoch-`2` fresh direct addresses with nonreused
+keys and the full evidence gate repeated from zero.
 
 Provenance separates the Product semantic authority at `59f79f5b...` from its
-current remote head `375299a4...`; the EVM implementation head is `f00aef0f...`
-and the current Brain checkpoint is `9eb74570...`. Invalid predecessor custody
-profiles are excluded by non-secret metadata fingerprints and supply no signer,
-constructor member, or signature.
+current remote head `375299a4...`; the EVM implementation head is `f00aef0f...`.
+Brain A11 semantics are pinned at `9eb74570...`; current Brain `origin/main` is
+its direct automatic-backup child `1d48dde7...`, which this evidence does not
+assimilate as a semantic change. Invalid predecessor custody profiles are
+excluded by non-secret metadata fingerprints and supply no signer, constructor
+member, or signature.
 
 ## Security and assurance boundary
 
@@ -124,9 +147,11 @@ Do not report vulnerabilities in a public issue. Follow [`SECURITY.md`](SECURITY
 and email `security@oraclizer.io`.
 
 Source review, tests, fuzzing, invariants, cross-language vectors, independent
-audits, compiler output review, and deployed-bytecode verification
+evidence review, formal security audits, compiler output review, and
+deployed-bytecode verification
 are distinct assurance layers. Success in one layer does not imply success in
-another. The independent audit and every deployment layer remain open.
+another. No formal independent security audit or production-readiness finding
+is claimed.
 
 ## Contributing, governance, and support
 
