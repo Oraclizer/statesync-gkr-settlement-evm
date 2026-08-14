@@ -26,6 +26,16 @@ deployment. Version headings will be added only when an actual release identity 
   arithmetic/gas bounds, negative state/log equality, fuzz, and invariants.
 - Added encoding, threat-model, local runbook, predeployment checklist, and
   deterministic evidence artifacts.
+- Added a Base Sepolia funding-independent preflight receipt covering external
+  encrypted testnet-only role custody, exact direct-CREATE inputs,
+  constructor-bound local runtime hashes, root-registration and honest-consume
+  rehearsal, public signatures, gas ceilings, and L1 data-fee upper bounds.
+  Funding and every live transaction remain on hold.
+- Added a normalized, deterministic local Anvil transcript with exact blocks,
+  receipts, event hashes, runtime code hashes, and post-state getters. The
+  receipt now distinguishes the Product semantic authority from current Product
+  and Brain remote heads and excludes invalid predecessor custody profiles by
+  non-secret metadata fingerprints; those profiles supplied no role or signature.
 
 ### Not included
 

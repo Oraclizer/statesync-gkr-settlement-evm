@@ -17,6 +17,7 @@ RPC, fork, broadcast, deployment, or real signer.
 | Repository policy and Continuous Integration baseline | Present |
 | Solidity contracts | Local predeployment candidate |
 | Cross-language vectors | Vendored and SHA-256 pinned |
+| Base Sepolia package | Funding-independent local rehearsal passed; funding and deployment on hold |
 | Independent security audit | Not performed |
 | Deployment or supported network | None |
 | Release or stable API | None |
@@ -85,6 +86,11 @@ Foundry 1.7.1 exposes the deterministic runner seed through `fuzz.seed` and the
 - [`vectors/README.md`](vectors/README.md) — frozen Product-vector provenance.
 - [`evidence/destination-receipt-enforcement-reference-2026-08-14.md`](evidence/destination-receipt-enforcement-reference-2026-08-14.md)
   — local validation receipt and explicit non-claims.
+- [`evidence/base-sepolia-destination-enforcement-preflight-2026-08-14.md`](evidence/base-sepolia-destination-enforcement-preflight-2026-08-14.md)
+  — testnet-only public-role, direct-CREATE rehearsal, gas, and funding-hold receipt.
+
+- [`evidence/base-sepolia-destination-enforcement-rehearsal-transcript-2026-08-14.json`](evidence/base-sepolia-destination-enforcement-rehearsal-transcript-2026-08-14.json)
+  is the normalized local-only block, receipt, event, code-hash, and getter transcript.
 
 - [`foundry.toml`](foundry.toml) — compiler, EVM, optimizer, fuzz, invariant,
   formatting, and sandbox settings.
@@ -101,6 +107,16 @@ Foundry 1.7.1 exposes the deterministic runner seed through `fuzz.seed` and the
 The root and PFR roles are immutable and disjoint. The root registry is
 append-only; the consumer binds the selected native Route-B statement to raw192,
 then consumes delivery claim and economic settlement identities atomically.
+
+The Base Sepolia preflight does not change the deployment claim: the deployer
+remains unfunded, both predicted addresses have no live code, and no Base
+transaction has been signed or submitted.
+
+Provenance separates the Product semantic authority at `59f79f5b...` from its
+current remote head `375299a4...`; the EVM implementation head is `f00aef0f...`
+and the current Brain checkpoint is `9eb74570...`. Invalid predecessor custody
+profiles are excluded by non-secret metadata fingerprints and supply no signer,
+constructor member, or signature.
 
 ## Security and assurance boundary
 
