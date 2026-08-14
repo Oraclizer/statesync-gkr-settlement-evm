@@ -3,8 +3,9 @@
 ## Scope
 
 This document governs repository changes, not any deployed protocol, operator,
-signer set, external network, or legal entity. There is currently no contract,
-release, deployment, or production authority to govern.
+signer set, external network, or legal entity. Local reference contracts and a
+test vector exist, but there is no release, deployment, approved production
+principal, or production authority to govern.
 
 ## Maintainer
 

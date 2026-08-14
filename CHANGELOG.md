@@ -2,9 +2,8 @@
 
 All notable user-visible changes will be documented in this file.
 
-The project has no release, stable API, contract, deployed bytecode, or supported
-deployment. Version headings will be added only when an actual release identity
-exists.
+The project has no release, stable API, deployed bytecode, or supported
+deployment. Version headings will be added only when an actual release identity exists.
 
 ## Unreleased
 
@@ -19,8 +18,16 @@ exists.
 - Added least-privilege Continuous Integration with immutable action pins,
   community health files, dual Apache-2.0 OR MIT licensing, and explicit
   security, support, governance, contribution, and disclaimer boundaries.
+- Added immutable receipt-root quorum and native N=1 destination-consumer
+  reference contracts with no administrative or upgrade surface.
+- Vendored the exact Product cross-language vector with detached SHA-256 and
+  independently recomputed authorization, statement, PFR, claim, and settlement identities.
+- Added exact replay/conflict, role separation, destination-self binding,
+  arithmetic/gas bounds, negative state/log equality, fuzz, and invariants.
+- Added encoding, threat-model, local runbook, predeployment checklist, and
+  deterministic evidence artifacts.
 
 ### Not included
 
-- No Solidity contract, cross-language vector, audit, release, deployment,
-  address, production role, or activation is included or implied.
+- No audit, release, deployment, deployed address, approved production role,
+  key ceremony, monitoring service, or activation is included or implied.

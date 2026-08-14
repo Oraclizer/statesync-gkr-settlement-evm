@@ -2,14 +2,15 @@
 
 ## Current support boundary
 
-This repository is private, pre-deployment, unaudited, and has no release,
-contract, deployed bytecode, supported network, or production user surface.
-Security reports about the repository baseline are welcome, but no version is
+This repository is private, pre-deployment, and unaudited. It contains local
+reference contracts and a frozen test vector, but has no release, deployed
+bytecode, approved production principals, supported network, or production user
+surface. Security reports about the repository candidate are welcome, but no version is
 currently designated production-supported.
 
 | Version | Security status |
 | --- | --- |
-| Unreleased repository baseline | Reports accepted; not production-supported |
+| Unreleased local candidate | Reports accepted; not production-supported |
 | Releases | None |
 | Deployments | None |
 

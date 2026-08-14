@@ -1,8 +1,8 @@
 # Contributing
 
 Thank you for helping improve StateSync-GKR Settlement EVM. The repository is a
-private, pre-deployment, unaudited baseline and currently contains no contract or
-vector implementation.
+private, pre-deployment, unaudited local reference candidate with a frozen test
+vector; it is not a release or deployed system.
 
 ## Before opening a change
 
@@ -35,8 +35,10 @@ forge build --offline
 forge test --offline --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
 ```
 
-These checks require no RPC endpoint, fork, FFI, wallet, signature, broadcast, or
-deployment. Do not add those operations to ordinary Continuous Integration.
+These checks require no RPC endpoint, fork, FFI, external wallet or signing
+service, real signer, key custody, broadcast, or deployment. Foundry uses only
+deterministic `vm.sign` calls with public, never-production test fixtures. Do not
+add external signing or deployment operations to ordinary Continuous Integration.
 
 ## Change requirements
 

@@ -2,8 +2,9 @@
 
 ## Current status
 
-This repository is private, pre-deployment, unaudited, and contains no contract,
-release, deployed address, supported network, stable API, or production service.
+This repository is private, pre-deployment, and unaudited. It contains local
+reference contracts and a frozen test vector, but no release, deployed address,
+approved production principals, supported network, stable API, or production service.
 No production support, maintenance period, uptime, compatibility, or response-time
 commitment is offered.
 

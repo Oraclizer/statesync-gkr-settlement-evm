@@ -1,0 +1,83 @@
+{
+  "schema": "statesync-gkr-destination-receipt-enforcement-evidence-v1",
+  "status": "LOCAL_PREDEPLOYMENT_CANDIDATE_UNAUDITED_NOT_DEPLOYED",
+  "productAuthority": {
+    "commit": "59f79f5b9cd1382c5acb7368c57402f5015798f9",
+    "vectorPath": "vectors/risc0-route-b-destination-policy-v1.json",
+    "vectorBytes": 28429,
+    "vectorSha256": "29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141"
+  },
+  "toolchain": {
+    "foundryVersion": "1.7.1",
+    "foundryCommit": "4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
+    "solc": "0.8.36",
+    "evm": "cancun",
+    "offline": true,
+    "ffi": false
+  },
+  "parity": {
+    "authorizationPreimageBytes": 260,
+    "authorizationDigest": "7ccc4e3c7d7f38c2f37e515e26edf63b9d3cc8b069b463600961c780ea535c7d",
+    "coordinateId": "02642bf98eddfd93180e16bd10f7b00206d37d708e281f3bdb331f689ee94698",
+    "nativeStatement": "b4b058ae36bcc8357241b0c308630d7ba203bd47726edbad5ed16b04afeb8492",
+    "nativeRoot": "7c609ffcf63004e1203188d6fbed6f5431fa344d6f90990c2c45a6db3bbc466e",
+    "rawStatementSha256": "959550f3847e15ae2d69ab027d8ef59621282eeb758746262205fa3f61b38721",
+    "preclaimHash": "8efaa82794a8587ba8f497dbdcbb65695704322a87f0d16bf667af565ba6c3ad",
+    "pfrId": "a5a5ed3ac2ad0b61efdebcc8f9db1a020cb20fd186e2ea3657c747cb0aec5df7",
+    "claimId": "92a3b5b95bbba1a162dcd7107a7e797e7ca132c1fe7ae438e51014b37e4d03d4",
+    "settlementKey": "e55506cb0cb5c7d6a8b1ca41a28beea24b5d160987566075ec10e11cd382e93d"
+  },
+  "negativeCaseCoverage": [
+    {"row":1,"id":"zero_configured_signer","test":"testRootSignerAndSignatureNegativeParity","error":"ZeroConfiguredSigner"},
+    {"row":2,"id":"duplicate_configured_signer","test":"testRootSignerAndSignatureNegativeParity","error":"DuplicateConfiguredSigner"},
+    {"row":3,"id":"unsorted_configured_signers","test":"testRootSignerAndSignatureNegativeParity","error":"ConfiguredSignersNotSorted"},
+    {"row":4,"id":"invalid_threshold","test":"testRootSignerAndSignatureNegativeParity","error":"InvalidThreshold"},
+    {"row":5,"id":"zero_recovered_signer","test":"testRootSignerAndSignatureNegativeParity","error":"ZeroAttester"},
+    {"row":6,"id":"duplicate_recovered_signer","test":"testRootSignerAndSignatureNegativeParity","error":"DuplicateAttester"},
+    {"row":7,"id":"unsorted_recovered_signers","test":"testRootSignerAndSignatureNegativeParity","error":"AttestersNotSorted"},
+    {"row":8,"id":"nonmember_recovered_signer","test":"testRootSignerAndSignatureNegativeParity","error":"UnauthorizedAttester"},
+    {"row":9,"id":"below_threshold","test":"testRootSignerAndSignatureNegativeParity","error":"BelowThreshold"},
+    {"row":10,"id":"zero_r_signature","test":"testRootSignerAndSignatureNegativeParity","error":"InvalidSignature"},
+    {"row":11,"id":"zero_s_signature","test":"testRootSignerAndSignatureNegativeParity","error":"InvalidSignature"},
+    {"row":12,"id":"high_s_signature","test":"testRootSignerAndSignatureNegativeParity","error":"HighSignatureS"},
+    {"row":13,"id":"invalid_recovery_id","test":"testRootSignerAndSignatureNegativeParity","error":"InvalidRecoveryId"},
+    {"row":14,"id":"cross_role_pfr_domain_signature","test":"testRootSignerAndSignatureNegativeParity","error":"UnauthorizedAttester"},
+    {"row":15,"id":"stale_epoch","test":"testRootContextNonceOverflowAndBounds","error":"StaleSignerSetEpoch"},
+    {"row":16,"id":"authority_context","test":"testRootContextNonceOverflowAndBounds","error":"AuthorityContextMismatch"},
+    {"row":17,"id":"invalid_leaf_count","test":"testRootContextNonceOverflowAndBounds","error":"InvalidLeafCount"},
+    {"row":18,"id":"skipped_initial_nonce","test":"testRootContextNonceOverflowAndBounds","error":"UnexpectedAuthorizationNonce"},
+    {"row":19,"id":"exact_authorization_replay","test":"testExactRootRegistrationAndReplayConflict","error":"AuthorizationReplay"},
+    {"row":20,"id":"same_coordinate_metadata_conflict","test":"testExactRootRegistrationAndReplayConflict","error":"RootConflict"},
+    {"row":21,"id":"reused_next_coordinate_nonce","test":"testNextCoordinateRequiresStrictNextNonce","error":"UnexpectedAuthorizationNonce"},
+    {"row":22,"id":"skipped_next_coordinate_nonce","test":"testNextCoordinateRequiresStrictNextNonce","error":"UnexpectedAuthorizationNonce"},
+    {"row":23,"id":"wrong_statement","test":"testSettlementAttachmentAndBindingNegatives","error":"ReceiptRootMismatch"},
+    {"row":24,"id":"wrong_authenticated_root","test":"testSettlementAttachmentAndBindingNegatives","error":"ReceiptRootMismatch"},
+    {"row":25,"id":"wrong_leaf_index","test":"testSettlementAttachmentAndBindingNegatives","error":"InvalidMerklePath"},
+    {"row":26,"id":"nonempty_one_leaf_path","test":"testSettlementAttachmentAndBindingNegatives","error":"InvalidMerklePath"},
+    {"row":27,"id":"unsafe_leaf_count_two","test":"testSettlementAttachmentAndBindingNegatives","error":"InvalidMerklePath"},
+    {"row":28,"id":"claim_replay","test":"testSettlementHonestConsumeAndAtomicReplay","error":"ClaimReplay"},
+    {"row":29,"id":"settlement_replay","test":"testSettlementHonestConsumeAndAtomicReplay","error":"SettlementReplay"},
+    {"row":30,"id":"root_nonce_counter_overflow","test":"testRootContextNonceOverflowAndBounds","error":"ArithmeticOverflow"},
+    {"row":31,"id":"root_event_counter_overflow","test":"testRootContextNonceOverflowAndBounds","error":"ArithmeticOverflow"},
+    {"row":32,"id":"replay_event_counter_overflow","test":"testSettlementRoleDestinationBoundsAndOverflow","error":"ArithmeticOverflow"},
+    {"row":33,"id":"accepted_root_label_mismatch","test":"testSettlementAttachmentAndBindingNegatives","error":"AcceptedRootMismatch"}
+  ],
+  "validation": {
+    "format": "PASS",
+    "buildOffline": "PASS",
+    "targeted": "PASS",
+    "fuzzRuns": 1024,
+    "invariantRuns": 256,
+    "invariantDepth": 128,
+    "invariantCalls": 32768,
+    "fullSuite": "PASS_13_TESTS_0_FAILED_0_SKIPPED"
+  },
+  "externalActions": {
+    "rpc": 0,
+    "fork": 0,
+    "broadcast": 0,
+    "deployment": 0,
+    "realSigner": 0,
+    "keyCustody": 0
+  }
+}

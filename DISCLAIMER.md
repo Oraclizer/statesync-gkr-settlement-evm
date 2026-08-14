@@ -1,8 +1,9 @@
 # Disclaimer
 
 This repository is private, experimental, pre-deployment, and unaudited. It
-currently contains a repository-production baseline only: no settlement contract,
-cross-language vector, release, deployed bytecode, or supported address exists.
+contains local reference contracts and a frozen cross-language test vector, but
+no release, deployed bytecode, approved production principals, or supported
+address exists.
 
 Future reference code, tests, fuzzing, invariants, models, or documentation may
 reduce particular risks but cannot establish that software is safe, complete,
