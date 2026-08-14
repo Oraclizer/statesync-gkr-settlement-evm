@@ -1,0 +1,65 @@
+name: Bug report
+description: Report a reproducible defect in this repository.
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not disclose vulnerabilities here. Report them privately as described in SECURITY.md.
+
+  - type: input
+    id: revision
+    attributes:
+      label: Version or commit
+      description: Provide the exact tag or full commit SHA you tested.
+      placeholder: Full 40-character commit SHA
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: Describe what happened and include the exact error when useful.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: List deterministic commands and the smallest safe input that reproduces the defect.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include operating system, Foundry version, Solidity version, and EVM target.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs or traces
+      description: Remove credentials, private keys, RPC URLs, addresses that identify private systems, and other sensitive data.
+      render: shell
+
+  - type: checkboxes
+    id: security
+    attributes:
+      label: Security check
+      options:
+        - label: I have not included a vulnerability, secret, private key, wallet material, or private infrastructure detail in this public report.
+          required: true

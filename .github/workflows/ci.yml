@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  foundry:
+    name: Foundry
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Install pinned Foundry
+        uses: foundry-rs/foundry-toolchain@908c540300062bd5a7e473851cdb4282204cee09 # v1
+        with:
+          version: v1.7.1
+
+      - name: Verify Foundry identity
+        shell: bash
+        run: |
+          version_output="$(forge --version)"
+          printf '%s\n' "$version_output"
+          grep -Fq 'forge Version: 1.7.1' <<<"$version_output"
+          grep -Fq 'Commit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8' <<<"$version_output"
+
+      - name: Check formatting
+        run: forge fmt --check
+
+      - name: Build
+        run: forge build --offline
+
+      - name: Test
+        run: forge test --offline --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f

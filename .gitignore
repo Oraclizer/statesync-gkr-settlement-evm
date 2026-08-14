@@ -1,0 +1,32 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+keystore/
+keystores/
+wallet/
+wallets/
+*.key
+*.pem
+*.p12
+
+# Foundry outputs and transaction material
+broadcast/
+cache/
+out/
+
+# Coverage and profiling
+coverage/
+lcov.info
+*.lcov
+*.profraw
+*.profdata
+*.trace
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
