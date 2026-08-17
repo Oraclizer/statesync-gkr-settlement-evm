@@ -8,10 +8,18 @@ This private, local-only checkpoint records validation of implementation commit
 `2a55440fae65b58ccdc054d7a0742117900ee729`, on
 `codex/route-lifecycle-recovery`.
 
-The subsequent commit that carries this evidence file is deliberately outside
-the audit subject. Its hash cannot be included without a circular self-hash. The
-subject is the implementation commit above, not the later evidence-carrier
-commit.
+Raman reran the exact evidence carrier
+`deb56c49accd3eaf68f1cf395d7498a110527e6b`, tree
+`a6240b893ce20d46e50d0bbc85043a89dd29ed90`. Its local HEAD and worktree/index
+were exact and clean at both start and end. Upstream and the live remote remained
+at implementation commit `e80ae5daf18b1e72fca39dbaa2076f62d6673a46`, so the
+carrier was one commit ahead and remote equality remained pending the separately
+authorized non-force push.
+
+The subsequent commit that carries this repaired document is deliberately
+outside the audit subject. Its hash cannot be included without a circular
+self-hash. The implementation subject remains `e80ae5d...`; the exact-rerun
+carrier remains `deb56c4...`; the later document-carrier commit is neither.
 
 Named roles were separated as follows:
 
@@ -26,10 +34,12 @@ commit and must not be represented as a human or external audit.
 
 ## Scope and non-claims
 
-The drill used only deterministic local fixtures. It used no real or newly
-generated key, RPC, fork, network access, funding, signature ceremony,
-deployment, transaction, activation, merge, release, or public-visibility
-change. Fixture signatures use public, never-production test scalars.
+The drill used only deterministic local fixtures. Test, build, vector, and trace
+commands used no real or newly generated key, RPC, fork, test-network access,
+funding, signature ceremony, deployment, transaction, activation, merge,
+release, or public-visibility change. Fixture signatures use public,
+never-production test scalars. The runner's only network operation was a
+read-only Git live-remote identity query.
 
 This checkpoint does not approve or claim production readiness, deployment,
 source finality, a human security audit, independent custody identity, recovery
@@ -42,24 +52,81 @@ validity windows and drain windows remain unapproved deployment policy.
 | --- | --- |
 | Foundry | `1.7.1`, commit `4072e48705af9d93e3c0f6e29e93b5e9a40caed8` |
 | Foundry archive SHA-256 | `6d41121b4bbb809845821c903619cfee75ed364f2bdc58a6787c9b0454114537` |
-| Solidity | `0.8.36` |
+| Foundry executable SHA-256 | `6df26c16a6e53519abdd09fcdacf9af1ecdb50e216ee1816fa8012b5a553ef48` |
+| Solidity | `0.8.36+commit.8a079791.Windows.msvc` |
 | Solidity binary SHA-256 | `38cf5df656da822cf88b854cf736475a196c679f4f5f3f15ddd8c85ce5dbb36a` |
+| `foundry.toml` SHA-256 | `d9a04d654b7e51e1318a105841af2102a2a83e41b81e41d9b8cd61125aec7ab0` |
 | EVM target | `cancun` |
 | Execution mode | forced rebuild and tests with `--offline`; FFI disabled |
 | Fixed fuzz seed | `0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f` |
 
 ## Reproduction and results
 
-The runner checked the following command classes against the exact subject:
+The runner used this exact PowerShell recipe from the content-addressed command
+record. Every build and test command pins the same verified Solidity binary with
+`--use $solc`.
 
-```sh
-sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256
-sha256sum -c vectors/route-lifecycle-recovery-v1.json.sha256
-forge fmt --check
-forge build --force --offline --sizes
-forge test --offline --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
-forge test --offline --match-path test/RouteLifecycleRecoveryV2.t.sol --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
-forge test --offline --match-path test/RouteLifecycleRecoveryV2Fuzz.t.sol --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+```powershell
+$artifactRoot = 'C:\Users\Jay Kim\.codex\visualizations\2026\08\17\01a0102c-b751-76b1-9565-c873f916538c\w4-a12-deb56c4-runner'
+$forge = 'C:\Users\Jay Kim\AppData\Local\Temp\codex-w4-foundry-v1.7.1\bin\forge.exe'
+$solc = 'C:\Users\Jay Kim\AppData\Local\Temp\codex-w4-foundry-v1.7.1\solc-windows-amd64-v0.8.36+commit.8a079791.exe'
+$foundryArchive = 'C:\Users\Jay Kim\AppData\Local\Temp\codex-w4-foundry-v1.7.1\foundry_v1.7.1_win32_amd64.zip'
+$sha256sum = 'C:\Program Files\Git\usr\bin\sha256sum.exe'
+$seed = '0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f'
+
+# Each command was wrapped so stdout, stderr, and the native exit code were
+# captured in its named log:
+& { <COMMAND>; $code=$LASTEXITCODE; Write-Output ('EXIT_CODE=' + $code) } *>&1 |
+  Tee-Object -FilePath <LOG>
+
+# identity-status-start.log and identity-status-end.log
+git branch --show-current
+git rev-parse HEAD
+git rev-parse 'HEAD^{tree}'
+git rev-parse 'HEAD^'
+git rev-parse '@{u}'
+git rev-parse origin/codex/route-lifecycle-recovery
+git status --short --branch
+git diff --quiet -- .
+git diff --cached --quiet -- .
+git ls-remote --heads origin refs/heads/codex/route-lifecycle-recovery
+
+# toolchain-identity.log
+Get-FileHash -Algorithm SHA256 -LiteralPath 'foundry.toml'
+Get-FileHash -Algorithm SHA256 -LiteralPath $foundryArchive
+Get-FileHash -Algorithm SHA256 -LiteralPath $forge
+Get-FileHash -Algorithm SHA256 -LiteralPath $solc
+& $forge --version
+& $solc --version
+
+# vector1.log and vector2.log
+& $sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256
+& $sha256sum -c vectors/route-lifecycle-recovery-v1.json.sha256
+
+# fmt.log and forced-build.log
+& $forge fmt --check
+& $forge build --offline --use $solc --sizes --force
+
+# full.log
+& $forge test --offline --use $solc --fuzz-seed $seed --fuzz-runs 1024
+
+# unit.log
+& $forge test --offline --use $solc --fuzz-seed $seed --match-contract '^RouteLifecycleRecoveryV2Test$' -vvv
+
+# fuzz-only.log
+& $forge test --offline --use $solc --fuzz-seed $seed --fuzz-runs 1024 --match-path 'test/RouteLifecycleRecoveryV2Fuzz.t.sol' --match-test '^testFuzz' -vv
+
+# invariant-only.log
+$previousRuns=$env:FOUNDRY_INVARIANT_RUNS
+$previousDepth=$env:FOUNDRY_INVARIANT_DEPTH
+$env:FOUNDRY_INVARIANT_RUNS='256'
+$env:FOUNDRY_INVARIANT_DEPTH='128'
+& $forge test --offline --use $solc --fuzz-seed $seed --match-path 'test/RouteLifecycleRecoveryV2Fuzz.t.sol' --match-test '^invariant_' -vv
+if ($null -eq $previousRuns) { Remove-Item Env:FOUNDRY_INVARIANT_RUNS -ErrorAction SilentlyContinue } else { $env:FOUNDRY_INVARIANT_RUNS=$previousRuns }
+if ($null -eq $previousDepth) { Remove-Item Env:FOUNDRY_INVARIANT_DEPTH -ErrorAction SilentlyContinue } else { $env:FOUNDRY_INVARIANT_DEPTH=$previousDepth }
+
+# trace3.log
+& $forge test --offline --use $solc --fuzz-seed $seed --match-path 'test/RouteLifecycleRecoveryV2.t.sol' --match-test 'test(ActiveRouteConsumesAndPreservesV1Identities|RootContextNonceHashChainAndValidityAreFailClosed|LineageSignerReuseIsRejectedAndFreshSignersAreReserved)' -vvvv
 ```
 
 Results:
@@ -73,6 +140,35 @@ Results:
 - V2 invariants: `2 × 256 runs × depth 128`, `32,768` calls each,
   handler reverts `0`;
 - selected detailed traces: `3/3 PASS`.
+
+## Content-addressed runner package
+
+Package root:
+`C:\Users\Jay Kim\.codex\visualizations\2026\08\17\01a0102c-b751-76b1-9565-c873f916538c\w4-a12-deb56c4-runner`
+
+- `MANIFEST.sha256` SHA-256:
+  `19065de679a4796dcec0d46d730e7b580c68d93ca0e9051c750d887ff48df841`;
+- `runner-results.json` SHA-256:
+  `278b01e687272f5d12f6141b444063abc8408609bcc0886c29980b89e2f208e2`;
+- `commands.txt` SHA-256:
+  `37928297ab018299eb1e1e6c0edf88a85a5772f9ae2d2f42ec2b4eb26fd11cb7`.
+
+Every entry in `MANIFEST.sha256` verified `OK`.
+
+| Command ID | Raw log | Exit | Raw-log SHA-256 | Exact result |
+| --- | --- | ---: | --- | --- |
+| `identity_status_start` | `identity-status-start.log` | 0 | `6739a10a51de6bc65db4a9ae35112514a521f3c9bbf77b5aa57f3e28c5943cf3` | exact carrier; worktree/index clean; upstream/live `e80ae5d...` |
+| `toolchain_identity` | `toolchain-identity.log` | 0 | `463722e0ae45d1973b2b5721d5e0aeb8196fe1ce4b2583a12d045aefbd676a41` | pinned Foundry, solc, archive, and `foundry.toml` hashes PASS |
+| `vector1` | `vector1.log` | 0 | `12297a9fa5b8aa1e2f176c29867f0f5bdb590a757c4d83266861f91fe6831683` | V1 vector `1/1 PASS` |
+| `vector2` | `vector2.log` | 0 | `cb68cd30cf1094dee4a2bee385e158aae9bda636628cabfab30397953673116f` | V2 vector `1/1 PASS` |
+| `fmt` | `fmt.log` | 0 | `c1e97067c5f479a44a6f57297a0a8f87a59d181c3c529910f8bf059094bc3abb` | formatting PASS |
+| `forced_build` | `forced-build.log` | 0 | `86c91704e25b84b3b860d227dc0a0ab84248a400ecf42680d3bb1ad823a4aeea` | `17/17` Solidity files compiled |
+| `full_fixed_seed` | `full.log` | 0 | `b4051e68c0bfdd8fdbc676558a544d56edaf79077e297c0e919fbd26dff5bb52` | `33/33 PASS`; failed/skipped `0/0` |
+| `v2_unit` | `unit.log` | 0 | `a80347a73b074ed25aad512f3754703b34b2203221f124140c339a84acf69bbd` | `14/14 PASS`; failed/skipped `0/0` |
+| `v2_fuzz_only` | `fuzz-only.log` | 0 | `78ad4ba5aca09b829d3b8509bc2dc3aacb6ba32b0bceb82ce22f66fcfbae10b3` | `3 × 1,024 PASS` |
+| `v2_invariant_only` | `invariant-only.log` | 0 | `5cca3cce2ba27df566f6351c0e0a15d87cfe0bdfbdd80dd112ee9baece1f40d2` | `2 × 256 × depth 128`; calls each `32,768`; reverts `0` |
+| `detailed_trace3` | `trace3.log` | 0 | `b0b2ac70bbbc5ec84e446aca92177cf9955f1adf83c2522b3ea8ba6c1edd023a` | `3/3 PASS`; `ClaimReplay`, `RootConflict`, `LineageSignerAlreadyReserved` observed |
+| `identity_status_end` | `identity-status-end.log` | 0 | `2158f933664b0565536fec6c512b6036b6c0f4e95681789658cf523e5ea73682` | same exact carrier; worktree/index clean; upstream/live unchanged |
 
 The focused V2 lifecycle tests were:
 
