@@ -1,0 +1,217 @@
+{
+  "audit": {
+    "discrepancy_count": 0,
+    "finding_counts": {
+      "critical": 0,
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "human": false,
+    "independent": true,
+    "read_only": true,
+    "reviewer": "Kuhn",
+    "reviewer_type": "Codex sub-agent",
+    "third_party_external": false
+  },
+  "date": "2026-08-18",
+  "evidence_carrier": {
+    "commit": null,
+    "outside_subject": true,
+    "reason": "The subsequent evidence-carrier commit cannot be included without a circular self-hash."
+  },
+  "execution_boundary": {
+    "ffi": false,
+    "fork": false,
+    "funding": false,
+    "network": false,
+    "new_or_real_keys": false,
+    "release_or_publication": false,
+    "rpc": false,
+    "signing_ceremony": false,
+    "transactions_or_deployment": false
+  },
+  "recovery_matrix": [
+    {
+      "condition": "normal_rotation",
+      "result": "pass",
+      "statement": "Fresh route authorities activate against the same Registry and stable Settlement; successful activation permanently reserves direct signer addresses."
+    },
+    {
+      "condition": "same_and_cross_role_signer_reuse",
+      "result": "pass",
+      "statement": "Previously activated signer addresses are rejected in later Root or PFR roles; failed activation leaves Registry stateDigest unchanged and logs at zero."
+    },
+    {
+      "condition": "expiry",
+      "result": "pass",
+      "statement": "Root registration, Root consumption, and PFR authorization enforce half-open validity windows and reject at validUntilBlock."
+    },
+    {
+      "condition": "draining_predrain_root",
+      "result": "pass",
+      "statement": "Draining forbids new registration and permits only roots registered at or before drain start under the prior active revision."
+    },
+    {
+      "condition": "half_open_destination_cutoff",
+      "result": "pass",
+      "statement": "Consumption succeeds only before consumeUntilBlock and fails at cutoff; operational use requires finalized destination observation, while contract block.number is not source-finality evidence."
+    },
+    {
+      "condition": "stable_settlement_nullifier",
+      "result": "pass",
+      "statement": "Distinct route claims retain one route-independent transition/chain/consumer/action settlement key and the second economic consumption is rejected."
+    },
+    {
+      "condition": "chain_clone_lineage_replay",
+      "result": "pass",
+      "statement": "Chain ID, verifying authority, Registry, Settlement, route, and lineage bindings reject wrong-chain, clone, and cross-lineage reuse."
+    },
+    {
+      "condition": "nonce_predecessor_replay",
+      "result": "pass",
+      "statement": "Root and PFR nonce plus predecessor-digest chains reject reuse, skips, and stale latent-future authorizations."
+    },
+    {
+      "condition": "root_conflict",
+      "result": "pass",
+      "statement": "A correctly chained authorization for an occupied route coordinate is rejected as RootConflict without state or logs."
+    },
+    {
+      "condition": "claim_replay",
+      "result": "pass",
+      "statement": "An exact consumed claim is rejected as ClaimReplay before PFR state advances."
+    },
+    {
+      "condition": "revoke_replace_abandon",
+      "result": "pass",
+      "statement": "Revoked and Replaced routes and lineage ABANDONED are terminal, preserve historical getters, and cannot migrate nullifiers or create a successor."
+    },
+    {
+      "condition": "rejection_state_and_logs",
+      "result": "pass",
+      "statement": "Negative Root, Registry, Settlement, and PFR calls preserve pre-call stateDigest and emit zero recorded logs."
+    }
+  ],
+  "residuals": {
+    "elapsed_recovery_time_claimed": false,
+    "formal_external_security_audit_performed": false,
+    "hidden_beneficial_or_custody_overlap_detectable_on_chain": false,
+    "human_audit_performed": false,
+    "numeric_drain_policy_approved": false,
+    "numeric_validity_policy_approved": false,
+    "rpo_approved": false,
+    "rpo_data_loss_slo_claimed": false,
+    "rto_approved": false
+  },
+  "roles": {
+    "canonical_writer": {
+      "human": false,
+      "name": "Russell",
+      "type": "Codex sub-agent"
+    },
+    "exact_commit_runner": {
+      "human": false,
+      "name": "Raman",
+      "type": "Codex sub-agent"
+    },
+    "independent_read_only_auditor": {
+      "external": false,
+      "human": false,
+      "name": "Kuhn",
+      "type": "Codex sub-agent"
+    }
+  },
+  "schema": "oraclizer.ssgkr.route-lifecycle-recovery-local-drill.v1",
+  "subject": {
+    "branch": "codex/route-lifecycle-recovery",
+    "commit": "e80ae5daf18b1e72fca39dbaa2076f62d6673a46",
+    "parent": "2a55440fae65b58ccdc054d7a0742117900ee729",
+    "tree": "92a6587990464a186e50bbd15d3cdbf7e017b389"
+  },
+  "tests": {
+    "detailed_traces": {
+      "passed": 3,
+      "selected_tests": [
+        "testActiveRouteConsumesAndPreservesV1Identities",
+        "testLineageSignerReuseIsRejectedAndFreshSignersAreReserved",
+        "testRootContextNonceHashChainAndValidityAreFailClosed"
+      ],
+      "total": 3
+    },
+    "format": "pass",
+    "forced_offline_build": {
+      "passed": 17,
+      "total_solidity_source_files": 17
+    },
+    "full_fixed_seed": {
+      "failed": 0,
+      "passed": 33,
+      "skipped": 0,
+      "total": 33
+    },
+    "fuzz": {
+      "properties": 3,
+      "runs_each": 1024,
+      "status": "pass"
+    },
+    "invariants": {
+      "calls_each": 32768,
+      "depth": 128,
+      "handler_reverts": 0,
+      "properties": 2,
+      "runs_each": 256,
+      "status": "pass"
+    },
+    "seed": "0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "v2_drill": {
+      "failed": 0,
+      "passed": 14,
+      "tests": [
+        "testActiveRouteConsumesAndPreservesV1Identities",
+        "testCrossLineageSettlementAndAuthorizationReplayAreRejected",
+        "testDrainAllowsOnlyPredrainRootAndUsesHalfOpenCutoff",
+        "testEip712RejectsWrongChainAndClonedVerifyingContracts",
+        "testEpochOneAndCrossRoleActivationAreRejected",
+        "testIncidentRevocationAndAbandonmentAreFailClosed",
+        "testLifecycleAuthoritiesAreExact",
+        "testLifecycleCasAuthorityAndTransitionGraph",
+        "testLineageSettlementCannotBeReplacedByClone",
+        "testLineageSignerReuseIsRejectedAndFreshSignersAreReserved",
+        "testPfrNonceReuseSkipAndLatentFuturePredecessorAreRejected",
+        "testRegistrationAndConsumptionWindowsAreHalfOpen",
+        "testReplacementUsesStableSettlementAndRouteIndependentNullifier",
+        "testRootContextNonceHashChainAndValidityAreFailClosed"
+      ],
+      "total": 14
+    },
+    "vectors": {
+      "passed": 2,
+      "total": 2,
+      "values": {
+        "vectors/risc0-route-b-destination-policy-v1.json": "29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141",
+        "vectors/route-lifecycle-recovery-v1.json": "089bf1681666d5a0150ebea74296f5f392b552a9cfbc19b90875cc88e05a08af"
+      }
+    }
+  },
+  "toolchain": {
+    "evm_target": "cancun",
+    "foundry_archive_sha256": "6d41121b4bbb809845821c903619cfee75ed364f2bdc58a6787c9b0454114537",
+    "foundry_commit": "4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
+    "foundry_version": "1.7.1",
+    "offline": true,
+    "solc_binary_sha256": "38cf5df656da822cf88b854cf736475a196c679f4f5f3f15ddd8c85ce5dbb36a",
+    "solc_version": "0.8.36"
+  },
+  "v1_and_existing_evidence_guard": {
+    "diff_empty": true,
+    "evidence_tree_after": "b17749fc9fd942bac40eba3e679bbacdd9559e80",
+    "evidence_tree_before": "b17749fc9fd942bac40eba3e679bbacdd9559e80",
+    "git_blob_oids": {
+      "src/ReceiptRootAuthorityV1.sol": "41b844c106e83be8b669c60597b060d555d31a10",
+      "src/StateSyncGKRSettlementV1.sol": "56110906b44fe23ca8e0a6eb8811480fe8fc86a5",
+      "vectors/risc0-route-b-destination-policy-v1.json": "64a1175d358767f5cdc769445fb845f62154c54e",
+      "vectors/route-lifecycle-recovery-v1.json": "74d8e282e9398120f90416ecf2b99757a87764aa"
+    }
+  }
+}
