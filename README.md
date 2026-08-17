@@ -16,13 +16,15 @@ suite requires no RPC, fork, broadcast, deployment, or real signer.
 | Area | Status |
 | --- | --- |
 | Repository policy and Continuous Integration baseline | Present |
-| Solidity contracts | Direct Base Sepolia testnet evidence instances; permanently abandoned and non-activatable |
+| V1 Solidity contracts | Direct Base Sepolia evidence instances; permanently abandoned and non-activatable |
+| V2 Solidity candidate | Local and non-deployed; private implementation/validation checkpoint only |
 | Cross-language vectors | Vendored and SHA-256 pinned |
 | Base Sepolia package | Four authorized transactions finalized; technical execution 4-of-4 passed |
-| D-50 overall | Conditions 1–5 of 6 passed; condition 6 remote durability open |
-| A11 overall | Hold until exact Product/EVM/Brain evidence audit, commit, and remote durability |
+| W3 / A11 | Closed; validation bundle 4 of 9 closed |
+| Gate L Director decision | Option B approved W4 design, implementation, validation, and private checkpoint only |
+| W4 implementation architecture | SELECT A: lineage Registry plus stable Settlement and route-specific authorities |
 | Current addresses | Evidence-only; no future signing, registration, consume, or reactivation |
-| Independent security audit | Not performed |
+| Independent security audit | Not performed; deployment/activation blocked until unresolved Critical/High is zero |
 | Production deployment or supported network | None |
 | Release or stable API | None |
 
@@ -38,6 +40,7 @@ Use Foundry `1.7.1` built from commit
 ```sh
 forge --version
 sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256
+sha256sum -c vectors/route-lifecycle-recovery-v1.json.sha256
 forge fmt --check
 forge build --offline
 forge test --offline --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
@@ -85,8 +88,18 @@ Foundry 1.7.1 exposes the deterministic runner seed through `fuzz.seed` and the
   root quorum and append-only coordinate registry.
 - [`src/StateSyncGKRSettlementV1.sol`](src/StateSyncGKRSettlementV1.sol) — native
   one-leaf consumer and atomic claim/economic replay enforcement.
+- [`src/RouteLifecycleRegistryV2.sol`](src/RouteLifecycleRegistryV2.sol) and
+  [`src/StateSyncGKRSettlementV2.sol`](src/StateSyncGKRSettlementV2.sol) — the
+  private SELECT-A lineage lifecycle and stable-nullifier candidate.
+- [`src/ReceiptRootAuthorityV2.sol`](src/ReceiptRootAuthorityV2.sol) and
+  [`src/PrimaryFinalityAuthorityV2.sol`](src/PrimaryFinalityAuthorityV2.sol) —
+  route-bound epoch-2 EIP-712 nonce/hash-chain authorities.
 - [`docs/ENCODING.md`](docs/ENCODING.md) and [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md)
   — exact codec and claim boundaries.
+- [`docs/ENCODING_V2.md`](docs/ENCODING_V2.md),
+  [`docs/THREAT_MODEL_V2.md`](docs/THREAT_MODEL_V2.md), and the
+  [route lifecycle runbook](docs/operations/route-lifecycle-recovery-v1.md) —
+  V2 candidate encoding, residual risks, and fail-closed operations.
 - [`vectors/README.md`](vectors/README.md) — frozen Product-vector provenance.
 - [`evidence/destination-receipt-enforcement-reference-2026-08-14.md`](evidence/destination-receipt-enforcement-reference-2026-08-14.md)
   — local validation receipt and explicit non-claims.
@@ -118,10 +131,10 @@ then consumes delivery claim and economic settlement identities atomically.
 
 The live receipt supersedes the preflight funding/deployment hold for exactly
 four authorized D0 transactions. The direct Root and Settlement contracts are
-deployed on Base Sepolia and one honest receipt is consumed. A11 remains on
-hold until the exact evidence is independently audited, committed, and remote
-durable across Product, EVM, and Brain; no further transaction or production
-activation is authorized. The two current addresses and epoch-`1` roles are
+deployed on Base Sepolia and one honest receipt is consumed. The later exact
+Product/EVM/Brain evidence audit and remote-durability checkpoint closed
+W3/A11. No further transaction or production activation is authorized. The two
+current addresses and epoch-`1` roles are
 permanently abandoned and non-activatable; later approval cannot reactivate
 them.
 
@@ -131,15 +144,22 @@ nonce-`2` registration would make it submit-ready, and the digest does not bind
 a destination chain or contract address. No future D0/root/PFR signing,
 registration, or consume may occur on these addresses. The only possible later
 path is separately approved epoch-`2` fresh direct addresses with nonreused
-keys and the full evidence gate repeated from zero.
+keys and the full evidence gate repeated from zero. The Gate L Director decision
+approved option B only for W4 design, implementation, validation, and a private
+checkpoint. The later W4 implementation architecture selected SELECT A: a
+lineage-specific direct Registry and stable Settlement, route-specific rotating
+Root/PFR authorities, no nullifier migration, and irreversible lineage
+abandonment if Settlement integrity fails. The checked-in V2 code is an
+unaudited private candidate only; it does not authorize or perform keys,
+signatures, RPC mutation, funding, deployment, transactions, activation, merge,
+release, or publication.
 
-Provenance separates the Product semantic authority at `59f79f5b...` from its
-current remote head `375299a4...`; the EVM implementation head is `f00aef0f...`.
-Brain A11 semantics are pinned at `9eb74570...`; current Brain `origin/main` is
-its direct automatic-backup child `1d48dde7...`, which this evidence does not
-assimilate as a semantic change. Invalid predecessor custody profiles are
-excluded by non-secret metadata fingerprints and supply no signer, constructor
-member, or signature.
+The closed W3 evidence pins Product
+`03530f3062c28048c11afe96c37a39ca9b8019b8`, EVM
+`3746a81eb9114725376d9e6d883c6995f8c1a671`, and Brain
+`7b0098d63082c7367486d4cad317d451eca4a9bf`. Invalid predecessor custody
+profiles remain excluded by non-secret metadata fingerprints and supply no
+signer, constructor member, or signature.
 
 ## Security and assurance boundary
 

@@ -3,9 +3,11 @@
 ## Scope
 
 This document governs repository changes, not any deployed protocol, operator,
-signer set, external network, or legal entity. Local reference contracts and a
-test vector exist, but there is no release, deployment, approved production
-principal, or production authority to govern.
+signer set, external network, or legal entity. A historical V1 Base Sepolia
+Root/Settlement evidence deployment exists, but it is unsupported, permanently
+abandoned, and non-activatable. The V2 candidate is private and non-deployed.
+There is no release, supported production or activatable deployment, approved
+production principal, or production authority to govern.
 
 ## Maintainer
 
@@ -45,6 +47,22 @@ Maintainers evaluate:
 
 Acceptance of a reference implementation does not select a deployment, signer,
 operator, proxy, upgrade authority, supported network, or production release.
+
+## Epoch-2 lifecycle candidate
+
+The SELECT-A candidate separates governance and incident authority. Governance
+may initialize the lineage Settlement once, activate a new route, begin bounded
+drain, replace a draining route with an already-active route, or revoke.
+Incident authority may revoke or irreversibly abandon the lineage. Neither may
+migrate nullifiers, replace Settlement, reactivate terminal state, or create an
+automatic successor. On-chain address separation does not prove that people or
+custody systems behind multisigs are independent; a later custody audit must do
+so.
+
+All revision-changing calls use exact compare-and-swap values. Route `Revoked`
+and `Replaced`, and lineage `ABANDONED`, are terminal. Parameter choices such as
+maximum validity and drain windows are deployment-policy decisions and remain
+unapproved.
 
 ## Releases and deployments
 

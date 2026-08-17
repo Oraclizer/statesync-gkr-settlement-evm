@@ -8,6 +8,11 @@ network action.
 Required toolchain: Foundry 1.7.1 commit
 `4072e48705af9d93e3c0f6e29e93b5e9a40caed8`, Solidity 0.8.36.
 
+The epoch-2 SELECT-A candidate has a separate local-only
+[route lifecycle and recovery runbook](operations/route-lifecycle-recovery-v1.md).
+Its commands add the independently computed V2 vector checksum. Nothing in
+that runbook authorizes a network action.
+
 ```sh
 sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256
 forge fmt --check
@@ -121,3 +126,12 @@ condition is exact evidence audit, commit, and Product/EVM/Brain remote
 durability. It is not a code, live-consume, negative-matrix, or operational
 policy deficit. Production activation, GRANDPA finality, formal security-audit
 status, and further transactions remain unclaimed and unauthorized.
+
+That captured live-receipt gate was subsequently closed as `W3/A11 CLOSED /
+VALIDATION BUNDLE 4 OF 9 CLOSED`. The Gate L Director decision approved option B
+only for W4 design, implementation, validation, and a private checkpoint. The
+later W4 implementation architecture selected SELECT A: a new
+lineage-specific direct Registry and stable Settlement, route-specific epoch-2
+authorities, and no nullifier migration. This repository candidate is still
+private, unaudited, and non-deployed. The historical epoch-1 freeze and all
+network prohibitions above remain unchanged.

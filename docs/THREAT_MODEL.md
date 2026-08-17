@@ -28,10 +28,13 @@ GRANDPA is neither implemented nor claimed, and it is not a deferred obligation
 of this v1. A future finalized-header or light-client adapter is a replaceable,
 uncommitted design option that would require its own authority and review.
 
-This is unaudited local predeployment source. Tests and vectors are not an
-independent security audit. No supported network, deployment address, bytecode
-attestation, key ceremony, monitoring service, incident process, or production
-activation exists.
+This repository contains unaudited local source, including a private,
+non-deployed V2 candidate. A historical V1 Base Sepolia Root/Settlement evidence
+deployment exists, but it is unsupported and permanently EVIDENCE-ONLY /
+ABANDONED / NON-ACTIVATABLE. Tests and vectors are not an independent security
+audit. No supported or activatable production network, deployment, or address
+exists. No V2 production bytecode attestation, key ceremony, monitoring service,
+incident process, or production activation exists.
 
 ## Explicit failure boundaries
 

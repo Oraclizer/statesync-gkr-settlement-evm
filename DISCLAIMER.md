@@ -1,9 +1,12 @@
 # Disclaimer
 
-This repository is private, experimental, pre-deployment, and unaudited. It
-contains local reference contracts and a frozen cross-language test vector, but
-no release, deployed bytecode, approved production principals, or supported
-address exists.
+This repository is private, experimental, and unaudited. A historical V1 Base
+Sepolia Root/Settlement evidence deployment exists, but it is unsupported and
+permanently EVIDENCE-ONLY / ABANDONED / NON-ACTIVATABLE. No supported or
+activatable deployment or address exists. V2 remains a private, unaudited,
+non-deployed candidate with local reference contracts and a frozen
+cross-language test vector. There is no release or approved production
+principal.
 
 Future reference code, tests, fuzzing, invariants, models, or documentation may
 reduce particular risks but cannot establish that software is safe, complete,

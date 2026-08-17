@@ -58,7 +58,9 @@ jobs:
         run: forge fmt --check
 
       - name: Verify frozen vector custody
-        run: sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256
+        run: |
+          sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256
+          sha256sum -c vectors/route-lifecycle-recovery-v1.json.sha256
 
       - name: Build
         run: forge build --offline --use "$SOLC_BINARY" --sizes

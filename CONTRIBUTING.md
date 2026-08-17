@@ -1,8 +1,11 @@
 # Contributing
 
-Thank you for helping improve StateSync-GKR Settlement EVM. The repository is a
-private, pre-deployment, unaudited local reference candidate with a frozen test
-vector; it is not a release or deployed system.
+Thank you for helping improve StateSync-GKR Settlement EVM. A historical V1 Base
+Sepolia Root/Settlement evidence deployment exists, but it is unsupported and
+permanently EVIDENCE-ONLY / ABANDONED / NON-ACTIVATABLE. No supported or
+activatable deployment or address exists. V2 remains a private, unaudited,
+non-deployed local candidate with a frozen test vector; it is not a release or
+production system.
 
 ## Before opening a change
 

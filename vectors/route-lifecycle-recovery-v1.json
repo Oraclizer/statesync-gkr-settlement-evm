@@ -1,0 +1,72 @@
+{
+  "schema": "ssgkr/route-lifecycle-recovery-vector/v1",
+  "status": "private-unaudited-local-candidate",
+  "codec": {
+    "implementation": "Foundry cast Rust ABI/Keccak codec and Python standard-library SHA-256",
+    "version": "1.7.1",
+    "commit": "4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
+    "independence": "computed outside Solidity and cross-checked by the Solidity test harness"
+  },
+  "domain": {
+    "chainId": "84532",
+    "typehash": "0x8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f",
+    "version": "2",
+    "versionHash": "0xad7c5bef027816a800da1736444fb58a807ef4c9603b7848673f7e3a68eb14a5"
+  },
+  "common": {
+    "routeId": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "lifecycleRegistry": "0x3333333333333333333333333333333333333333",
+    "destinationSettlement": "0x4444444444444444444444444444444444444444",
+    "signerSetEpoch": "2",
+    "lifecycleRevision": "1",
+    "validAfterBlock": "100",
+    "validUntilBlock": "120",
+    "authorizationNonce": "1",
+    "previousAuthorizationDigest": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "rootAuthorization": {
+    "name": "StateSyncGKR Receipt Root Authority",
+    "nameHash": "0x7ad6f6ba950dd1dd59424ec82b02b92c99ccb6955fa3d28b0d5f1a1171e6b2a3",
+    "verifyingContract": "0x1111111111111111111111111111111111111111",
+    "typehash": "0x4641fcf9cf27e239cd52563666defdda5d2a8ca4da2f24a75b6304024604e786",
+    "sourceNetworkId": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "sourceGenesisHash": "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "sourceRuntimeId": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "verificationContextHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "domainId": "2",
+    "sourceBlockNumber": "6726351",
+    "sourceBlockHash": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "aggregationId": "53668",
+    "root": "0x0000000000000000000000000000000000000000000000000000000000001234",
+    "leafCount": "1",
+    "structHash": "0xef66e6e0afe95e7e0688c5369b812531c2b4ba6429eaba0ec0652d24e2b52c9d",
+    "domainSeparator": "0x5560ba360e20cbf2c3b0609f16053bbe2c9c03b4e9fa2a7c9a2c2302f720eaed",
+    "digest": "0x69356b7eb6c7ebc8c76996ea504d48a8a437edf92f4901bc593ffe316316251a"
+  },
+  "pfrAuthorization": {
+    "name": "StateSyncGKR Primary Finality Authority",
+    "nameHash": "0x964a90be01ceb6b048c1a4700e3f39576f68bffa0bcc8a38d3cfd40e0a424c24",
+    "verifyingContract": "0x2222222222222222222222222222222222222222",
+    "typehash": "0xae92742c49777e8446902a854dce72130d27be12a748c6378ca91eb2d15dd8dc",
+    "primaryFinalityRecordId": "0x9999999999999999999999999999999999999999999999999999999999999999",
+    "structHash": "0x3bb508c7feffd5b933c59b153c8a52f8466f1fcef33002bdb0942a30758a1db5",
+    "domainSeparator": "0x3dd83056e72a1a0e58d4794be529bdf9b90187d25a8f5afb9991ddbfe92019f8",
+    "digest": "0xcfd300427285e6e151c98d79cd6d5ffc970537f4cabc590234e13c081bf4e19a"
+  },
+  "coordinate": {
+    "packed": "0x5353474b525f524543454950545f524f4f545f434f4f5244494e4154455f5632aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb00000002000000000000d1a4",
+    "id": "0x9eafa28b0dabf1046b8016d0b11ddf59eea392ad60bf912bc340795fbce01181"
+  },
+  "stableSettlementNullifier": {
+    "primaryTransitionId": "0x959550f3847e15ae2d69ab027d8ef59621282eeb758746262205fa3f61b38721",
+    "destinationConsumer": "0x0000000000000000000000004444444444444444444444444444444444444444",
+    "actionKind": "0",
+    "packed": "0x7373676b722f736574746c656d656e742d6b65792f7631959550f3847e15ae2d69ab027d8ef59621282eeb758746262205fa3f61b38721344a010000000000000000000000000000000000444444444444444444444444444444444444444400",
+    "settlementKey": "0x2a3823b443c2d6297db8f648dc136839cdd9ccf8832407d237a3468c31500ebd",
+    "routeIndependent": true
+  },
+  "nonClaims": [
+    "No private key, signature, RPC, deployment, transaction, or live address is included.",
+    "The vector is not an audit or production-readiness finding."
+  ]
+}

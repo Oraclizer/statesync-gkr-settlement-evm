@@ -13,6 +13,7 @@ interface Vm {
         external
         returns (uint8 v, bytes32 r, bytes32 s);
     function chainId(uint256 newChainId) external;
+    function roll(uint256 newHeight) external;
     function readFile(string calldata path) external view returns (string memory data);
     function parseJsonString(string calldata json, string calldata key)
         external
