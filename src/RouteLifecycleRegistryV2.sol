@@ -30,6 +30,7 @@ contract RouteLifecycleRegistryV2 is IRouteLifecycleRegistryV2 {
     error InvalidTransition();
     error InvalidDrainCutoff();
     error InvalidReplacement();
+    error LineageSignerAlreadyReserved(address signer);
     error ArithmeticOverflow();
 
     event LineageSettlementInitialized(address indexed settlement);
@@ -60,6 +61,7 @@ contract RouteLifecycleRegistryV2 is IRouteLifecycleRegistryV2 {
     bool public lineageAbandoned;
 
     mapping(bytes32 => Route) internal routes;
+    mapping(address => bool) public lineageSignerReserved;
     bytes32 internal lifecycleAccumulator;
     uint64 internal transitions;
     uint64 internal eventsEmitted;
@@ -117,7 +119,9 @@ contract RouteLifecycleRegistryV2 is IRouteLifecycleRegistryV2 {
         if (route_.status != RouteStatus.Uninitialized || expectedRevision != 0) {
             revert InvalidTransition();
         }
-        _validateRouteEndpoints(routeId_, rootAuthority, pfrAuthority);
+        (address[] memory rootSigners, address[] memory pfrSigners) =
+            _validateRouteEndpoints(routeId_, rootAuthority, pfrAuthority);
+        _reserveSigners(rootSigners, pfrSigners);
 
         route_.rootAuthority = rootAuthority;
         route_.pfrAuthority = pfrAuthority;
@@ -256,6 +260,7 @@ contract RouteLifecycleRegistryV2 is IRouteLifecycleRegistryV2 {
     function _validateRouteEndpoints(bytes32 routeId_, address rootAuthority, address pfrAuthority)
         private
         view
+        returns (address[] memory rootSigners, address[] memory pfrSigners)
     {
         if (
             rootAuthority == address(0) || pfrAuthority == address(0)
@@ -280,26 +285,41 @@ contract RouteLifecycleRegistryV2 is IRouteLifecycleRegistryV2 {
 
         uint256 rootCount = root.configuredSignerCount();
         uint256 pfrCount = pfr.configuredSignerCount();
+        rootSigners = new address[](rootCount);
+        pfrSigners = new address[](pfrCount);
         for (uint256 i; i < rootCount; ++i) {
             address rootSigner = root.configuredSignerAt(i);
+            if (lineageSignerReserved[rootSigner]) revert LineageSignerAlreadyReserved(rootSigner);
             if (
                 rootSigner == governanceAuthority || rootSigner == incidentAuthority
                     || rootSigner == rootAuthority || rootSigner == pfrAuthority
             ) {
                 revert RoleOverlap();
             }
+            rootSigners[i] = rootSigner;
             for (uint256 j; j < pfrCount; ++j) {
                 if (rootSigner == pfr.configuredSignerAt(j)) revert RoleOverlap();
             }
         }
         for (uint256 i; i < pfrCount; ++i) {
             address pfrSigner = pfr.configuredSignerAt(i);
+            if (lineageSignerReserved[pfrSigner]) revert LineageSignerAlreadyReserved(pfrSigner);
             if (
                 pfrSigner == governanceAuthority || pfrSigner == incidentAuthority
                     || pfrSigner == rootAuthority || pfrSigner == pfrAuthority
             ) {
                 revert RoleOverlap();
             }
+            pfrSigners[i] = pfrSigner;
+        }
+    }
+
+    function _reserveSigners(address[] memory rootSigners, address[] memory pfrSigners) private {
+        for (uint256 i; i < rootSigners.length; ++i) {
+            lineageSignerReserved[rootSigners[i]] = true;
+        }
+        for (uint256 i; i < pfrSigners.length; ++i) {
+            lineageSignerReserved[pfrSigners[i]] = true;
         }
     }
 

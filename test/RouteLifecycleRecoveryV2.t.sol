@@ -74,13 +74,9 @@ contract RouteLifecycleRecoveryV2Test is TestBase {
             record.destinationConsumer,
             record.actionKind
         );
+        bytes[] memory pfrSignatures = _signPfr(pfrA, pfrAuthorization, 4, 5);
         (bytes32 claim, bytes32 economic) = settlement.consume(
-            ROUTE_A,
-            record,
-            _raw(),
-            _receipt(53_668),
-            pfrAuthorization,
-            _signPfr(pfrA, pfrAuthorization, 4, 5)
+            ROUTE_A, record, _raw(), _receipt(53_668), pfrAuthorization, pfrSignatures
         );
         assertEq(claim, expectedClaim);
         assertEq(economic, expectedSettlement);
@@ -88,6 +84,15 @@ contract RouteLifecycleRecoveryV2Test is TestBase {
         assertTrue(settlement.consumedSettlements(economic));
         assertEq(settlement.transitionCount(), 1);
         assertEq(pfrA.nextAuthorizationNonce(), 2);
+        _assertSettlementFailure(
+            settlement,
+            pfrA,
+            abi.encodeCall(
+                settlement.consume,
+                (ROUTE_A, record, _raw(), _receipt(53_668), pfrAuthorization, pfrSignatures)
+            ),
+            StateSyncGKRSettlementV2.ClaimReplay.selector
+        );
     }
 
     function testEip712RejectsWrongChainAndClonedVerifyingContracts() public {
@@ -176,6 +181,10 @@ contract RouteLifecycleRecoveryV2Test is TestBase {
         );
 
         _registerRoot(rootA, ROUTE_A, 2, 3, 53_668, 1);
+        IReceiptRootAuthorityV2.Authorization memory conflict =
+            _rootAuthorization(rootA, ROUTE_A, 53_668, 1);
+        conflict.root = bytes32(uint256(conflict.root) ^ 1);
+        _assertSignedRootFailure(conflict, ReceiptRootAuthorityV2.RootConflict.selector);
         IReceiptRootAuthorityV2.Authorization memory future =
             _rootAuthorization(rootA, ROUTE_A, 53_669, 1);
         future.authorizationNonce = 3;
@@ -729,6 +738,61 @@ contract RouteLifecycleRecoveryV2Test is TestBase {
             ),
             RouteLifecycleRegistryV2.RoleOverlap.selector
         );
+    }
+
+    function testLineageSignerReuseIsRejectedAndFreshSignersAreReserved() public {
+        assertTrue(registry.lineageSignerReserved(vm.addr(2)));
+        assertTrue(registry.lineageSignerReserved(vm.addr(3)));
+        assertTrue(registry.lineageSignerReserved(vm.addr(4)));
+        assertTrue(registry.lineageSignerReserved(vm.addr(5)));
+
+        {
+            (ReceiptRootAuthorityV2 reusedRoot, PrimaryFinalityAuthorityV2 freshPfr) =
+                _deployAuthorities(ROUTE_B, 2, 6, 7, 8);
+            _assertRegistryFailure(
+                abi.encodeCall(
+                    registry.activateRoute,
+                    (ROUTE_B, address(reusedRoot), address(freshPfr), uint64(0))
+                ),
+                RouteLifecycleRegistryV2.LineageSignerAlreadyReserved.selector
+            );
+        }
+        {
+            (ReceiptRootAuthorityV2 reusedAcrossRole, PrimaryFinalityAuthorityV2 freshPfr) =
+                _deployAuthorities(ROUTE_B, 4, 6, 7, 8);
+            _assertRegistryFailure(
+                abi.encodeCall(
+                    registry.activateRoute,
+                    (ROUTE_B, address(reusedAcrossRole), address(freshPfr), uint64(0))
+                ),
+                RouteLifecycleRegistryV2.LineageSignerAlreadyReserved.selector
+            );
+        }
+        {
+            (ReceiptRootAuthorityV2 freshRoot, PrimaryFinalityAuthorityV2 reusedPfr) =
+                _deployAuthorities(ROUTE_B, 6, 7, 4, 8);
+            _assertRegistryFailure(
+                abi.encodeCall(
+                    registry.activateRoute,
+                    (ROUTE_B, address(freshRoot), address(reusedPfr), uint64(0))
+                ),
+                RouteLifecycleRegistryV2.LineageSignerAlreadyReserved.selector
+            );
+        }
+
+        for (uint256 key = 6; key <= 9; ++key) {
+            assertTrue(!registry.lineageSignerReserved(vm.addr(key)));
+        }
+        (ReceiptRootAuthorityV2 rootB, PrimaryFinalityAuthorityV2 pfrB) =
+            _deployAuthorities(ROUTE_B, 6, 7, 8, 9);
+        registry.activateRoute(ROUTE_B, address(rootB), address(pfrB), 0);
+        IRouteLifecycleRegistryV2.Route memory active = registry.getRoute(ROUTE_B);
+        assertEq(uint256(active.status), uint256(IRouteLifecycleRegistryV2.RouteStatus.Active));
+        assertEq(active.rootAuthority, address(rootB));
+        assertEq(active.pfrAuthority, address(pfrB));
+        for (uint256 key = 6; key <= 9; ++key) {
+            assertTrue(registry.lineageSignerReserved(vm.addr(key)));
+        }
     }
 
     function _deployAuthorities(

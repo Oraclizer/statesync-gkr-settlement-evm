@@ -41,6 +41,14 @@ contract EncodingV2Harness {
         return ReceiptRootEncodingV1.settlementKey(transitionId, chainId, consumer, action);
     }
 
+    function claimId(bytes32 routeId, bytes32 pfrId, bytes memory rawStatement)
+        external
+        pure
+        returns (bytes32)
+    {
+        return ReceiptRootEncodingV1.claimId(routeId, pfrId, rawStatement);
+    }
+
     function coordinateId(
         bytes32 routeId,
         bytes32 sourceNetworkId,
@@ -423,10 +431,13 @@ contract RouteLifecycleRecoveryV2FuzzTest is TestBase {
         bytes32 routeB
     ) public view {
         if (routeA == routeB) routeB = _flip(routeB);
+        bytes memory rawStatement = abi.encode(transition, chainId, consumer, action);
+        bytes32 claimA = encoding.claimId(routeA, transition, rawStatement);
+        bytes32 claimB = encoding.claimId(routeB, transition, rawStatement);
         bytes32 keyA = encoding.settlementKey(transition, chainId, consumer, action);
         bytes32 keyB = encoding.settlementKey(transition, chainId, consumer, action);
+        assertTrue(claimA != claimB);
         assertEq(keyA, keyB);
-        assertTrue(routeA != routeB);
     }
 
     function testIndependentCastVectorMatchesSolidityCodec() public view {

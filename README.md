@@ -148,8 +148,10 @@ keys and the full evidence gate repeated from zero. The Gate L Director decision
 approved option B only for W4 design, implementation, validation, and a private
 checkpoint. The later W4 implementation architecture selected SELECT A: a
 lineage-specific direct Registry and stable Settlement, route-specific rotating
-Root/PFR authorities, no nullifier migration, and irreversible lineage
-abandonment if Settlement integrity fails. The checked-in V2 code is an
+Root/PFR authorities, append-only lineage-wide direct signer-address nonreuse,
+no nullifier migration, and irreversible lineage abandonment if Settlement
+integrity fails. Fresh addresses do not prove independent operators or custody;
+that residual requires separate review. The checked-in V2 code is an
 unaudited private candidate only; it does not authorize or perform keys,
 signatures, RPC mutation, funding, deployment, transactions, activation, merge,
 release, or publication.

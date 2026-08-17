@@ -27,6 +27,7 @@ interface IRouteLifecycleRegistryV2 {
     function maxDrainBlocks() external view returns (uint64);
     function lineageSettlement() external view returns (address);
     function lineageAbandoned() external view returns (bool);
+    function lineageSignerReserved(address signer) external view returns (bool);
     function getRoute(bytes32 routeId) external view returns (Route memory);
 
     function initializeLineageSettlement(address settlement) external;

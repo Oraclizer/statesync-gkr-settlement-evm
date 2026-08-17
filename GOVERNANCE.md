@@ -57,7 +57,10 @@ Incident authority may revoke or irreversibly abandon the lineage. Neither may
 migrate nullifiers, replace Settlement, reactivate terminal state, or create an
 automatic successor. On-chain address separation does not prove that people or
 custody systems behind multisigs are independent; a later custody audit must do
-so.
+so. Successful activation permanently reserves every direct Root/PFR signer
+address in the lineage, including across roles. A fresh address controlled by the
+same operator or custody system remains an off-chain overlap that this guard
+cannot detect.
 
 All revision-changing calls use exact compare-and-swap values. Route `Revoked`
 and `Replaced`, and lineage `ABANDONED`, are terminal. Parameter choices such as

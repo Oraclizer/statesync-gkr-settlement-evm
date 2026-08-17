@@ -43,6 +43,8 @@ of every route, while the incident role retains a narrow fail-closed action.
 - Governance-only activation, drain, and replacement; governance or incident
   revocation; incident-only irreversible lineage abandonment.
 - Exact compare-and-swap revisions and terminal route states.
+- Lineage-wide append-only rejection of previously activated direct Root/PFR
+  signer addresses, including cross-role reuse.
 - Predrain-root-only draining with a bounded half-open consume cutoff.
 - Stable route-independent economic nullifiers across route replacement.
 - Exact lineage-A signatures and records fail against lineage B because the
@@ -62,9 +64,10 @@ cutoff. Expiry only bounds when the EVM accepts a message; `block.number` is a
 destination execution clock, not a source-finality proof or wall clock.
 
 The on-chain registry validates direct signer-address separation between Root,
-PFR, governance, and incident roles. It cannot see participant overlap hidden
-behind multisig, smart-account, HSM, cloud, or organizational control. A later
-custody review must verify beneficial and operational separation.
+PFR, governance, and incident roles and permanently rejects direct signer-address
+reuse across activated routes. It cannot see participant overlap hidden behind a
+fresh address, multisig, smart-account, HSM, cloud, or organizational control. A
+later custody review must verify beneficial and operational separation.
 
 Governance compromise can activate or drain routes and revoke them. Incident
 authority compromise can revoke a route or permanently abandon the lineage.

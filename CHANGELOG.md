@@ -65,6 +65,9 @@ release identity exists.
   coverage. This is unaudited local candidate work and includes no key,
   signature, RPC, funding, deployment, transaction, activation, merge, release,
   or public-visibility approval.
+- Enforced append-only lineage-wide direct signer-address nonreuse on successful
+  route activation, added same-role and cross-role reuse negatives, and clarified
+  that fresh-address operator or custody overlap remains externally reviewable.
 
 ### Not included
 

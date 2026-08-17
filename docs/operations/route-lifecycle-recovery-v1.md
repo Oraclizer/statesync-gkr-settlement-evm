@@ -21,7 +21,9 @@ script or external signer workflow is present.
 ## Normal rotation
 
 Create and independently validate a new route with distinct Root/PFR authorities
-and keys but the same lineage Registry and Settlement. Activate the new route.
+and signer addresses that have never been activated in the lineage, but the same
+lineage Registry and Settlement. The Registry permanently reserves every direct
+Root/PFR signer address on successful activation. Activate the new route.
 Start draining the old Active route with an exact expected revision and a
 half-open `consumeUntilBlock` no more than `maxDrainBlocks` ahead. During drain,
 only roots registered at or before `drainStartedAtBlock`, under the old active
@@ -37,6 +39,10 @@ the whole lineage. This incident-only global abandon is the selected
 least-privilege policy; governance cannot invoke it. Abandonment blocks
 registration, consumption, and every later lifecycle mutation while retaining
 historical getters. It does not create or authorize a successor.
+
+The address guard cannot detect the same operator, beneficial owner, HSM,
+multisig participant, cloud account, or custody system behind a fresh address.
+Independent custody review must reject that hidden overlap before activation.
 
 If Settlement integrity is in doubt, abandon the lineage. Do not copy, reset,
 or migrate economic nullifiers; do not reactivate any route. Record the exact
