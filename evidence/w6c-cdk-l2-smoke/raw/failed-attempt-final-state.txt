@@ -1,0 +1,5 @@
+failed_attempt_settlement=0xf22E2B040B639180557745F47aB97dFA95B1e22a
+transition_count=0
+event_count=0
+pfr_next_nonce=1
+root_next_nonce=2

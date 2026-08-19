@@ -1,0 +1,26 @@
+No files changed, compilation skipped
+Script ran successfully.
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 2151908
+
+Estimated gas price: 0.110903151 gwei
+
+Estimated total gas used for script: 12587820
+
+Estimated amount required: 0.00139602890222082 ETH
+
+==========================
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: /mnt/c/Users/Jay Kim/Documents/statesync-gkr-settlement-evm-w6c-smoke/broadcast/W6CCdkL2Smoke.s.sol/2151908/run-latest.json
+
+Sensitive values saved to: /mnt/c/Users/Jay Kim/Documents/statesync-gkr-settlement-evm-w6c-smoke/cache/W6CCdkL2Smoke.s.sol/2151908/run-latest.json
+

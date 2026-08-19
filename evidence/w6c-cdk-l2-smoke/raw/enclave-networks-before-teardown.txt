@@ -1,0 +1,2 @@
+NETWORK ID                                                         NAME                             DRIVER    SCOPE
+189c20afb99a23d828937ea6bc6f63f7477b43896069ffad1aed62b208470bd9   kt-w6-component-smoke-20260819   bridge    local
