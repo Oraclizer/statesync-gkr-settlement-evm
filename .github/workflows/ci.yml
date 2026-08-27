@@ -38,11 +38,27 @@ jobs:
           grep -Fq 'forge Version: 1.7.1' <<<"$version_output"
           grep -Fq 'Commit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8' <<<"$version_output"
 
+      - name: Install exact Solidity compiler
+        shell: bash
+        env:
+          SOLC_SHA256: c8d35afdddc3cd2743ee88b8f25e0fecd16e2bdd5f2120f37e52cd9cc45ae0e6
+        run: |
+          solc_path="${RUNNER_TEMP}/solc-linux-amd64-v0.8.36+commit.8a079791"
+          curl --fail --location --proto '=https' --tlsv1.2 \
+            --output "$solc_path" \
+            'https://binaries.soliditylang.org/linux-amd64/solc-linux-amd64-v0.8.36+commit.8a079791'
+          printf '%s  %s\n' "$SOLC_SHA256" "$solc_path" | sha256sum --check --strict
+          chmod 0755 "$solc_path"
+          version_output="$("$solc_path" --version)"
+          printf '%s\n' "$version_output"
+          grep -Fq 'Version: 0.8.36+commit.8a079791.Linux.g++' <<<"$version_output"
+          printf 'SOLC_BINARY=%s\n' "$solc_path" >> "$GITHUB_ENV"
+
       - name: Check formatting
         run: forge fmt --check
 
       - name: Build
-        run: forge build --offline
+        run: forge build --offline --use "$SOLC_BINARY" --sizes
 
       - name: Test
-        run: forge test --offline --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+        run: forge test --offline --use "$SOLC_BINARY" --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
