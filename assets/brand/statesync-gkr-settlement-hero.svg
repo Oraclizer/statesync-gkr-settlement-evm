@@ -54,7 +54,7 @@
 
   <g transform="translate(390 69)" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif">
     <text x="0" y="0" fill="#75E3B0" font-size="12" font-weight="750" letter-spacing="2.4">DETERMINISTIC EVM SETTLEMENT REFERENCE</text>
-    <text x="0" y="58" fill="#F3F7F4" font-size="53" font-weight="800" letter-spacing="1.2">SETTLEMENT EVM</text>
+    <text x="0" y="58" fill="#F3F7F4" font-size="44" font-weight="800" letter-spacing="1.2" textLength="560" lengthAdjust="spacingAndGlyphs"><tspan fill="#75E3B0">SS-GKR</tspan> SETTLEMENT EVM</text>
     <rect x="0" y="77" width="112" height="3" rx="1.5" fill="#75E3B0"/>
     <text x="0" y="111" fill="#D5E4E0" font-size="17" font-weight="650" letter-spacing=".7">DESTINATION ENFORCEMENT FOR STATESYNC-GKR RECEIPTS</text>
     <text x="0" y="148" fill="#9DB6B2" font-size="14">quorum vectors • destination policy • fail-closed checks</text>
