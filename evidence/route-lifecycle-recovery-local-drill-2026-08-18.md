@@ -1,4 +1,4 @@
-# Route lifecycle recovery local drill — 2026-08-18
+# Route lifecycle recovery local drill: 2026-08-18
 
 ## Evidence identity and subject
 
@@ -6,9 +6,9 @@ This private, local-only checkpoint records validation of implementation commit
 `e80ae5daf18b1e72fca39dbaa2076f62d6673a46`, tree
 `92a6587990464a186e50bbd15d3cdbf7e017b389`, parent
 `2a55440fae65b58ccdc054d7a0742117900ee729`, on
-`codex/route-lifecycle-recovery`.
+`feature/route-lifecycle-recovery`.
 
-Raman reran the exact evidence carrier
+Reviewer B reran the exact evidence carrier
 `deb56c49accd3eaf68f1cf395d7498a110527e6b`, tree
 `a6240b893ce20d46e50d0bbc85043a89dd29ed90`. Its local HEAD and worktree/index
 were exact and clean at both start and end. Upstream and the live remote remained
@@ -23,13 +23,13 @@ carrier remains `deb56c4...`; the later document-carrier commit is neither.
 
 Named roles were separated as follows:
 
-- canonical writer: Russell;
-- exact-commit runner: Raman; and
-- independent read-only auditor: Kuhn.
+- canonical writer: Reviewer A;
+- exact-commit runner: Reviewer B; and
+- independent read-only auditor: Reviewer C.
 
-Russell, Raman, and Kuhn are Codex sub-agents. They are non-human and not an
-external security auditor, audit firm, or third-party custody reviewer. Kuhn's
-review is an independent read-only Codex review of the exact implementation
+Reviewers A, B, and C are independent automated review passes. They are non-human and not an
+external security auditor, audit firm, or third-party custody reviewer. Reviewer C's
+review is an independent read-only automated review of the exact implementation
 commit and must not be represented as a human or external audit.
 
 ## Scope and non-claims
@@ -67,10 +67,10 @@ record. Every build and test command pins the same verified Solidity binary with
 `--use $solc`.
 
 ```powershell
-$artifactRoot = 'C:\Users\Jay Kim\.codex\visualizations\2026\08\17\01a0102c-b751-76b1-9565-c873f916538c\w4-a12-deb56c4-runner'
-$forge = 'C:\Users\Jay Kim\AppData\Local\Temp\codex-w4-foundry-v1.7.1\bin\forge.exe'
-$solc = 'C:\Users\Jay Kim\AppData\Local\Temp\codex-w4-foundry-v1.7.1\solc-windows-amd64-v0.8.36+commit.8a079791.exe'
-$foundryArchive = 'C:\Users\Jay Kim\AppData\Local\Temp\codex-w4-foundry-v1.7.1\foundry_v1.7.1_win32_amd64.zip'
+$artifactRoot = '<LOCAL_WORKSPACE>'
+$forge = '<LOCAL_WORKSPACE>'
+$solc = '<LOCAL_WORKSPACE>'
+$foundryArchive = '<LOCAL_WORKSPACE>'
 $sha256sum = 'C:\Program Files\Git\usr\bin\sha256sum.exe'
 $seed = '0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f'
 
@@ -85,11 +85,11 @@ git rev-parse HEAD
 git rev-parse 'HEAD^{tree}'
 git rev-parse 'HEAD^'
 git rev-parse '@{u}'
-git rev-parse origin/codex/route-lifecycle-recovery
+git rev-parse origin/feature/route-lifecycle-recovery
 git status --short --branch
 git diff --quiet -- .
 git diff --cached --quiet -- .
-git ls-remote --heads origin refs/heads/codex/route-lifecycle-recovery
+git ls-remote --heads origin refs/heads/feature/route-lifecycle-recovery
 
 # toolchain-identity.log
 Get-FileHash -Algorithm SHA256 -LiteralPath 'foundry.toml'
@@ -144,7 +144,7 @@ Results:
 ## Content-addressed runner package
 
 Package root:
-`C:\Users\Jay Kim\.codex\visualizations\2026\08\17\01a0102c-b751-76b1-9565-c873f916538c\w4-a12-deb56c4-runner`
+`<LOCAL_WORKSPACE>`
 
 - `MANIFEST.sha256` SHA-256:
   `19065de679a4796dcec0d46d730e7b580c68d93ca0e9051c750d887ff48df841`;
@@ -242,11 +242,11 @@ for the frozen V1 Product vector and
 `089bf1681666d5a0150ebea74296f5f392b552a9cfbc19b90875cc88e05a08af`
 for the V2 lifecycle vector.
 
-## Independent read-only Codex review
+## Independent read-only automated review
 
-Kuhn reviewed the exact subject commit independently and read-only. Code finding
+Reviewer C reviewed the exact subject commit independently and read-only. Code finding
 counts were Critical `0`, High `0`, Medium `0`, and Low `0`; discrepancy was `0`.
-This is a Codex sub-agent finding disposition, not a human or external security
+This is an automated reviewer finding disposition, not a human or external security
 audit.
 
 Residual boundaries remain:

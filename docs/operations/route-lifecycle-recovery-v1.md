@@ -1,4 +1,4 @@
-# Route lifecycle and recovery runbook — candidate v1
+# Route lifecycle and recovery runbook: candidate v1
 
 This runbook is local-validation-only. All numeric policy values below are
 constructor or transition inputs that require a later exact deployment

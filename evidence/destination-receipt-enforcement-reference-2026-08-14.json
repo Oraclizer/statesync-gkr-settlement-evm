@@ -2,7 +2,7 @@
   "schema": "statesync-gkr-destination-receipt-enforcement-evidence-v1",
   "status": "LOCAL_PREDEPLOYMENT_CANDIDATE_UNAUDITED_NOT_DEPLOYED",
   "productAuthority": {
-    "commit": "59f79f5b9cd1382c5acb7368c57402f5015798f9",
+    "commit": "superseded-by-content-binding-blob-64a1175d358767f5cdc769445fb845f62154c54e",
     "vectorPath": "vectors/risc0-route-b-destination-policy-v1.json",
     "vectorBytes": 28429,
     "vectorSha256": "29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141"

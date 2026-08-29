@@ -78,6 +78,6 @@ Within the PFR, destination chain ID, checkpoint, signer epoch, and issuance
 height are LE64. The consumer derives destination identity from `block.chainid`
 and `address(this)`; it never accepts arbitrary constructor destination values.
 
-Source authority: `Oraclizer/statesync-gkr` commit
-`59f79f5b9cd1382c5acb7368c57402f5015798f9` and the vendored vector whose
-SHA-256 is `29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141`.
+Source authority: the vendored vector from `Oraclizer/statesync-gkr`,
+bound by content as Git blob `64a1175d358767f5cdc769445fb845f62154c54e` with
+SHA-256 `29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141`.

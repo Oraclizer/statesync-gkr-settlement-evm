@@ -10,8 +10,8 @@
     "human": false,
     "independent": true,
     "read_only": true,
-    "reviewer": "Kuhn",
-    "reviewer_type": "Codex sub-agent",
+    "reviewer": "Reviewer C",
+    "reviewer_type": "automated read-only reviewer",
     "third_party_external": false
   },
   "date": "2026-08-18",
@@ -120,11 +120,11 @@
         "git rev-parse 'HEAD^{tree}'",
         "git rev-parse 'HEAD^'",
         "git rev-parse '@{u}'",
-        "git rev-parse origin/codex/route-lifecycle-recovery",
+        "git rev-parse origin/feature/route-lifecycle-recovery",
         "git status --short --branch",
         "git diff --quiet -- .",
         "git diff --cached --quiet -- .",
-        "git ls-remote --heads origin refs/heads/codex/route-lifecycle-recovery"
+        "git ls-remote --heads origin refs/heads/feature/route-lifecycle-recovery"
       ],
       "invariant_only": [
         "$previousRuns=$env:FOUNDRY_INVARIANT_RUNS",
@@ -149,17 +149,17 @@
       "vector2": "& $sha256sum -c vectors/route-lifecycle-recovery-v1.json.sha256"
     },
     "variables": {
-      "artifactRoot": "C:\\Users\\Jay Kim\\.codex\\visualizations\\2026\\08\\17\\01a0102c-b751-76b1-9565-c873f916538c\\w4-a12-deb56c4-runner",
-      "forge": "C:\\Users\\Jay Kim\\AppData\\Local\\Temp\\codex-w4-foundry-v1.7.1\\bin\\forge.exe",
-      "foundryArchive": "C:\\Users\\Jay Kim\\AppData\\Local\\Temp\\codex-w4-foundry-v1.7.1\\foundry_v1.7.1_win32_amd64.zip",
+      "artifactRoot": "<LOCAL_WORKSPACE>",
+      "forge": "<LOCAL_WORKSPACE>",
+      "foundryArchive": "<LOCAL_WORKSPACE>",
       "seed": "0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
       "sha256sum": "C:\\Program Files\\Git\\usr\\bin\\sha256sum.exe",
-      "solc": "C:\\Users\\Jay Kim\\AppData\\Local\\Temp\\codex-w4-foundry-v1.7.1\\solc-windows-amd64-v0.8.36+commit.8a079791.exe"
+      "solc": "<LOCAL_WORKSPACE>"
     },
-    "working_directory": "C:\\Users\\Jay Kim\\Documents\\statesync-gkr-settlement-evm"
+    "working_directory": "<LOCAL_WORKSPACE>"
   },
   "runner_package": {
-    "artifact_root": "C:\\Users\\Jay Kim\\.codex\\visualizations\\2026\\08\\17\\01a0102c-b751-76b1-9565-c873f916538c\\w4-a12-deb56c4-runner",
+    "artifact_root": "<LOCAL_WORKSPACE>",
     "commands_sha256": "37928297ab018299eb1e1e6c0edf88a85a5772f9ae2d2f42ec2b4eb26fd11cb7",
     "manifest_all_entries_verified": true,
     "manifest_sha256": "19065de679a4796dcec0d46d730e7b580c68d93ca0e9051c750d887ff48df841",
@@ -265,24 +265,24 @@
   "roles": {
     "canonical_writer": {
       "human": false,
-      "name": "Russell",
-      "type": "Codex sub-agent"
+      "name": "Reviewer A",
+      "type": "automated read-only reviewer"
     },
     "exact_commit_runner": {
       "human": false,
-      "name": "Raman",
-      "type": "Codex sub-agent"
+      "name": "Reviewer B",
+      "type": "automated read-only reviewer"
     },
     "independent_read_only_auditor": {
       "external": false,
       "human": false,
-      "name": "Kuhn",
-      "type": "Codex sub-agent"
+      "name": "Reviewer C",
+      "type": "automated read-only reviewer"
     }
   },
   "schema": "oraclizer.ssgkr.route-lifecycle-recovery-local-drill.v1",
   "subject": {
-    "branch": "codex/route-lifecycle-recovery",
+    "branch": "feature/route-lifecycle-recovery",
     "commit": "e80ae5daf18b1e72fca39dbaa2076f62d6673a46",
     "parent": "2a55440fae65b58ccdc054d7a0742117900ee729",
     "tree": "92a6587990464a186e50bbd15d3cdbf7e017b389"
@@ -357,12 +357,12 @@
     "foundry_archive_sha256": "6d41121b4bbb809845821c903619cfee75ed364f2bdc58a6787c9b0454114537",
     "foundry_commit": "4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
     "foundry_executable_sha256": "6df26c16a6e53519abdd09fcdacf9af1ecdb50e216ee1816fa8012b5a553ef48",
-    "foundry_path": "C:\\Users\\Jay Kim\\AppData\\Local\\Temp\\codex-w4-foundry-v1.7.1\\bin\\forge.exe",
+    "foundry_path": "<LOCAL_WORKSPACE>",
     "foundry_toml_sha256": "d9a04d654b7e51e1318a105841af2102a2a83e41b81e41d9b8cd61125aec7ab0",
     "foundry_version": "1.7.1",
     "offline": true,
     "solc_binary_sha256": "38cf5df656da822cf88b854cf736475a196c679f4f5f3f15ddd8c85ce5dbb36a",
-    "solc_path": "C:\\Users\\Jay Kim\\AppData\\Local\\Temp\\codex-w4-foundry-v1.7.1\\solc-windows-amd64-v0.8.36+commit.8a079791.exe",
+    "solc_path": "<LOCAL_WORKSPACE>",
     "solc_version": "0.8.36+commit.8a079791.Windows.msvc"
   },
   "v1_and_existing_evidence_guard": {
