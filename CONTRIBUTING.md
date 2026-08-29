@@ -1,8 +1,8 @@
 # Contributing
 
 Thank you for helping improve StateSync-GKR Settlement EVM. The repository is a
-private, pre-deployment, unaudited baseline and currently contains no contract or
-vector implementation.
+pre-deployment baseline; [`DISCLAIMER.md`](DISCLAIMER.md) records the exact
+boundaries.
 
 ## Before opening a change
 
@@ -24,15 +24,29 @@ Required pins:
 
 - Foundry `1.7.1`, commit
   `4072e48705af9d93e3c0f6e29e93b5e9a40caed8`;
-- Solidity `0.8.36`;
+- Solidity `0.8.36+commit.8a079791`;
 - EVM target `cancun`.
 
-Run:
+`foundry.toml` runs offline with compiler auto-detection disabled, so fetch and
+verify the exact compiler once (this mirrors the CI step):
+
+```sh
+curl --fail --location --proto '=https' --tlsv1.2 \
+  --output solc-0.8.36 \
+  'https://binaries.soliditylang.org/linux-amd64/solc-linux-amd64-v0.8.36+commit.8a079791'
+printf 'c8d35afdddc3cd2743ee88b8f25e0fecd16e2bdd5f2120f37e52cd9cc45ae0e6  solc-0.8.36\n' | sha256sum --check --strict
+chmod 0755 solc-0.8.36
+```
+
+On macOS or Windows, use the matching platform build and published checksum
+from the official `binaries.soliditylang.org` index, or `svm install 0.8.36`.
+
+Then run the same checks CI runs:
 
 ```sh
 forge fmt --check
-forge build --offline
-forge test --offline --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+forge build --offline --use ./solc-0.8.36
+forge test --offline --use ./solc-0.8.36 --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
 ```
 
 These checks require no RPC endpoint, fork, FFI, wallet, signature, broadcast, or

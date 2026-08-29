@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability report
+    url: https://github.com/Oraclizer/statesync-gkr-settlement-evm/blob/main/SECURITY.md
+    about: Do not open a public issue for a vulnerability. Follow the private reporting steps in SECURITY.md.
+  - name: StateSync-GKR prover
+    url: https://github.com/Oraclizer/statesync-gkr
+    about: Issues about proving, verification, or receipt generation belong in the prover repository.

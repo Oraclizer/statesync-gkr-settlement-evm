@@ -1,60 +1,92 @@
+<p align="center">
+  <img src="assets/brand/statesync-gkr-settlement-hero.svg" width="1200" alt="StateSync-GKR Settlement EVM: a deterministic reference for receipt-root settlement enforcement">
+</p>
+
+<p align="center">
+  <a href="https://github.com/Oraclizer/statesync-gkr-settlement-evm/actions/workflows/ci.yml"><img src="https://github.com/Oraclizer/statesync-gkr-settlement-evm/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE-APACHE"><img src="https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-75E3B0.svg" alt="License: Apache-2.0 OR MIT"></a>
+</p>
+
 # StateSync-GKR Settlement EVM
 
-> **Private, pre-deployment, and unaudited.** This repository currently contains
-> only a repository-production baseline. It contains no settlement contract,
-> frozen cross-language vector, release, deployed bytecode, or deployed address.
-> Do not use it in production or treat it as security-reviewed software.
+A deterministic EVM reference for destination receipt-root enforcement in the
+StateSync-GKR stack, built with Foundry on a fully pinned toolchain.
 
-StateSync-GKR Settlement EVM is the future home of a deterministic EVM reference
-for destination receipt enforcement. The repository is intentionally establishing
-its security, contribution, licensing, and reproducibility boundaries before any
-contract implementation is added.
+> **Pre-deployment baseline.** The repository establishes its build, security,
+> and contribution boundaries before contract implementation lands; see
+> [`DISCLAIMER.md`](DISCLAIMER.md) for the exact non-claims.
+
+## Part of the StateSync-GKR stack
+
+The [StateSync-GKR prover](https://github.com/Oraclizer/statesync-gkr) proves
+sparse-Merkle state transitions and emits receipt roots. This repository is
+where those receipt roots meet the EVM: settlement contracts that enforce
+destination policy against quorum vectors produced by the prover, failing
+closed when a receipt does not verify. The prover repository owns proving and
+verification; this repository owns on-chain enforcement.
 
 ## Current status
 
 | Area | Status |
 | --- | --- |
 | Repository policy and Continuous Integration baseline | Present |
-| Solidity contracts | Not present |
-| Cross-language vectors | Not present |
-| Independent security audit | Not performed |
-| Deployment or supported network | None |
-| Release or stable API | None |
+| Fully pinned toolchain (Foundry commit, solc build hash, EVM target, optimizer, seeds) | Present |
+| External Solidity dependencies | Zero: no forge-std, no `lib/`, no submodules |
+| Deterministic bytecode inputs (`bytecode_hash = "none"`, no CBOR metadata) | Present |
+| Sandboxed tests (FFI disabled, empty filesystem permissions, script execution protection) | Present |
+| Warnings promoted to errors | Present |
+| Solidity contracts and cross-language vectors | Land through reviewed pull requests; not yet on the default branch |
+| Independent security audit, release, deployment | Not yet |
 
-Passing Continuous Integration at this stage means only that the policy-only
-Foundry repository is well formed under the pinned toolchain. It is not evidence
-of contract correctness, protocol safety, deployment correctness, or production
-readiness.
+Passing Continuous Integration at this stage shows that the policy baseline is
+well formed under the pinned toolchain; contract-level assurance arrives with
+the contracts themselves.
 
 ## Quick start
 
 Use Foundry `1.7.1` built from commit
-`4072e48705af9d93e3c0f6e29e93b5e9a40caed8`.
+`4072e48705af9d93e3c0f6e29e93b5e9a40caed8`, and the exact Solidity `0.8.36`
+compiler. `foundry.toml` runs offline with auto-detection disabled, so fetch
+the compiler once and verify it, exactly as CI does:
+
+```sh
+curl --fail --location --proto '=https' --tlsv1.2 \
+  --output solc-0.8.36 \
+  'https://binaries.soliditylang.org/linux-amd64/solc-linux-amd64-v0.8.36+commit.8a079791'
+printf 'c8d35afdddc3cd2743ee88b8f25e0fecd16e2bdd5f2120f37e52cd9cc45ae0e6  solc-0.8.36\n' | sha256sum --check --strict
+chmod 0755 solc-0.8.36
+```
+
+On macOS or Windows, download the matching platform build for
+`v0.8.36+commit.8a079791` from the same official
+`binaries.soliditylang.org` index and verify its published checksum, or run
+`svm install 0.8.36` if you use svm.
+
+Then run the same checks CI runs:
 
 ```sh
 forge --version
 forge fmt --check
-forge build --offline
-forge test --offline --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
+forge build --offline --use ./solc-0.8.36
+forge test --offline --use ./solc-0.8.36 --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
 ```
 
-The expected version output contains both:
+The expected `forge --version` output contains both:
 
 ```text
 forge Version: 1.7.1
 Commit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8
 ```
 
-These commands do not require an RPC endpoint, fork, wallet, signature,
-broadcast, or deployment. The repository does not provide scripts for those
-operations.
+These commands require no RPC endpoint, fork, wallet, signature, broadcast, or
+deployment.
 
 ## Pinned build profile
 
 | Setting | Value |
 | --- | --- |
 | Foundry | `1.7.1` / `4072e48705af9d93e3c0f6e29e93b5e9a40caed8` |
-| Solidity | `0.8.36` with auto-detection disabled |
+| Solidity | `0.8.36+commit.8a079791`, auto-detection disabled, checksum-verified |
 | EVM target | `cancun` |
 | Optimizer | enabled, 200 runs |
 | Fuzzing | 1,024 runs with the checked-in 32-byte seed |
@@ -73,32 +105,30 @@ Foundry 1.7.1 exposes the deterministic runner seed through `fuzz.seed` and the
 
 ## Repository map
 
-- [`foundry.toml`](foundry.toml) — compiler, EVM, optimizer, fuzz, invariant,
+- [`foundry.toml`](foundry.toml): compiler, EVM, optimizer, fuzz, invariant,
   formatting, and sandbox settings.
-- [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — least-privilege,
-  immutable-action Continuous Integration.
-- [`SECURITY.md`](SECURITY.md) — private vulnerability reporting and current
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml): least-privilege,
+  immutable-action Continuous Integration with a checksum-verified compiler.
+- [`SECURITY.md`](SECURITY.md): private vulnerability reporting and the current
   support boundary.
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution and validation rules.
-- [`GOVERNANCE.md`](GOVERNANCE.md) — review, merge, release, and authority rules.
-- [`SUPPORT.md`](SUPPORT.md) — support scope and routing.
-- [`DISCLAIMER.md`](DISCLAIMER.md) — plain-language non-claims.
-- [`CHANGELOG.md`](CHANGELOG.md) — user-relevant repository changes.
+- [`CONTRIBUTING.md`](CONTRIBUTING.md): contribution and validation rules.
+- [`GOVERNANCE.md`](GOVERNANCE.md): review, merge, release, and authority rules.
+- [`SUPPORT.md`](SUPPORT.md): support scope and routing.
+- [`DISCLAIMER.md`](DISCLAIMER.md): plain-language non-claims.
+- [`CHANGELOG.md`](CHANGELOG.md): user-relevant repository changes.
 
-There is no architecture diagram yet because there is no contract architecture
-in this baseline. A diagram must describe actual state ownership, trust boundaries,
-and fail-closed paths when implementation is introduced; it must not anticipate
-or imply code that does not exist.
+An architecture diagram lands together with the first contracts; it will
+describe actual state ownership, trust boundaries, and fail-closed paths rather
+than anticipate code that does not exist.
 
-## Security and assurance boundary
+## Security
 
-Do not report vulnerabilities in a public issue. Follow [`SECURITY.md`](SECURITY.md)
-and email `security@oraclizer.io`.
-
-Future source review, tests, fuzzing, invariants, cross-language vectors,
+Report suspected vulnerabilities privately following
+[`SECURITY.md`](SECURITY.md): email `security@oraclizer.io`, never a public
+issue. Source review, tests, fuzzing, invariants, cross-language vectors,
 independent audits, compiler output review, and deployed-bytecode verification
-are distinct assurance layers. Success in one layer does not imply success in
-another. No such implementation assurance is claimed by this baseline.
+are distinct assurance layers, and each is claimed only where its evidence
+exists.
 
 ## Contributing, governance, and support
 

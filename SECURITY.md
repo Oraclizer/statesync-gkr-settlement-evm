@@ -2,10 +2,10 @@
 
 ## Current support boundary
 
-This repository is private, pre-deployment, unaudited, and has no release,
-contract, deployed bytecode, supported network, or production user surface.
-Security reports about the repository baseline are welcome, but no version is
-currently designated production-supported.
+Security reports about the repository baseline are welcome and read with care.
+The repository is pre-deployment; no version is currently designated
+production-supported, and [`DISCLAIMER.md`](DISCLAIMER.md) records the exact
+non-claims.
 
 | Version | Security status |
 | --- | --- |
@@ -37,13 +37,12 @@ issue, first ask for a safe transfer method.
 Do not disclose a suspected vulnerability through a GitHub issue, Pull Request,
 discussion, social media post, or other public channel before coordinated review.
 
-## No response-time, bounty, or safe-harbor promise
+## Coordination expectations
 
-The project does not currently promise an acknowledgement or remediation service
-level, bounty, payment, embargo duration, or legal safe harbor. Any recognition,
-coordination, disclosure timing, or remediation plan is determined case by case.
-This statement does not alter rights or obligations under applicable law or the
-repository licenses.
+Reports are handled case by case: the maintainer coordinates recognition,
+disclosure timing, and remediation with the reporter, without promising a
+service level, bounty, embargo duration, or legal safe harbor beyond what
+applicable law and the repository licenses already provide.
 
 ## Out of scope
 
