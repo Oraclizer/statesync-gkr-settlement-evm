@@ -17,7 +17,7 @@ Estimated amount required: 0.001485730325885958 ETH
 
 SIMULATION COMPLETE. To broadcast these transactions, add --broadcast and wallet configuration(s) to the previous command. See forge script --help for more.
 
-Transactions saved to: /mnt/c/Users/Jay Kim/Documents/statesync-gkr-settlement-evm-w6c-smoke/broadcast/W6CCdkL2Smoke.s.sol/2151908/dry-run/run-latest.json
+Transactions saved to: <LOCAL_WORKSPACE>
 
-Sensitive values saved to: /mnt/c/Users/Jay Kim/Documents/statesync-gkr-settlement-evm-w6c-smoke/cache/W6CCdkL2Smoke.s.sol/2151908/dry-run/run-latest.json
+Sensitive values saved to: <LOCAL_WORKSPACE>
 

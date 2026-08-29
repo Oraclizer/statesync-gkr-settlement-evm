@@ -9,7 +9,7 @@ import {ReceiptRootEncodingV1} from "../src/libraries/ReceiptRootEncodingV1.sol"
 import {RouteLifecycleRegistryV2} from "../src/RouteLifecycleRegistryV2.sol";
 import {StateSyncGKRSettlementV2} from "../src/StateSyncGKRSettlementV2.sol";
 
-interface W6CVm {
+interface SmokeVm {
     function addr(uint256 privateKey) external returns (address);
     function envUint(string calldata name) external returns (uint256);
     function sign(uint256 privateKey, bytes32 digest)
@@ -19,7 +19,7 @@ interface W6CVm {
     function stopBroadcast() external;
 }
 
-contract W6CNegativeProbe {
+contract NegativeProbe {
     error ExpectedRevert();
     error UnexpectedSelector();
     error StateChanged();
@@ -220,9 +220,11 @@ contract W6CNegativeProbe {
     }
 }
 
-contract W6CCdkL2SmokeScript {
-    W6CVm private constant VM = W6CVm(address(uint160(uint256(keccak256("hevm cheat code")))));
+contract CdkL2SmokeScript {
+    SmokeVm private constant VM = SmokeVm(address(uint160(uint256(keccak256("hevm cheat code")))));
 
+    // The historical domain tag below is frozen: recorded drill receipts bind
+    // this exact string, so renaming it would break the recorded lineage hash.
     bytes32 private constant LINEAGE = keccak256("ssgkr/w6c/local-cdk-l2/lineage/v1");
     bytes32 private constant ROUTE =
         0x27b40b99a41976f061e94124b84cc8c43ee4e5ed6bad2e94267057e1d375f2ef;
@@ -249,10 +251,10 @@ contract W6CCdkL2SmokeScript {
     uint64 private constant AGGREGATION_ID = 53_668;
 
     function run() external {
-        uint256 deployerKey = VM.envUint("W6C_DEPLOYER_PRIVATE_KEY");
+        uint256 deployerKey = VM.envUint("CDK_SMOKE_DEPLOYER_PRIVATE_KEY");
         VM.startBroadcast(deployerKey);
 
-        W6CNegativeProbe probe = new W6CNegativeProbe();
+        NegativeProbe probe = new NegativeProbe();
         RouteLifecycleRegistryV2 registry =
             new RouteLifecycleRegistryV2(LINEAGE, address(probe), VM.addr(6), 10);
         StateSyncGKRSettlementV2 settlement = new StateSyncGKRSettlementV2(registry, IMAGE, VERSION);

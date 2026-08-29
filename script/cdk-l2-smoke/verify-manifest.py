@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Strict verifier for the W6-COMPONENT local CDK L2 evidence package."""
+"""Strict verifier for the Local CDK L2 evidence package."""
 
 from __future__ import annotations
 
@@ -42,7 +42,7 @@ def main() -> int:
     repository = evidence.parents[1]
     manifest = load(manifest_path)
 
-    require(manifest["schema"] == "statesync-gkr-w6c-cdk-l2-smoke-manifest-v1", "schema")
+    require(manifest["schema"] == "statesync-gkr-cdk-l2-smoke-manifest-v1", "schema")
     require(manifest["status"] == "writer-candidate-pass", "status")
     require(manifest["scope"] == "ephemeral-local-stock-cdk-l2-evm-compatibility-only", "scope")
 
@@ -68,7 +68,7 @@ def main() -> int:
 
     execution = load(evidence / manifest["execution"]["evidence_path"])
     require(digest(evidence / manifest["execution"]["evidence_path"]) == manifest["execution"]["evidence_sha256"], "execution evidence hash")
-    require(execution["schema"] == "statesync-gkr-w6c-cdk-l2-execution-evidence-v1", "execution schema")
+    require(execution["schema"] == "statesync-gkr-cdk-l2-execution-evidence-v1", "execution schema")
     require(execution["chain_id"] == 2151908, "chain ID")
     require(execution["execute_smoke"]["status"] == 1, "execute status")
     require(execution["execute_smoke"]["sequencer_replica_receipt_equality"], "receipt equality")
@@ -88,7 +88,7 @@ def main() -> int:
     require(rust_output.stat().st_size == 2034, "Product reference length")
     require(digest(rust_output) == "dc81b33f029446338c101faae0ffb841e854b4ce4f508087a1001175fc56c725", "Product reference hash")
 
-    config = repository / "script" / "w6c" / "sovereign-ecdsa-multisig-v0.5.21.yml"
+    config = repository / "script" / "cdk-l2-smoke" / "sovereign-ecdsa-multisig-v0.5.21.yml"
     upstream_config = evidence / "raw" / "baseline" / "carrier-config-upstream.yml"
     require(config.read_bytes() == upstream_config.read_bytes(), "carrier config byte equality")
     require(digest(config) == manifest["carrier"]["config_sha256"], "carrier config hash")
@@ -132,8 +132,8 @@ def main() -> int:
 
     source_diff = evidence / "raw" / "baseline" / "evm-production-source-diff-windows.patch"
     require(source_diff.stat().st_size == 0, "production source diff")
-    require(not (repository / "cache" / "W6CCdkL2Smoke.s.sol").exists(), "sensitive Foundry cache")
-    require(not (repository / "broadcast" / "W6CCdkL2Smoke.s.sol").exists(), "duplicate broadcast directory")
+    require(not (repository / "cache" / "CdkL2Smoke.s.sol").exists(), "sensitive Foundry cache")
+    require(not (repository / "broadcast" / "CdkL2Smoke.s.sol").exists(), "duplicate broadcast directory")
 
     report = (evidence / "README.md").read_text(encoding="utf-8")
     require("—" not in report, "em dash")

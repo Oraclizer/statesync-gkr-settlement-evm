@@ -3,7 +3,7 @@
     {
       "hash": "0x17d7b2df8149a7e6affa30c9c6280d8ded28a0f6f5fe10216c358ce4903d6fe8",
       "transactionType": "CREATE",
-      "contractName": "W6CNegativeProbe",
+      "contractName": "NegativeProbe",
       "contractAddress": "0xb49fa7dd4d70f773015a9c848a8719fa86d81275",
       "function": null,
       "arguments": null,
@@ -128,7 +128,7 @@
     {
       "hash": "0xd68505332718fbd5055160dacdf11198a09f819796bf833d84eff45ab5813391",
       "transactionType": "CALL",
-      "contractName": "W6CNegativeProbe",
+      "contractName": "NegativeProbe",
       "contractAddress": "0xb49fa7dd4d70f773015a9c848a8719fa86d81275",
       "function": "executeSmoke(address,address,address,address,bytes32,(uint64,bytes32,bytes32,bytes32,bytes32,uint32,uint64,bytes32,uint64,bytes32,uint32,bytes32,address,address,uint64,uint64,uint64,uint64,bytes32),bytes[],(bytes32,bytes32,bytes32,bytes32,bytes32,uint64,bytes32,uint8,uint64,bytes32,bytes32,bytes32,uint8,uint64,uint64,bool,bytes32),bytes,(bytes32,uint32,uint64,uint64,bytes32,bytes32,bytes32,bytes32,uint32,uint32,bytes32[]),(bytes32,bytes32,address,address,uint64,uint64,uint64,uint64,uint64,bytes32),bytes[],(bytes32,bytes32,address,address,uint64,uint64,uint64,uint64,uint64,bytes32),bytes[],bytes32,bytes32)",
       "arguments": [

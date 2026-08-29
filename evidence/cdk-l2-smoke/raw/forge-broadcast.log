@@ -15,8 +15,8 @@ Estimated amount required: 0.003450865164825061 ETH
 
 ==========================
 
-Transactions saved to: /mnt/c/Users/Jay Kim/Documents/statesync-gkr-settlement-evm-w6c-smoke/broadcast/W6CCdkL2Smoke.s.sol/2151908/run-latest.json
+Transactions saved to: <LOCAL_WORKSPACE>
 
-Sensitive values saved to: /mnt/c/Users/Jay Kim/Documents/statesync-gkr-settlement-evm-w6c-smoke/cache/W6CCdkL2Smoke.s.sol/2151908/run-latest.json
+Sensitive values saved to: <LOCAL_WORKSPACE>
 
 Error: Transaction Failure: 0x14417d692a986025ef93e5a4d24ff693dc7e3d407bf70597e92768c49d657c11

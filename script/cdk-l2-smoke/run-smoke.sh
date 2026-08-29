@@ -15,7 +15,7 @@ case "$mode" in
     ;;
 esac
 
-fixture_key="${W6C_DEPLOYER_PRIVATE_KEY:-}"
+fixture_key="${CDK_SMOKE_DEPLOYER_PRIVATE_KEY:-}"
 if [[ -z "$fixture_key" && -f "$devnet_log" ]]; then
   fixture_key="$({
     sed -n 's/.*"l2_admin_private_key": "\(0x[0-9a-f]\{64\}\)".*/\1/p' "$devnet_log"
@@ -32,10 +32,10 @@ deployer_address="$(cast wallet address --private-key "$fixture_key")"
 printf 'deployer_address=%s\n' "$deployer_address" > "$raw_dir/smoke-deployer-address.txt"
 cast balance --rpc-url "$rpc_url" "$deployer_address" > "$raw_dir/smoke-deployer-balance-before.txt"
 
-export W6C_DEPLOYER_PRIVATE_KEY="$fixture_key"
+export CDK_SMOKE_DEPLOYER_PRIVATE_KEY="$fixture_key"
 command=(
   forge script
-  script/W6CCdkL2Smoke.s.sol:W6CCdkL2SmokeScript
+  script/CdkL2Smoke.s.sol:CdkL2SmokeScript
   --rpc-url "$rpc_url"
   --offline
   --use /usr/local/bin/solc
@@ -48,4 +48,4 @@ fi
 
 cd "$worktree"
 "${command[@]}"
-unset W6C_DEPLOYER_PRIVATE_KEY fixture_key
+unset CDK_SMOKE_DEPLOYER_PRIVATE_KEY fixture_key

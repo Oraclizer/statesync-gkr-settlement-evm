@@ -26,7 +26,7 @@
     "block_number": 733,
     "contract_count": 5,
     "evidence_path": "raw/execution-evidence.json",
-    "evidence_sha256": "d50c81059b617fd62c802d0ce0445f12dc10275dcd62410d93371aca09d816ce",
+    "evidence_sha256": "519f3f6a78d2a6d70af5d243e937b414ae75084716ae0d5a95d34303b34aaf6c",
     "negative_count": 3,
     "product_evm_match": {
       "next_application_state": true,
@@ -164,9 +164,9 @@
       "sha256": "cb96c3fc119e9238c5c986ad31b1d9e1b25ac8228bd0b4b306d1ed2b4f28bf89"
     },
     {
-      "bytes": 415,
+      "bytes": 424,
       "path": "raw/devnet-run-redaction-manifest.json",
-      "sha256": "73e79fe28e69a25d170e0f9918b3593b94ba05f7e24a8df2f93a881f7e36eb3f"
+      "sha256": "350c99173b5ddbafe468a0affa3be8ca2cafc7e601c56e3890239da6d00bde92"
     },
     {
       "bytes": 180075,
@@ -179,9 +179,9 @@
       "sha256": "51ff3456ffbc394442c44edc0e3a820e943e9c7f9d411002f63a7a50cf8f9ecf"
     },
     {
-      "bytes": 631,
+      "bytes": 640,
       "path": "raw/docker-baseline-restoration.json",
-      "sha256": "e2acf60759a06b8962d0b41d2bc8c2a1086272e979fea17d85e424aa376aac8f"
+      "sha256": "801f95da0b27db5dd1195d13758dc60841c8db179686fd5399bbe4312cb17ef7"
     },
     {
       "bytes": 4772,
@@ -224,9 +224,9 @@
       "sha256": "af5fb759eceaa3217a3029f7874ab29f04b5eeccc39d75c33925c4402dce0de6"
     },
     {
-      "bytes": 7043,
+      "bytes": 7036,
       "path": "raw/execution-evidence.json",
-      "sha256": "d50c81059b617fd62c802d0ce0445f12dc10275dcd62410d93371aca09d816ce"
+      "sha256": "519f3f6a78d2a6d70af5d243e937b414ae75084716ae0d5a95d34303b34aaf6c"
     },
     {
       "bytes": 137,
@@ -249,24 +249,24 @@
       "sha256": "0e30d7787839f385b00aa0101ff9c918c39b7b44edad94cd9e2827d2899ae7d5"
     },
     {
-      "bytes": 111646,
+      "bytes": 111640,
       "path": "raw/forge-broadcast-repaired-run-latest.json",
-      "sha256": "c1ca07cbb7f67dd0a32d8fbd4bce2a627f0456402892cd9ff58d13b3a0949081"
+      "sha256": "52ca42b8fb272461a47b514110a9742f16e522e0c64e820c0a8ed9fda8dfd7a0"
     },
     {
-      "bytes": 662,
+      "bytes": 454,
       "path": "raw/forge-broadcast-repaired.log",
-      "sha256": "e837fee81ad8d8d3665576e3de3dc30848b192990c2c05276afb41c72b86fd7e"
+      "sha256": "0c84703be2d7520e48856a6450f19f71c2ae3dba3160f5742621659cdedd13fb"
     },
     {
-      "bytes": 127607,
+      "bytes": 127592,
       "path": "raw/forge-broadcast-run-latest.json",
-      "sha256": "8cd5a7654522b2c8288e5a04befcaf009cd197a00c3d374e20ab6ef4e7b9385f"
+      "sha256": "e645de9c7423baecffac6d48d8e77bbe4fd740729b61a60754d1bb47c881e34b"
     },
     {
-      "bytes": 687,
+      "bytes": 479,
       "path": "raw/forge-broadcast.log",
-      "sha256": "6e97df4013cc160e02e47e0f741fc22d7f1cd8a56731567e661cb9e8e5ca5fa1"
+      "sha256": "af5ae37f6f575b7ee3d56ce059ccf1018ee76e679ce9095c52b05f26d70cc1c3"
     },
     {
       "bytes": 5789,
@@ -274,9 +274,9 @@
       "sha256": "953d1e6e86436668a8e0e1509ac9e9bca8ed0539797dbded46fbac8c7078d2f0"
     },
     {
-      "bytes": 766,
+      "bytes": 542,
       "path": "raw/forge-simulation-coordinator.log",
-      "sha256": "b83d66e848fa7bca918009089db1bcb6d1a34d7887c73d8a4c0538312b4ee11b"
+      "sha256": "11011dd9f358c79f1ab03ada658a2832db0593c8a57ee7909bc60b94fc3232c8"
     },
     {
       "bytes": 37,
@@ -364,9 +364,9 @@
       "sha256": "9e6e3cd175bd4c997f73c23528b73f3bb85ea25efed7bf5a0b8b36cdf94e0acf"
     },
     {
-      "bytes": 10218,
+      "bytes": 10264,
       "path": "README.md",
-      "sha256": "c99b765f383162be4fb6f26286ef26e27aaaaa3bf3703c88c2dec4e51e8587cb"
+      "sha256": "9fd37f05ad9518d509d2dc4ff566b0737191c5126cff8e33263fe3fca32304eb"
     }
   ],
   "implementation_files": [
@@ -376,39 +376,39 @@
       "sha256": "18f447927e44730beaafb4ba8bfac85ea4c641c0c421f6590a35ae043db75b2f"
     },
     {
-      "bytes": 17672,
-      "path": "script/W6CCdkL2Smoke.s.sol",
-      "sha256": "92ba253ea702dbf422c91da59647cc0507d765b8276965f3f50c8d0ab0032d27"
+      "bytes": 17831,
+      "path": "script/CdkL2Smoke.s.sol",
+      "sha256": "2e961d9cd9922a07490558a469acbd0e967d8dd0ea95bebb33112d7057d4587e"
     },
     {
       "bytes": 429,
-      "path": "script/w6c/sovereign-ecdsa-multisig-v0.5.21.yml",
+      "path": "script/cdk-l2-smoke/sovereign-ecdsa-multisig-v0.5.21.yml",
       "sha256": "3b4ae959184fb50a2f1caebccf24eb5f638af0bce37013c47040070eeec13d12"
     },
     {
-      "bytes": 1451,
-      "path": "script/w6c/run-smoke.sh",
-      "sha256": "0ef56d5033200152c7cf6a22423f3b3f2dfba22f02b7bfb0d9b8979bc2bb2222"
+      "bytes": 1463,
+      "path": "script/cdk-l2-smoke/run-smoke.sh",
+      "sha256": "3ad57c85c7d0e62c5cee5ac8b07c027915676bfa83d48c3502bdb431d08e76c3"
     },
     {
-      "bytes": 9620,
-      "path": "script/w6c/collect-evidence.py",
-      "sha256": "2c8f6185e2458b493e0018679dbfb954b862f1156abf82be38a519550c395f01"
+      "bytes": 9603,
+      "path": "script/cdk-l2-smoke/collect-evidence.py",
+      "sha256": "b32545842a7e22799c7b010f093cb076cb052d4c7002c851c6b30bf133ac04d1"
     },
     {
-      "bytes": 3531,
-      "path": "script/w6c/sanitize-devnet-log.py",
-      "sha256": "53cb2c32d30b7a1d2068a8938c025c8f4aa9a5237c02c9485f4637a57a174a80"
+      "bytes": 3540,
+      "path": "script/cdk-l2-smoke/sanitize-devnet-log.py",
+      "sha256": "1de36493b3ca6aab0ff8b84c4b3f9be6528527ab1a47b1cf60788c6047df19c2"
     },
     {
-      "bytes": 6161,
-      "path": "script/w6c/build-manifest.py",
-      "sha256": "a66d814cdf1837f84695d0f6d0e345ce2579c150dd35e1e78ad9d1cc8c422d6e"
+      "bytes": 6191,
+      "path": "script/cdk-l2-smoke/build-manifest.py",
+      "sha256": "2ba49465c95ecccb2f83d6206044152a99c7068a7b7a70e399077df85f1ef5c4"
     },
     {
-      "bytes": 8598,
-      "path": "script/w6c/verify-manifest.py",
-      "sha256": "da092e66109551572c14fd3142f5183e59d7fcc935e91b0a6351cfe7cd1f02cb"
+      "bytes": 8580,
+      "path": "script/cdk-l2-smoke/verify-manifest.py",
+      "sha256": "a29f3a09b754eef01698a5074e3dbebb7ca76ee58657e43f5781d1bae220911a"
     }
   ],
   "inputs": {
@@ -437,7 +437,7 @@
     "Exact runner found one bare-form public local fixture prover key in the sanitized transcript. The sanitizer and independent verifier now cover prefixed and bare credential-shaped key fields; the rebuilt transcript contains zero credential-shaped values and preserves 21 distinct redactions across 49 occurrences.",
     "Independent audit found that the smoke script embeds deployment initcode and therefore exceeds EIP-170 when the repository build requests deployment sizes. CI now compiles every source first, then applies the unchanged deployment-size gate with Foundry's script-only exclusion; the executed harness and production contracts are unchanged."
   ],
-  "schema": "statesync-gkr-w6c-cdk-l2-smoke-manifest-v1",
+  "schema": "statesync-gkr-cdk-l2-smoke-manifest-v1",
   "scope": "ephemeral-local-stock-cdk-l2-evm-compatibility-only",
   "status": "writer-candidate-pass"
 }

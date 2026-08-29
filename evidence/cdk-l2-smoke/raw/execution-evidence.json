@@ -5,7 +5,7 @@
       "address": "0xb49fa7dd4d70f773015a9c848a8719fa86d81275",
       "block_hash": "0x5c1244c2c953e085cba113fd6ff725866a108da1e32729a6d4883c6d1864ac36",
       "block_number": 728,
-      "contract": "W6CNegativeProbe",
+      "contract": "NegativeProbe",
       "creation_bytes": 8127,
       "creation_keccak256": "0x0febf89ed523ae4e2b9688b79369adb32a4b075c5321c3af452c9a9f2840e61f",
       "runtime_bytes": 8101,
@@ -122,7 +122,7 @@
     "settlement_key": "0xd79f243d8205d565d28f3e9a743943a3cb6fe707188ec71745c803b402dff6dc",
     "transition_count": 1
   },
-  "schema": "statesync-gkr-w6c-cdk-l2-execution-evidence-v1",
+  "schema": "statesync-gkr-cdk-l2-execution-evidence-v1",
   "scope": "ephemeral-local-stock-cdk-l2-evm-compatibility-only",
   "settlement_event": {
     "accepted_root": "0x88957f2aa94f0f483d11f6bbc00b37db9fedd7911eee56e15c1661e148453200",

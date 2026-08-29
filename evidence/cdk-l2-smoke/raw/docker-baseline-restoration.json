@@ -1,5 +1,5 @@
 {
-  "schema": "w6c-docker-baseline-restoration-v1",
+  "schema": "cdk-l2-smoke-docker-baseline-restoration-v1",
   "container_id_name_equality": true,
   "volume_name_equality": true,
   "network_name_driver_scope_equality": true,

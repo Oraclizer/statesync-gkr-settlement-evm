@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the content-addressed W6-COMPONENT local CDK L2 manifest."""
+"""Build the content-addressed Local CDK L2 manifest."""
 
 from __future__ import annotations
 
@@ -14,18 +14,18 @@ def digest(path: Path) -> str:
 
 def main() -> int:
     repository = Path(__file__).resolve().parents[2]
-    evidence = repository / "evidence" / "w6c-cdk-l2-smoke"
+    evidence = repository / "evidence" / "cdk-l2-smoke"
     manifest_path = evidence / "manifest.json"
     sidecar_path = evidence / "manifest.sha256"
     implementation_paths = [
         ".github/workflows/ci.yml",
-        "script/W6CCdkL2Smoke.s.sol",
-        "script/w6c/sovereign-ecdsa-multisig-v0.5.21.yml",
-        "script/w6c/run-smoke.sh",
-        "script/w6c/collect-evidence.py",
-        "script/w6c/sanitize-devnet-log.py",
-        "script/w6c/build-manifest.py",
-        "script/w6c/verify-manifest.py",
+        "script/CdkL2Smoke.s.sol",
+        "script/cdk-l2-smoke/sovereign-ecdsa-multisig-v0.5.21.yml",
+        "script/cdk-l2-smoke/run-smoke.sh",
+        "script/cdk-l2-smoke/collect-evidence.py",
+        "script/cdk-l2-smoke/sanitize-devnet-log.py",
+        "script/cdk-l2-smoke/build-manifest.py",
+        "script/cdk-l2-smoke/verify-manifest.py",
     ]
     excluded = {manifest_path.resolve(), sidecar_path.resolve()}
     files = []
@@ -43,7 +43,7 @@ def main() -> int:
     execution_path = evidence / "raw" / "execution-evidence.json"
     execution = json.loads(execution_path.read_text(encoding="utf-8"))
     manifest = {
-        "schema": "statesync-gkr-w6c-cdk-l2-smoke-manifest-v1",
+        "schema": "statesync-gkr-cdk-l2-smoke-manifest-v1",
         "status": "writer-candidate-pass",
         "scope": "ephemeral-local-stock-cdk-l2-evm-compatibility-only",
         "inputs": {

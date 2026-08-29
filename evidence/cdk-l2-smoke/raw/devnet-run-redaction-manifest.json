@@ -4,6 +4,6 @@
   "intermediate_sha256": "403672228261d73b494ec26b59edca301fa24d5e45d3fd9855e87ecf6efc6dd2",
   "output_sha256": "a4f05207ea2e9e4b691e14b1a70b448c92f0cbde543bc78e86a342129c1fb174",
   "replacement_count": 49,
-  "schema": "w6c-local-fixture-redaction-v1",
+  "schema": "cdk-l2-smoke-local-fixture-redaction-v1",
   "unredacted_input_preserved": false
 }

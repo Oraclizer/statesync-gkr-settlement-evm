@@ -76,7 +76,7 @@ def main() -> int:
     args.manifest.write_text(
         json.dumps(
             {
-                "schema": "w6c-local-fixture-redaction-v1",
+                "schema": "cdk-l2-smoke-local-fixture-redaction-v1",
                 "input_sha256": prior["input_sha256"] if prior else sha256(source),
                 **({"intermediate_sha256": prior["output_sha256"]} if prior else {}),
                 "output_sha256": sha256(output),

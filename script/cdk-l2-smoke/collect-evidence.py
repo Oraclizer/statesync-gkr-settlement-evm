@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect deterministic W6-COMPONENT local CDK L2 execution evidence."""
+"""Collect deterministic Local CDK L2 execution evidence."""
 
 from __future__ import annotations
 
@@ -192,7 +192,7 @@ def main() -> int:
         raise ValueError("unexpected final transition/event count")
 
     output = {
-        "schema": "statesync-gkr-w6c-cdk-l2-execution-evidence-v1",
+        "schema": "statesync-gkr-cdk-l2-execution-evidence-v1",
         "scope": "ephemeral-local-stock-cdk-l2-evm-compatibility-only",
         "chain_id": int(run("cast", "chain-id", "--rpc-url", args.replica_rpc)),
         "contracts": contract_rows,

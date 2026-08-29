@@ -3,7 +3,7 @@
     {
       "hash": "0xb0a00db12f7334e425128254ec65ef6da46341adc514efb6c478acc08baa73a1",
       "transactionType": "CREATE",
-      "contractName": "W6CNegativeProbe",
+      "contractName": "NegativeProbe",
       "contractAddress": "0x322e0cfc33f916379702396e6e41a6d2d97d0d96",
       "function": null,
       "arguments": null,
@@ -195,7 +195,7 @@
     {
       "hash": "0xac57747e894f9df9286389b90aec9f4c4aefe1b133fefdc8df2886c03450f56a",
       "transactionType": "CALL",
-      "contractName": "W6CNegativeProbe",
+      "contractName": "NegativeProbe",
       "contractAddress": "0x322e0cfc33f916379702396e6e41a6d2d97d0d96",
       "function": "expectSettlementRevert(bytes32,address,address,bytes,bytes4)",
       "arguments": [
@@ -220,7 +220,7 @@
     {
       "hash": "0x50115d17c6ef1ff541165214a4597ad7dbf41efe7ea985b0b111a97ea305777d",
       "transactionType": "CALL",
-      "contractName": "W6CNegativeProbe",
+      "contractName": "NegativeProbe",
       "contractAddress": "0x322e0cfc33f916379702396e6e41a6d2d97d0d96",
       "function": "expectSettlementRevert(bytes32,address,address,bytes,bytes4)",
       "arguments": [
@@ -271,7 +271,7 @@
     {
       "hash": null,
       "transactionType": "CALL",
-      "contractName": "W6CNegativeProbe",
+      "contractName": "NegativeProbe",
       "contractAddress": "0x322e0cfc33f916379702396e6e41a6d2d97d0d96",
       "function": "expectSettlementRevert(bytes32,address,address,bytes,bytes4)",
       "arguments": [
@@ -296,7 +296,7 @@
     {
       "hash": null,
       "transactionType": "CALL",
-      "contractName": "W6CNegativeProbe",
+      "contractName": "NegativeProbe",
       "contractAddress": "0x322e0cfc33f916379702396e6e41a6d2d97d0d96",
       "function": "confirmProductReference(address,bytes,bytes32,bytes32,bytes32,bytes32)",
       "arguments": [

@@ -1,4 +1,4 @@
-# W6-COMPONENT local Polygon CDK L2 smoke evidence
+# Local Polygon CDK L2 smoke evidence
 
 ## Verdict and scope
 
@@ -68,7 +68,7 @@ comparison result.
 
 | Contract | Address | Creation Keccak-256 | Runtime Keccak-256 |
 |---|---|---|---|
-| `W6CNegativeProbe` | `0xb49fa7dd4d70f773015a9c848a8719fa86d81275` | `0x0febf89ed523ae4e2b9688b79369adb32a4b075c5321c3af452c9a9f2840e61f` | `0xeaffb75cd1ea573b63f9e07522731d9a5563537667ba2562ed673d52426c6ed8` |
+| `NegativeProbe` | `0xb49fa7dd4d70f773015a9c848a8719fa86d81275` | `0x0febf89ed523ae4e2b9688b79369adb32a4b075c5321c3af452c9a9f2840e61f` | `0xeaffb75cd1ea573b63f9e07522731d9a5563537667ba2562ed673d52426c6ed8` |
 | `RouteLifecycleRegistryV2` | `0x62bf798edae1b7fde524276864757cc424a5c3dd` | `0xd43f469e239fdf55f1cdc9d983710870b0b3b60cbe5609701b7fdfb28737e1ef` | `0x8d9cf7a1b717bb174d47c89ffb01addae255735ebbaf722596e21c43493dbdb0` |
 | `StateSyncGKRSettlementV2` | `0x35b83d5c0fd081da9133c590ac9515d8bf917c03` | `0x4323e26ec9b97895d3996aaef5d1199e40f5d503704660baf2739e800082d9f3` | `0x314e12af1dc7de7cbf166757404f2db631f80ec02f3e538fea41223532f1ec3c` |
 | `ReceiptRootAuthorityV2` | `0x9cea3ee97f9eb1c39f3196060f24b7ed52bb7ca3` | `0xe422849166a5b22e2736a113f1975fd0f63fe9c3735e0b184322269ce4e9c19d` | `0xfbc523d8f4e8a58cf283df38d7b76046ed8826af39933e848a8a1357f6fb08c9` |
@@ -147,22 +147,22 @@ in `raw/docker-baseline-restoration.json`. Pulled image cache was retained.
 The harness is:
 
 - `.github/workflows/ci.yml`
-- `script/W6CCdkL2Smoke.s.sol`
-- `script/w6c/sovereign-ecdsa-multisig-v0.5.21.yml`
-- `script/w6c/run-smoke.sh`
-- `script/w6c/collect-evidence.py`
-- `script/w6c/sanitize-devnet-log.py`
-- `script/w6c/build-manifest.py`
-- `script/w6c/verify-manifest.py`
+- `script/CdkL2Smoke.s.sol`
+- `script/cdk-l2-smoke/sovereign-ecdsa-multisig-v0.5.21.yml`
+- `script/cdk-l2-smoke/run-smoke.sh`
+- `script/cdk-l2-smoke/collect-evidence.py`
+- `script/cdk-l2-smoke/sanitize-devnet-log.py`
+- `script/cdk-l2-smoke/build-manifest.py`
+- `script/cdk-l2-smoke/verify-manifest.py`
 
 The full smoke requires Docker, Kurtosis `1.20.0`, Foundry `1.7.1`, solc `0.8.36`,
 the pinned package commit, and an explicitly supplied local-only funded fixture
-key in `W6C_DEPLOYER_PRIVATE_KEY`. The key must not be written into this tree.
+key in `CDK_SMOKE_DEPLOYER_PRIVATE_KEY`. The key must not be written into this tree.
 
 The content-addressed runner command after evidence generation is:
 
 ```bash
-python3 script/w6c/verify-manifest.py evidence/w6c-cdk-l2-smoke/manifest.json
+python3 script/cdk-l2-smoke/verify-manifest.py evidence/cdk-l2-smoke/manifest.json
 ```
 
 ## Claim ceiling
