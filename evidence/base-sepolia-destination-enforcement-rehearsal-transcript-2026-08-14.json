@@ -4,9 +4,9 @@
   "capturedAt": "2026-08-14T22:59:54.0375410+09:00",
   "provenance": {
     "evmImplementationCommit": "f00aef0f9fb3d3430047ec7990a3e9cacfe794f0",
-    "productSemanticAuthorityCommit": "59f79f5b9cd1382c5acb7368c57402f5015798f9",
-    "productCurrentRemoteHead": "375299a46e2aea938f4ac13fd2d0b7c324ca2009",
-    "brainCurrentRemoteHead": "9eb7457027e18fa8ddd153c8064a8bda86965d34",
+    "productSemanticAuthorityCommit": "superseded-by-content-binding-blob-64a1175d358767f5cdc769445fb845f62154c54e",
+    "productCurrentRemoteHead": "superseded-by-content-binding-blob-64a1175d358767f5cdc769445fb845f62154c54e",
+    "privateLogCurrentRemoteHead": "recorded-in-private-operations-log",
     "vendoredVectorPath": "vectors/risc0-route-b-destination-policy-v1.json",
     "vendoredVectorBytes": 28429,
     "vendoredVectorSha256": "29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141"

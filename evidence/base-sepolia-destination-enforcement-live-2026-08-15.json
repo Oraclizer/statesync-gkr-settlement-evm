@@ -1,6 +1,6 @@
 {
   "schema": "statesync-gkr-base-sepolia-destination-enforcement-live-v1",
-  "status": "EVIDENCE_ONLY_ABANDONED_NON_ACTIVATABLE_TECHNICAL_EXECUTION_4_OF_4_PASS_D50_CONDITIONS_1_TO_5_OF_6_PASS_CONDITION_6_REMOTE_DURABILITY_OPEN_A11_OVERALL_HOLD",
+  "status": "EVIDENCE_ONLY_ABANDONED_NON_ACTIVATABLE_TECHNICAL_EXECUTION_4_OF_4_PASS_OPERATIONAL_CONDITIONS_1_TO_5_OF_6_PASS_CONDITION_6_REMOTE_DURABILITY_OPEN_ACCEPTANCE_OVERALL_HOLD",
   "network": {
     "name": "Base Sepolia",
     "chainId": 84532,
@@ -13,14 +13,14 @@
     "safeAndFinalizedContainAllTransitions": true
   },
   "provenance": {
-    "productSemanticAuthorityCommit": "59f79f5b9cd1382c5acb7368c57402f5015798f9",
-    "productCurrentRemoteHead": "375299a46e2aea938f4ac13fd2d0b7c324ca2009",
+    "productSemanticAuthorityCommit": "superseded-by-content-binding-blob-64a1175d358767f5cdc769445fb845f62154c54e",
+    "productCurrentRemoteHead": "superseded-by-content-binding-blob-64a1175d358767f5cdc769445fb845f62154c54e",
     "evmImplementationRemoteHead": "f00aef0f9fb3d3430047ec7990a3e9cacfe794f0",
     "preflightEvidenceParent": "da08917468923d2c7f9d65761b1894dc0197e7c2",
-    "brainA11SemanticCheckpoint": "9eb7457027e18fa8ddd153c8064a8bda86965d34",
-    "brainCurrentRemoteHead": "1d48dde7f2c040d516556124f650645c8509e5a7",
-    "brainCurrentRemoteHeadParent": "9eb7457027e18fa8ddd153c8064a8bda86965d34",
-    "brainCurrentRemoteHeadProcess": "automatic_backup_direct_child",
+    "privateLogAcceptanceCheckpoint": "recorded-in-private-operations-log",
+    "privateLogCurrentRemoteHead": "recorded-in-private-operations-log",
+    "privateLogCurrentRemoteHeadParent": "recorded-in-private-operations-log",
+    "privateLogCurrentRemoteHeadProcess": "recorded-in-private-operations-log",
     "brainCurrentRemoteHeadSemanticallyAssimilated": false,
     "productVectorSha256": "29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141",
     "preflightEvidence": "evidence/base-sepolia-destination-enforcement-preflight-2026-08-14.json"
@@ -345,7 +345,7 @@
     "d50ConditionsTotal": 6,
     "completed": ["finalized direct bytecode and topology", "immutable role and getter binding", "finalized honest live receipt consume", "frozen and additional negative state/log invariance"],
     "operationalFailClosedPolicy": {
-      "authority": "Brain 9eb7457027e18fa8ddd153c8064a8bda86965d34 D-50",
+      "authority": "private operations log",
       "onChainPauseRotationRevocationOwnerUpgradePrimitive": false,
       "currentAddresses": "PERMANENT_EVIDENCE_ONLY_ABANDONED_NON_ACTIVATABLE",
       "currentNextAuthorizationNonceFrozen": 2,
@@ -355,7 +355,7 @@
       "status": "PASS"
     },
     "openCondition": 6,
-    "open": "exact Product/EVM/Brain evidence commit independent audit and remote durability",
+    "open": "exact recorded evidence commit independent audit and remote durability",
     "a11Overall": "HOLD",
     "productionActivation": false,
     "formalIndependentSecurityAudit": false,

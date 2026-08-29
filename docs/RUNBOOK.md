@@ -50,18 +50,18 @@ at both predicted CREATE addresses. Refresh all fee bounds and require the sum
 to remain below both the selected funding amount and the absolute `0.01 ETH`
 cap.
 
-Also verify the semantic Product authority commit `59f79f5b...`, current
-Product remote head `375299a4...`, EVM head `f00aef0f...`, and the Brain A11
-semantic checkpoint `9eb74570...` in full against the evidence JSON. Current
-Brain `origin/main` is direct child `1d48dde7...`, an automatic-backup commit
-not assimilated as an A11 semantic change here. The two invalid predecessor
+Also verify the vendored vector's content binding (Git blob `64a1175d...`,
+SHA-256 `29a4528...`) and the EVM head `f00aef0f...` in full against the
+evidence JSON. The operational acceptance checkpoint lives in the
+maintainer's private operations log
+not assimilated as a semantic change here. The two invalid predecessor
 custody profiles are metadata-only exclusions: their ciphertext is not opened,
 they supply no constructor member or signature, and only the v3 public manifest
 may supply the frozen public roles.
 
 The transaction sequence that was later separately released and executed was
 fixed: D0 nonce `0` root direct CREATE, nonce `1` settlement direct CREATE,
-nonce `2` exact root registration, and nonce `3` exact honest W2 receipt
+nonce `2` exact root registration, and nonce `3` exact honest recorded receipt
 consumption. It used explicit
 nonce, gas limit, maximum fee, priority fee, zero value, and only the external
 encrypted D0 keystore. Never place a private key, mnemonic, passphrase, password
@@ -112,7 +112,7 @@ replayable against a fresh epoch-`1` clone. Therefore no later approval may
 permit another D0/root/PFR signature, registration, consume, funding, or
 broadcast on either current address or with the current epoch-`1` roles.
 
-Brain semantic checkpoint `9eb74570...` binds the D-50 fail-closed operational
+The private operations log binds the fail-closed operational
 policy. V1 has no on-chain pause, rotation, revocation, owner, or upgrade
 primitive. The immediate response is permanent non-activation, halt of all
 D0/root/PFR signing, and abandonment of both addresses. The only possible later
@@ -120,9 +120,10 @@ path is a separately approved epoch-`2` fresh direct deployment with nonreused
 keys that repeats the full evidence gate. This is operational evidence, not an
 on-chain control, reactivation path, or authorization to act.
 
-Current gate state is `TECHNICAL EXECUTION 4 OF 4 PASS / D-50 CONDITIONS 1–5
-OF 6 PASS / CONDITION 6 REMOTE DURABILITY OPEN / A11 OVERALL HOLD`. The open
-condition is exact evidence audit, commit, and Product/EVM/Brain remote
+Current gate state is `TECHNICAL EXECUTION 4 OF 4 PASS / OPERATIONAL
+CONDITIONS 1-5 OF 6 PASS / CONDITION 6 REMOTE DURABILITY OPEN / ACCEPTANCE ON
+HOLD`. The open
+condition is exact evidence audit, commit, and recorded-remote
 durability. It is not a code, live-consume, negative-matrix, or operational
 policy deficit. Production activation, GRANDPA finality, formal security-audit
 status, and further transactions remain unclaimed and unauthorized.

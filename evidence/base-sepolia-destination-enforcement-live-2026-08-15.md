@@ -1,7 +1,7 @@
-# Base Sepolia destination-enforcement live receipt — 2026-08-15
+# Base Sepolia destination-enforcement live receipt: 2026-08-15
 
-Status: **TECHNICAL EXECUTION 4 OF 4 PASS / D-50 CONDITIONS 1–5 OF 6 PASS /
-CONDITION 6 REMOTE DURABILITY OPEN / A11 OVERALL HOLD**.
+Status: **TECHNICAL EXECUTION 4 OF 4 PASS / OPERATIONAL CONDITIONS 1-5 OF 6 PASS /
+CONDITION 6 REMOTE DURABILITY OPEN / ACCEPTANCE ON HOLD**.
 
 This receipt supersedes the preflight hold only for the four authorized Base
 Sepolia transitions. It proves a finalized testnet deployment, one sealed root,
@@ -12,13 +12,12 @@ The deployed addresses are permanently **EVIDENCE-ONLY / ABANDONED /
 NON-ACTIVATABLE**.
 
 The semantic Product authority is commit
-`59f79f5b9cd1382c5acb7368c57402f5015798f9`; the current Product remote head is
-`375299a46e2aea938f4ac13fd2d0b7c324ca2009`. The deployed Solidity is from EVM
+`superseded-by-content-binding`; the current Product remote head is
+`superseded-by-content-binding`. The deployed Solidity is from EVM
 implementation remote head `f00aef0f9fb3d3430047ec7990a3e9cacfe794f0`.
-The Brain A11 semantic checkpoint is
-`9eb7457027e18fa8ddd153c8064a8bda86965d34`. Current Brain `origin/main` is its
-direct child `1d48dde7f2c040d516556124f650645c8509e5a7`, an automatic-backup commit
-that is preserved as remote ancestry and is not assimilated here as an A11
+The operational acceptance checkpoint is recorded in the maintainer's
+private operations log, together with its direct automatic-backup commit
+that is preserved as remote ancestry and is not assimilated here as a
 semantic change. This new receipt itself remains local until an exact evidence
 commit receives runner and independent audit and becomes remote-durable.
 
@@ -144,10 +143,10 @@ would double-prefix the stream and the diagnostic attempt failed MAC validation
 before signing. Every temporary file was removed; final residue count is zero.
 Only ciphertext representation and byte-count metadata are disclosed here.
 
-D-50 technical execution checks are `4/4 PASS`: finalized code/topology,
+The technical execution checks are `4/4 PASS`: finalized code/topology,
 immutable roles/getters, honest finalized consume, and negative state/log
-invariance. Condition 5 also passes by binding Brain semantic checkpoint
-`9eb7457027e18fa8ddd153c8064a8bda86965d34`'s fail-closed operational policy.
+invariance. Condition 5 also passes by binding the private operations
+log's fail-closed operational policy.
 V1 has no on-chain pause, rotation, revocation, owner, or upgrade primitive; an
 public latent authorization requires immediate and permanent non-activation,
 halt of D0/root/PFR signing, and abandonment of both addresses. No future
@@ -156,8 +155,8 @@ only possible later path is a separately approved epoch-`2` fresh direct
 redeployment with nonreused keys that repeats the entire evidence gate. This is
 operational evidence, not an on-chain control or action approval.
 
-Thus D-50 conditions `1–5 of 6 PASS`. Condition 6 remains open until this exact
-Product/EVM/Brain evidence receives runner and independent audit, is committed,
-and all three canonical remotes are exact. Therefore A11 remains **OVERALL
+Thus operational conditions `1-5 of 6 PASS`. Condition 6 remains open until this exact
+the recorded evidence receives runner and independent audit, is committed,
+and all three canonical remotes are exact. Therefore acceptance remains **OVERALL
 HOLD**. No production activation, additional transaction, real-mainnet
 principal, formal security audit, or GRANDPA claim is authorized or implied.
