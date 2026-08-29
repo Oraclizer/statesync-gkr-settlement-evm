@@ -13,7 +13,7 @@ contract, stable Settlement, registry, route, epoch, lifecycle revision, strict
 nonce, predecessor digest, and expiry. Epoch-1 contracts, roles, balances, and
 addresses remain permanently evidence-only, abandoned, and non-activatable.
 
-## SELECT A lineage model
+## Selected lineage model
 
 Each lineage has a new direct `RouteLifecycleRegistryV2` and a new direct,
 stable `StateSyncGKRSettlementV2`. The registry initializes its Settlement once

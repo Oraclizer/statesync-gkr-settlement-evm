@@ -128,10 +128,10 @@ durability. It is not a code, live-consume, negative-matrix, or operational
 policy deficit. Production activation, GRANDPA finality, formal security-audit
 status, and further transactions remain unclaimed and unauthorized.
 
-That captured live-receipt gate was subsequently closed as `W3/A11 CLOSED /
-VALIDATION BUNDLE 4 OF 9 CLOSED`. The Gate L Director decision approved option B
-only for W4 design, implementation, validation, and a private checkpoint. The
-later W4 implementation architecture selected SELECT A: a new
+That captured live-receipt gate was subsequently closed as `ENFORCEMENT
+BASELINE CLOSED / VALIDATION BUNDLE 4 OF 9 CLOSED`. The lifecycle design
+decision approved option B only for design, implementation, validation, and a
+private checkpoint. The implementation architecture then selected a new
 lineage-specific direct Registry and stable Settlement, route-specific epoch-2
 authorities, and no nullifier migration. This repository candidate is still
 private, unaudited, and non-deployed. The historical epoch-1 freeze and all

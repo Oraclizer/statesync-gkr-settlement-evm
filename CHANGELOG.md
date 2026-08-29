@@ -56,7 +56,7 @@ release identity exists.
   future D0/root/PFR signing, registration, consume, or reactivation is allowed
   on epoch `1`. Any later experiment requires nonreused keys, fresh epoch-`2`
   direct addresses, and the full gate repeated.
-- Added the private W4/A12 epoch-2 SELECT-A candidate: a lineage-specific direct
+- Added the private epoch-2 lifecycle candidate: a lineage-specific direct
   lifecycle registry and stable Settlement, route-specific Root/PFR authorities,
   EIP-712 destination/domain binding, strict nonce hash chains, half-open
   expiries and drain cutoffs, irreversible revocation/replacement/abandonment,
