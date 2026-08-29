@@ -94,20 +94,19 @@ Foundry 1.7.1 exposes the deterministic runner seed through `fuzz.seed` and the
 - [`src/ReceiptRootAuthorityV2.sol`](src/ReceiptRootAuthorityV2.sol) and
   [`src/PrimaryFinalityAuthorityV2.sol`](src/PrimaryFinalityAuthorityV2.sol) -
   route-bound epoch-2 EIP-712 nonce/hash-chain authorities.
-- [`docs/ENCODING.md`](docs/ENCODING.md) and [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md)
- : exact codec and claim boundaries.
+- [`docs/ENCODING.md`](docs/ENCODING.md) and [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md):
+  exact codec and claim boundaries.
 - [`docs/ENCODING_V2.md`](docs/ENCODING_V2.md),
   [`docs/THREAT_MODEL_V2.md`](docs/THREAT_MODEL_V2.md), and the
   [route lifecycle runbook](docs/operations/route-lifecycle-recovery-v1.md) -
   V2 candidate encoding, residual risks, and fail-closed operations.
 - [`vectors/README.md`](vectors/README.md): frozen Product-vector provenance.
-- [`evidence/destination-receipt-enforcement-reference-2026-08-14.md`](evidence/destination-receipt-enforcement-reference-2026-08-14.md)
- : local validation receipt and explicit non-claims.
-- [`evidence/base-sepolia-destination-enforcement-preflight-2026-08-14.md`](evidence/base-sepolia-destination-enforcement-preflight-2026-08-14.md)
- : testnet-only public-role, direct-CREATE rehearsal, gas, and funding-hold receipt.
+- [`evidence/destination-receipt-enforcement-reference-2026-08-14.md`](evidence/destination-receipt-enforcement-reference-2026-08-14.md):
+  local validation receipt and explicit non-claims.
+- [`evidence/base-sepolia-destination-enforcement-preflight-2026-08-14.md`](evidence/base-sepolia-destination-enforcement-preflight-2026-08-14.md):
+  testnet-only public-role, direct-CREATE rehearsal, gas, and funding-hold receipt.
 
-- [`evidence/base-sepolia-destination-enforcement-rehearsal-transcript-2026-08-14.json`](evidence/base-sepolia-destination-enforcement-rehearsal-transcript-2026-08-14.json)
-  is the normalized local-only block, receipt, event, code-hash, and getter transcript.
+- [`evidence/base-sepolia-destination-enforcement-rehearsal-transcript-2026-08-14.json`](evidence/base-sepolia-destination-enforcement-rehearsal-transcript-2026-08-14.json): the normalized local-only block, receipt, event, code-hash, and getter transcript.
 - [`evidence/base-sepolia-destination-enforcement-live-2026-08-15.md`](evidence/base-sepolia-destination-enforcement-live-2026-08-15.md)
   and its [normalized JSON](evidence/base-sepolia-destination-enforcement-live-2026-08-15.json)
   freeze the finalized Base Sepolia transactions, deployed code, getters,
