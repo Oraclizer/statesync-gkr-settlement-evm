@@ -20,7 +20,8 @@ exists.
   community health files, dual Apache-2.0 OR MIT licensing, and explicit
   security, support, governance, contribution, and disclaimer boundaries.
 
-### Not included
+### Scope
 
-- No Solidity contract, cross-language vector, audit, release, deployment,
-  address, production role, or activation is included or implied.
+- This baseline covers repository policy, toolchain pinning, and Continuous
+  Integration. Contracts, cross-language vectors, audits, releases, and
+  deployments arrive in later entries as they land.
