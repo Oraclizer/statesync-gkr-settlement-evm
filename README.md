@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/Oraclizer/statesync-gkr-settlement-evm/actions/workflows/ci.yml"><img src="https://github.com/Oraclizer/statesync-gkr-settlement-evm/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/Oraclizer/statesync-gkr-settlement-evm/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/solidity-0.8.36-2b247c.svg" alt="Solidity 0.8.36"></a>
   <a href="LICENSE-APACHE"><img src="https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-75E3B0.svg" alt="License: Apache-2.0 OR MIT"></a>
 </p>
 
@@ -117,9 +118,16 @@ Foundry 1.7.1 exposes the deterministic runner seed through `fuzz.seed` and the
 - [`DISCLAIMER.md`](DISCLAIMER.md): plain-language non-claims.
 - [`CHANGELOG.md`](CHANGELOG.md): user-relevant repository changes.
 
-An architecture diagram lands together with the first contracts; it will
-describe actual state ownership, trust boundaries, and fail-closed paths rather
-than anticipate code that does not exist.
+## Where this repository sits
+
+<p align="center">
+  <img src="assets/diagrams/settlement-stack-boundary.svg" width="1100" alt="The sibling StateSync-GKR prover emits receipt roots and quorum vectors, vendored here as content-addressed inputs; this repository owns a root authority registry feeding fail-closed settlement consumption, with destination networks out of scope">
+</p>
+
+A contract-level architecture diagram lands together with the first contracts
+on the default branch; it will describe actual state ownership, trust
+boundaries, and fail-closed paths rather than anticipate code that has not
+merged.
 
 ## Security
 

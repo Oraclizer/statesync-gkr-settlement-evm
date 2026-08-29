@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540"
+     role="img" aria-labelledby="boundary-title boundary-desc"
+     preserveAspectRatio="xMidYMid meet">
+  <title id="boundary-title">Settlement EVM stack boundary</title>
+  <desc id="boundary-desc">The sibling prover repository emits receipt roots and quorum vectors, vendored here as content-addressed inputs. This repository owns a root authority registry feeding fail-closed settlement consumption. Destination networks sit outside the boundary as a dashed, out-of-scope node.</desc>
+  <defs>
+    <linearGradient id="boundary-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#061513"/>
+      <stop offset=".62" stop-color="#0A2422"/>
+      <stop offset="1" stop-color="#12312D"/>
+    </linearGradient>
+    <marker id="boundary-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#75E3B0"/>
+    </marker>
+    <marker id="outside-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#F4B85F"/>
+    </marker>
+    <style>
+      .text{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;fill:#F3F7F4}
+      .body{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;fill:#D5E4E0}
+      .muted{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;fill:#9DB6B2}
+      .amber{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;fill:#F4B85F}
+      .node{fill:#091D1B;stroke:#2B5753;stroke-width:1.6}
+      .receipt{fill:#0A2224;stroke:#66B8D2;stroke-width:1.8}
+      .self{fill:#0B2521;stroke:#75E3B0;stroke-width:2.6}
+      .inner{fill:#0A2422;stroke:#2B5753;stroke-width:1.4}
+      .open{fill:#261E13;stroke:#F4B85F;stroke-width:1.8;stroke-dasharray:8 6}
+      .flow{fill:none;stroke:#75E3B0;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+      .dotted{fill:none;stroke:#F4B85F;stroke-width:2.2;stroke-dasharray:7 7;stroke-linecap:round}
+    </style>
+  </defs>
+
+  <rect width="1200" height="540" rx="24" fill="url(#boundary-bg)"/>
+  <rect x="1" y="1" width="1198" height="538" rx="23" fill="none" stroke="#2B5753"/>
+  <text x="54" y="52" class="text" font-size="27" font-weight="760">Stack boundary</text>
+  <text x="54" y="78" class="muted" font-size="13" font-weight="700" letter-spacing="1.2">WHERE THIS REPOSITORY SITS • WHAT IT OWNS • WHAT IT DOES NOT</text>
+
+  <rect x="54" y="152" width="240" height="130" rx="14" class="node"/>
+  <text x="76" y="180" class="muted" font-size="10" font-weight="700" letter-spacing="1.2">SIBLING REPOSITORY</text>
+  <text x="76" y="208" class="text" font-size="15" font-weight="720">StateSync-GKR prover</text>
+  <text x="76" y="232" class="body" font-size="11">proves sparse-Merkle state</text>
+  <text x="76" y="248" class="body" font-size="11">transitions and emits the</text>
+  <text x="76" y="264" class="body" font-size="11">receipt roots consumed here</text>
+
+  <rect x="326" y="162" width="186" height="110" rx="13" class="receipt"/>
+  <text x="419" y="192" class="text" font-size="13.5" font-weight="720" text-anchor="middle">receipt roots</text>
+  <text x="419" y="211" class="text" font-size="13.5" font-weight="720" text-anchor="middle">+ quorum vectors</text>
+  <path d="M346 224H492" stroke="#2B5753"/>
+  <text x="419" y="242" class="muted" font-size="10.5" text-anchor="middle">vendored,</text>
+  <text x="419" y="257" class="muted" font-size="10.5" text-anchor="middle">content-addressed</text>
+
+  <rect x="548" y="112" width="404" height="210" rx="16" class="self"/>
+  <text x="570" y="140" fill="#75E3B0" font-family="ui-sans-serif,system-ui,sans-serif"
+        font-size="11" font-weight="700" letter-spacing="1.3">THIS REPOSITORY</text>
+  <text x="570" y="168" class="text" font-size="18" font-weight="750">Settlement EVM reference</text>
+
+  <rect x="570" y="184" width="360" height="52" rx="11" class="inner"/>
+  <text x="590" y="208" class="text" font-size="14" font-weight="700">Root authority registry</text>
+  <text x="590" y="226" class="body" font-size="11">which receipt roots may be settled against</text>
+
+  <path d="M750 236V252" class="flow" marker-end="url(#boundary-arrow)"/>
+
+  <rect x="570" y="252" width="360" height="52" rx="11" class="inner"/>
+  <text x="590" y="276" class="text" font-size="14" font-weight="700">Fail-closed settlement consumption</text>
+  <text x="590" y="294" class="body" font-size="11">a receipt that does not verify settles nothing</text>
+
+  <rect x="986" y="152" width="160" height="130" rx="14" class="open"/>
+  <text x="1066" y="182" class="amber" font-size="10" font-weight="700" letter-spacing="1.2" text-anchor="middle">OUT OF SCOPE</text>
+  <text x="1066" y="212" class="text" font-size="14" font-weight="700" text-anchor="middle">destination</text>
+  <text x="1066" y="231" class="text" font-size="14" font-weight="700" text-anchor="middle">networks</text>
+  <text x="1066" y="256" class="amber" font-size="10.5" text-anchor="middle">not settled here</text>
+
+  <path d="M298 217H322" class="flow" marker-end="url(#boundary-arrow)"/>
+  <path d="M516 217H544" class="flow" marker-end="url(#boundary-arrow)"/>
+  <path d="M956 217H982" class="dotted" marker-end="url(#outside-arrow)"/>
+
+  <rect x="54" y="346" width="1092" height="84" rx="16" fill="#261E13" stroke="#F4B85F"/>
+  <circle cx="80" cy="372" r="6" fill="#F4B85F"/>
+  <text x="98" y="377" class="text" font-size="14" font-weight="700">Contracts are not on the default branch yet</text>
+  <text x="98" y="399" class="amber" font-size="12">The Solidity contracts and cross-language vectors are a reference design under review on draft branches.</text>
+  <text x="98" y="417" class="amber" font-size="12">The default branch carries the pinned toolchain, deterministic build inputs, sandboxed tests, and the policy baseline.</text>
+
+  <rect x="54" y="450" width="1092" height="62" rx="12" class="node"/>
+  <text x="78" y="474" class="muted" font-size="11" font-weight="700" letter-spacing="1.3">OUTSIDE THIS REPOSITORY</text>
+  <circle cx="82" cy="492" r="5" fill="#75E3B0"/>
+  <text x="96" y="497" class="body" font-size="12">Proving and verification live in the prover repository</text>
+  <circle cx="444" cy="492" r="5" fill="#66B8D2"/>
+  <text x="458" y="497" class="body" font-size="12">Destination network deployment and operation</text>
+  <circle cx="752" cy="492" r="5" fill="#F4B85F"/>
+  <text x="766" y="497" class="body" font-size="12">Independent security audit, release, deployment</text>
+</svg>
