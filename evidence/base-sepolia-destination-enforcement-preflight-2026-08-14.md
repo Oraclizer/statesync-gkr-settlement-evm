@@ -1,4 +1,4 @@
-# Base Sepolia destination-enforcement preflight — 2026-08-14
+# Base Sepolia destination-enforcement preflight: 2026-08-14
 
 Status: **PREDEPLOYMENT HOLD / FUNDING PENDING / NOT DEPLOYED**.
 
@@ -10,12 +10,11 @@ approval, or authorization to reuse these testnet-only identities elsewhere.
 
 - Repository commit: `f00aef0f9fb3d3430047ec7990a3e9cacfe794f0`.
 - Product semantic authority commit:
-  `59f79f5b9cd1382c5acb7368c57402f5015798f9`.
+  `superseded-by-content-binding`.
 - Current Product remote head:
-  `375299a46e2aea938f4ac13fd2d0b7c324ca2009`; the semantic vector authority
+  `superseded-by-content-binding`; the semantic vector authority
   remains the earlier commit named above.
-- Current Brain remote head:
-  `9eb7457027e18fa8ddd153c8064a8bda86965d34`.
+
 - Frozen Product vector: 28,429 bytes; SHA-256
   `29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141`.
 - External public-role manifest: 5,958 bytes; SHA-256

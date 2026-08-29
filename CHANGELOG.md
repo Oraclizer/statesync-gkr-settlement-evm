@@ -36,15 +36,15 @@ release identity exists.
 - Added a normalized, deterministic local Anvil transcript with exact blocks,
   receipts, event hashes, runtime code hashes, and post-state getters. The
   receipt now distinguishes the Product semantic authority from current Product
-  and Brain remote heads and excludes invalid predecessor custody profiles by
+  remote heads and excludes invalid predecessor custody profiles by
   non-secret metadata fingerprints; those profiles supplied no role or signature.
 - Added a normalized Base Sepolia live receipt for the finalized funding, two
   direct CREATE transactions, exact root registration, and one honest receipt
   consume. It binds runtime code, immutable getters, events, fees, safe/finalized
   convergence, zero EIP-1967 slots, and native/override negative-call state and
-  log invariance. D-50 technical execution is 4-of-4 PASS and its operational
-  fail-closed policy is bound, so overall conditions 1–5 of 6 PASS. A11 remains
-  on hold until condition 6 makes the exact Product/EVM/Brain evidence audited,
+  log invariance. Technical execution is 4-of-4 PASS and the operational
+  fail-closed policy is bound, so overall conditions 1-5 of 6 PASS. Acceptance remains
+  on hold until condition 6 makes the exact evidence audited,
   committed, and remote durable.
 - Corrected the encrypted-custody bridge description: redirected stdin supplied
   the UTF-8 BOM, so the successful mode-`0600` temporary password file was 67

@@ -1,10 +1,10 @@
-# Destination receipt enforcement reference evidence — 2026-08-14
+# Destination receipt enforcement reference evidence: 2026-08-14
 
 Status: **LOCAL PREDEPLOYMENT CANDIDATE; UNAUDITED; NOT DEPLOYED**.
 
 ## Inputs
 
-- Product authority commit: `59f79f5b9cd1382c5acb7368c57402f5015798f9`.
+- Vendored vector content binding: Git blob `64a1175d358767f5cdc769445fb845f62154c54e`.
 - Vendored vector: 28,429 bytes, SHA-256
   `29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141`.
 - Toolchain: Foundry 1.7.1 commit
