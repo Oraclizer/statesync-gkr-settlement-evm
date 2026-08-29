@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/Oraclizer/statesync-gkr-settlement-evm/actions/workflows/ci.yml"><img src="https://github.com/Oraclizer/statesync-gkr-settlement-evm/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="https://github.com/Oraclizer/statesync-gkr-settlement-evm/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/solidity-0.8.36-2b247c.svg" alt="Solidity 0.8.36"></a>
-  <a href="LICENSE-APACHE"><img src="https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-75E3B0.svg" alt="License: Apache-2.0 OR MIT"></a>
+  <a href="LICENSE-APACHE"><img src="https://img.shields.io/badge/License-Apache--2.0%20OR%20MIT-0b5cad.svg" alt="License: Apache-2.0 OR MIT"></a>
 </p>
 
 # StateSync-GKR Settlement EVM
