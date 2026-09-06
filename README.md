@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="assets/brand/statesync-gkr-settlement-hero.svg" width="1200" alt="StateSync-GKR Settlement EVM: a deterministic reference for receipt-root settlement enforcement">
+  <picture>
+    <source media="(max-width: 900px)" srcset="assets/brand/statesync-gkr-settlement-hero-mobile.svg">
+    <img src="assets/brand/statesync-gkr-settlement-hero.svg" width="1200" alt="StateSync-GKR Settlement EVM: a deterministic reference for receipt-root settlement enforcement">
+  </picture>
 </p>
 
 <p align="center">
@@ -121,7 +124,10 @@ Foundry 1.7.1 exposes the deterministic runner seed through `fuzz.seed` and the
 ## Where this repository sits
 
 <p align="center">
-  <img src="assets/diagrams/settlement-stack-boundary.svg" width="1100" alt="The sibling StateSync-GKR prover emits receipt roots and quorum vectors, vendored here as content-addressed inputs; this repository owns a root authority registry feeding fail-closed settlement consumption, with destination networks out of scope">
+  <picture>
+    <source media="(max-width: 900px)" srcset="assets/diagrams/settlement-stack-boundary-mobile.svg">
+    <img src="assets/diagrams/settlement-stack-boundary.svg" width="1100" alt="The sibling StateSync-GKR prover emits receipt roots and quorum vectors, vendored here as content-addressed inputs; this repository owns a root authority registry feeding fail-closed settlement consumption, with destination networks out of scope">
+  </picture>
 </p>
 
 A contract-level architecture diagram lands together with the first contracts

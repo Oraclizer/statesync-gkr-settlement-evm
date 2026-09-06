@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1440" viewBox="0 0 600 1440" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
+  <title id="title">Settlement EVM stack boundary for narrow screens</title>
+  <desc id="desc">A vertical stack where the sibling prover emits receipt roots and quorum vectors, this repository owns a root authority registry and fail-closed settlement consumption, and destination networks remain outside the boundary.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061513"/><stop offset="1" stop-color="#12312d"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#75e3b0"/></marker>
+    <marker id="amber-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#f4b85f"/></marker>
+    <style>.stage{fill:#091d1b;stroke:#2b5753;stroke-width:2}.card{fill:#0a2224;stroke:#3d7669;stroke-width:2}.self{fill:#0c2824;stroke:#75e3b0;stroke-width:2}.inner{fill:#12312d;stroke:#3d7669;stroke-width:2}.open{fill:#261e13;stroke:#f4b85f;stroke-width:2;stroke-dasharray:8 6}.title{font:750 28px Inter,Segoe UI,Arial,sans-serif;fill:#f3f7f4}.label{font:700 19px Inter,Segoe UI,Arial,sans-serif;fill:#f3f7f4}.text{font:16px Inter,Segoe UI,Arial,sans-serif;fill:#d5e4e0}.small{font:14px Inter,Segoe UI,Arial,sans-serif;fill:#9db6b2}.eyebrow{font:700 13px Inter,Segoe UI,Arial,sans-serif;letter-spacing:1.5px;fill:#75e3b0}.flow{fill:none;stroke:#75e3b0;stroke-width:3;marker-end:url(#arrow)}.dotted{fill:none;stroke:#f4b85f;stroke-width:3;stroke-dasharray:8 7;marker-end:url(#amber-arrow)}</style>
+  </defs>
+  <rect width="600" height="1440" rx="24" fill="url(#bg)"/>
+  <rect x="1" y="1" width="598" height="1438" rx="23" fill="none" stroke="#2b5753" stroke-width="2"/>
+  <text class="title" x="30" y="52">Stack boundary</text>
+  <text class="small" x="30" y="82">What this repository owns and what remains outside</text>
+
+  <rect class="stage" x="24" y="112" width="552" height="780" rx="22"/>
+  <rect class="card" x="84" y="154" width="432" height="108" rx="16"/>
+  <text class="eyebrow" x="108" y="184">SIBLING REPOSITORY</text><text class="label" x="108" y="218">StateSync-GKR prover</text><text class="small" x="108" y="244">proves sparse-Merkle transitions and emits receipt roots</text>
+  <path class="flow" d="M300 262v36"/>
+  <rect class="card" x="84" y="302" width="432" height="92" rx="14"/><text class="label" x="300" y="336" text-anchor="middle">receipt roots + quorum vectors</text><text class="small" x="300" y="366" text-anchor="middle">vendored · content-addressed inputs</text>
+  <path class="flow" d="M300 394v36"/>
+  <rect class="self" x="48" y="434" width="504" height="260" rx="18"/>
+  <text class="eyebrow" x="72" y="472">THIS REPOSITORY</text><text class="label" x="72" y="508">Settlement EVM reference</text>
+  <rect class="inner" x="72" y="532" width="456" height="64" rx="14"/><text class="label" x="92" y="558">Root authority registry</text><text class="small" x="92" y="582">which receipt roots may be settled against</text>
+  <path class="flow" d="M300 596v30"/>
+  <rect class="inner" x="72" y="630" width="456" height="64" rx="14"/><text class="label" x="92" y="656">Fail-closed settlement consumption</text><text class="small" x="92" y="680">a receipt that does not verify settles nothing</text>
+  <path class="dotted" d="M300 694v38"/>
+  <rect class="open" x="84" y="736" width="432" height="108" rx="16"/><text x="300" y="770" text-anchor="middle" fill="#f4b85f" font-size="13" font-weight="700" letter-spacing="1.5">OUT OF SCOPE</text><text class="label" x="300" y="804" text-anchor="middle">destination networks</text><text x="300" y="830" text-anchor="middle" fill="#f4b85f" font-size="14">not deployed or operated here</text>
+
+  <rect class="open" x="24" y="936" width="552" height="178" rx="20"/>
+  <circle cx="50" cy="970" r="7" fill="#f4b85f"/><text class="label" x="72" y="977">Contracts are not on the default branch yet</text>
+  <text class="small" x="48" y="1012">The Solidity contracts and cross-language vectors remain</text><text class="small" x="48" y="1038">a reference design under review on draft branches.</text>
+  <text class="small" x="48" y="1074">The default branch carries pinned tools, deterministic inputs,</text><text class="small" x="48" y="1098">sandboxed tests, and the policy baseline.</text>
+
+  <rect class="stage" x="24" y="1160" width="552" height="190" rx="20"/>
+  <text class="eyebrow" x="48" y="1200">OUTSIDE THIS REPOSITORY</text>
+  <circle cx="52" cy="1240" r="6" fill="#75e3b0"/><text class="text" x="72" y="1246">Proving and verification live in the prover repository</text>
+  <circle cx="52" cy="1280" r="6" fill="#66b8d2"/><text class="text" x="72" y="1286">Destination network deployment and operation</text>
+  <circle cx="52" cy="1320" r="6" fill="#f4b85f"/><text class="text" x="72" y="1326">Independent security audit, release, and deployment</text>
+  <text class="small" x="30" y="1410">The stack diagram describes ownership. It does not claim a live deployment.</text>
+</svg>
