@@ -1,0 +1,16 @@
+DRIVER    VOLUME NAME
+local     ssgkr-a13-cell1-host-cache-20260802-001
+local     ssgkr-a13-cell1-host-cache-20260802-002
+local     ssgkr-a13-cell1-nested-home-20260802-001
+local     ssgkr-a13-cell1-nested-home-20260802-002
+local     ssgkr-a13-cell1-target-20260802-001
+local     ssgkr-a13-cell1-target-20260802-002
+local     ssgkr-a13-cell2-host-cache-20260802-001
+local     ssgkr-a13-cell2-host-cache-20260802-002
+local     ssgkr-a13-cell2-host-cache-20260802-003
+local     ssgkr-a13-cell2-nested-home-20260802-001
+local     ssgkr-a13-cell2-nested-home-20260802-002
+local     ssgkr-a13-cell2-nested-home-20260802-003
+local     ssgkr-a13-cell2-target-20260802-001
+local     ssgkr-a13-cell2-target-20260802-002
+local     ssgkr-a13-cell2-target-20260802-003

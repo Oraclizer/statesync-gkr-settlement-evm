@@ -1,0 +1,18 @@
+# This args-file deploys the OP Succinct chain.
+deployment_stages:
+  deploy_op_succinct: false
+
+args:
+  sequencer_type: op-reth
+  consensus_contract_type: ecdsa-multisig # new sovereign consensus
+
+  # aggsender-validator related params
+  use_agg_sender_validator: True
+  agg_sender_validator_total_number: 1
+  agg_sender_multisig_threshold: 1
+
+optimism_package:
+  chains:
+    "001":
+      proposer_params:
+        enabled: false

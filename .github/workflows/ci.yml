@@ -57,8 +57,15 @@ jobs:
       - name: Check formatting
         run: forge fmt --check
 
+      - name: Verify frozen vector custody
+        run: |
+          sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256
+          sha256sum -c vectors/route-lifecycle-recovery-v1.json.sha256
+
       - name: Build
-        run: forge build --offline --use "$SOLC_BINARY" --sizes
+        run: |
+          forge build --offline --use "$SOLC_BINARY"
+          forge build --offline --use "$SOLC_BINARY" --sizes --skip script
 
       - name: Test
         run: forge test --offline --use "$SOLC_BINARY" --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f

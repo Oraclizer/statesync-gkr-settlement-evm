@@ -2,19 +2,31 @@
 
 ## Current support boundary
 
-Security reports about the repository baseline are welcome and read with care.
-The repository is pre-deployment; no version is currently designated
-production-supported, and [`DISCLAIMER.md`](DISCLAIMER.md) records the exact
-non-claims.
+This repository contains unaudited research source. A historical V1 Base Sepolia
+Root/Settlement evidence deployment exists, but it is unsupported, permanently
+abandoned, and non-activatable. The V2 candidate is non-deployed.
+There is no release, approved production principal, supported production
+deployment or network, or production user surface. Security reports about the
+repository candidate are welcome, but no version is currently designated
+production-supported.
 
 | Version | Security status |
 | --- | --- |
-| Unreleased repository baseline | Reports accepted; not production-supported |
+| Unreleased local candidate | Reports accepted; not production-supported |
+| Epoch-2 route lifecycle candidate | Reports accepted; unaudited, not deployed or activatable |
 | Releases | None |
-| Deployments | None |
+| Historical V1 Base Sepolia evidence deployment | Unsupported; permanently abandoned and non-activatable |
+| Deployments | No supported production deployments |
 
 Future support ranges must identify exact tags or commits. A branch name, an
 arbitrary fork, or modified bytecode is not a supported release identity.
+
+The epoch-2 candidate must not be described as safe or complete until an
+independent review of the exact candidate commit reports zero unresolved
+Critical/High findings. Review scope includes destination and EIP-712 binding,
+Root/PFR nonce and predecessor chains, replay/conflict behavior, lifecycle and
+recovery transitions, stable Settlement nullifiers, and custody/operational
+role separation. Passing repository tests is not that review.
 
 ## Private reporting
 

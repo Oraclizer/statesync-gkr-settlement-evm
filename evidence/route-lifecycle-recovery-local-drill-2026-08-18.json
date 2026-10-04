@@ -1,0 +1,400 @@
+{
+  "audit": {
+    "discrepancy_count": 0,
+    "finding_counts": {
+      "critical": 0,
+      "high": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "human": false,
+    "independent": true,
+    "read_only": true,
+    "reviewer": "Reviewer C",
+    "reviewer_type": "automated read-only reviewer",
+    "third_party_external": false
+  },
+  "date": "2026-08-18",
+  "document_carrier": {
+    "commit": null,
+    "outside_subject": true,
+    "reason": "The subsequent repaired-document carrier cannot be included without a circular self-hash."
+  },
+  "execution_boundary": {
+    "ffi": false,
+    "fork": false,
+    "funding": false,
+    "new_or_real_keys": false,
+    "read_only_git_live_remote_query": true,
+    "release_or_publication": false,
+    "rpc": false,
+    "signing_ceremony": false,
+    "test_network_access": false,
+    "transactions_or_deployment": false
+  },
+  "recovery_matrix": [
+    {
+      "condition": "normal_rotation",
+      "result": "pass",
+      "statement": "Fresh route authorities activate against the same Registry and stable Settlement; successful activation permanently reserves direct signer addresses."
+    },
+    {
+      "condition": "same_and_cross_role_signer_reuse",
+      "result": "pass",
+      "statement": "Previously activated signer addresses are rejected in later Root or PFR roles; failed activation leaves Registry stateDigest unchanged and logs at zero."
+    },
+    {
+      "condition": "expiry",
+      "result": "pass",
+      "statement": "Root registration, Root consumption, and PFR authorization enforce half-open validity windows and reject at validUntilBlock."
+    },
+    {
+      "condition": "draining_predrain_root",
+      "result": "pass",
+      "statement": "Draining forbids new registration and permits only roots registered at or before drain start under the prior active revision."
+    },
+    {
+      "condition": "half_open_destination_cutoff",
+      "result": "pass",
+      "statement": "Consumption succeeds only before consumeUntilBlock and fails at cutoff; operational use requires finalized destination observation, while contract block.number is not source-finality evidence."
+    },
+    {
+      "condition": "stable_settlement_nullifier",
+      "result": "pass",
+      "statement": "Distinct route claims retain one route-independent transition/chain/consumer/action settlement key and the second economic consumption is rejected."
+    },
+    {
+      "condition": "chain_clone_lineage_replay",
+      "result": "pass",
+      "statement": "Chain ID, verifying authority, Registry, Settlement, route, and lineage bindings reject wrong-chain, clone, and cross-lineage reuse."
+    },
+    {
+      "condition": "nonce_predecessor_replay",
+      "result": "pass",
+      "statement": "Root and PFR nonce plus predecessor-digest chains reject reuse, skips, and stale latent-future authorizations."
+    },
+    {
+      "condition": "root_conflict",
+      "result": "pass",
+      "statement": "A correctly chained authorization for an occupied route coordinate is rejected as RootConflict without state or logs."
+    },
+    {
+      "condition": "claim_replay",
+      "result": "pass",
+      "statement": "An exact consumed claim is rejected as ClaimReplay before PFR state advances."
+    },
+    {
+      "condition": "revoke_replace_abandon",
+      "result": "pass",
+      "statement": "Revoked and Replaced routes and lineage ABANDONED are terminal, preserve historical getters, and cannot migrate nullifiers or create a successor."
+    },
+    {
+      "condition": "rejection_state_and_logs",
+      "result": "pass",
+      "statement": "Negative Root, Registry, Settlement, and PFR calls preserve pre-call stateDigest and emit zero recorded logs."
+    }
+  ],
+  "repository_integrity": {
+    "end_head_match": true,
+    "end_index_diff_exit": 0,
+    "end_worktree_diff_exit": 0,
+    "ignored_generated_paths": [
+      "cache/",
+      "out/"
+    ],
+    "start_head_match": true,
+    "start_index_diff_exit": 0,
+    "start_worktree_diff_exit": 0,
+    "tracked_mutations_by_runner": 0
+  },
+  "reproduction": {
+    "capture_wrapper": "& { <COMMAND>; $code=$LASTEXITCODE; Write-Output ('EXIT_CODE=' + $code) } *>&1 | Tee-Object -FilePath <LOG>",
+    "commands": {
+      "fmt": "& $forge fmt --check",
+      "forced_build": "& $forge build --offline --use $solc --sizes --force",
+      "full_fixed_seed": "& $forge test --offline --use $solc --fuzz-seed $seed --fuzz-runs 1024",
+      "fuzz_only": "& $forge test --offline --use $solc --fuzz-seed $seed --fuzz-runs 1024 --match-path 'test/RouteLifecycleRecoveryV2Fuzz.t.sol' --match-test '^testFuzz' -vv",
+      "identity_status": [
+        "git branch --show-current",
+        "git rev-parse HEAD",
+        "git rev-parse 'HEAD^{tree}'",
+        "git rev-parse 'HEAD^'",
+        "git rev-parse '@{u}'",
+        "git rev-parse origin/feature/route-lifecycle-recovery",
+        "git status --short --branch",
+        "git diff --quiet -- .",
+        "git diff --cached --quiet -- .",
+        "git ls-remote --heads origin refs/heads/feature/route-lifecycle-recovery"
+      ],
+      "invariant_only": [
+        "$previousRuns=$env:FOUNDRY_INVARIANT_RUNS",
+        "$previousDepth=$env:FOUNDRY_INVARIANT_DEPTH",
+        "$env:FOUNDRY_INVARIANT_RUNS='256'",
+        "$env:FOUNDRY_INVARIANT_DEPTH='128'",
+        "& $forge test --offline --use $solc --fuzz-seed $seed --match-path 'test/RouteLifecycleRecoveryV2Fuzz.t.sol' --match-test '^invariant_' -vv",
+        "if ($null -eq $previousRuns) { Remove-Item Env:FOUNDRY_INVARIANT_RUNS -ErrorAction SilentlyContinue } else { $env:FOUNDRY_INVARIANT_RUNS=$previousRuns }",
+        "if ($null -eq $previousDepth) { Remove-Item Env:FOUNDRY_INVARIANT_DEPTH -ErrorAction SilentlyContinue } else { $env:FOUNDRY_INVARIANT_DEPTH=$previousDepth }"
+      ],
+      "toolchain_identity": [
+        "Get-FileHash -Algorithm SHA256 -LiteralPath 'foundry.toml'",
+        "Get-FileHash -Algorithm SHA256 -LiteralPath $foundryArchive",
+        "Get-FileHash -Algorithm SHA256 -LiteralPath $forge",
+        "Get-FileHash -Algorithm SHA256 -LiteralPath $solc",
+        "& $forge --version",
+        "& $solc --version"
+      ],
+      "trace3": "& $forge test --offline --use $solc --fuzz-seed $seed --match-path 'test/RouteLifecycleRecoveryV2.t.sol' --match-test 'test(ActiveRouteConsumesAndPreservesV1Identities|RootContextNonceHashChainAndValidityAreFailClosed|LineageSignerReuseIsRejectedAndFreshSignersAreReserved)' -vvvv",
+      "unit": "& $forge test --offline --use $solc --fuzz-seed $seed --match-contract '^RouteLifecycleRecoveryV2Test$' -vvv",
+      "vector1": "& $sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256",
+      "vector2": "& $sha256sum -c vectors/route-lifecycle-recovery-v1.json.sha256"
+    },
+    "variables": {
+      "artifactRoot": "<LOCAL_WORKSPACE>",
+      "forge": "<LOCAL_WORKSPACE>",
+      "foundryArchive": "<LOCAL_WORKSPACE>",
+      "seed": "0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "sha256sum": "C:\\Program Files\\Git\\usr\\bin\\sha256sum.exe",
+      "solc": "<LOCAL_WORKSPACE>"
+    },
+    "working_directory": "<LOCAL_WORKSPACE>"
+  },
+  "runner_package": {
+    "artifact_root": "<LOCAL_WORKSPACE>",
+    "commands_sha256": "37928297ab018299eb1e1e6c0edf88a85a5772f9ae2d2f42ec2b4eb26fd11cb7",
+    "manifest_all_entries_verified": true,
+    "manifest_sha256": "19065de679a4796dcec0d46d730e7b580c68d93ca0e9051c750d887ff48df841",
+    "raw_logs": [
+      {
+        "counts": "exact carrier; clean worktree/index; upstream/live e80ae5d",
+        "exit_code": 0,
+        "file": "identity-status-start.log",
+        "id": "identity_status_start",
+        "sha256": "6739a10a51de6bc65db4a9ae35112514a521f3c9bbf77b5aa57f3e28c5943cf3"
+      },
+      {
+        "counts": "pinned toolchain identities pass",
+        "exit_code": 0,
+        "file": "toolchain-identity.log",
+        "id": "toolchain_identity",
+        "sha256": "463722e0ae45d1973b2b5721d5e0aeb8196fe1ce4b2583a12d045aefbd676a41"
+      },
+      {
+        "counts": "1/1 pass",
+        "exit_code": 0,
+        "file": "vector1.log",
+        "id": "vector1",
+        "sha256": "12297a9fa5b8aa1e2f176c29867f0f5bdb590a757c4d83266861f91fe6831683"
+      },
+      {
+        "counts": "1/1 pass",
+        "exit_code": 0,
+        "file": "vector2.log",
+        "id": "vector2",
+        "sha256": "cb68cd30cf1094dee4a2bee385e158aae9bda636628cabfab30397953673116f"
+      },
+      {
+        "counts": "format pass",
+        "exit_code": 0,
+        "file": "fmt.log",
+        "id": "fmt",
+        "sha256": "c1e97067c5f479a44a6f57297a0a8f87a59d181c3c529910f8bf059094bc3abb"
+      },
+      {
+        "counts": "17/17 Solidity source files compiled",
+        "exit_code": 0,
+        "file": "forced-build.log",
+        "id": "forced_build",
+        "sha256": "86c91704e25b84b3b860d227dc0a0ab84248a400ecf42680d3bb1ad823a4aeea"
+      },
+      {
+        "counts": "33/33 pass; failed 0; skipped 0",
+        "exit_code": 0,
+        "file": "full.log",
+        "id": "full_fixed_seed",
+        "sha256": "b4051e68c0bfdd8fdbc676558a544d56edaf79077e297c0e919fbd26dff5bb52"
+      },
+      {
+        "counts": "14/14 pass; failed 0; skipped 0",
+        "exit_code": 0,
+        "file": "unit.log",
+        "id": "v2_unit",
+        "sha256": "a80347a73b074ed25aad512f3754703b34b2203221f124140c339a84acf69bbd"
+      },
+      {
+        "counts": "3 properties x 1024 runs pass",
+        "exit_code": 0,
+        "file": "fuzz-only.log",
+        "id": "v2_fuzz_only",
+        "sha256": "78ad4ba5aca09b829d3b8509bc2dc3aacb6ba32b0bceb82ce22f66fcfbae10b3"
+      },
+      {
+        "counts": "2 properties x 256 runs x depth 128; 32768 calls each; handler reverts 0",
+        "exit_code": 0,
+        "file": "invariant-only.log",
+        "id": "v2_invariant_only",
+        "sha256": "5cca3cce2ba27df566f6351c0e0a15d87cfe0bdfbdd80dd112ee9baece1f40d2"
+      },
+      {
+        "counts": "3/3 pass; ClaimReplay, RootConflict, LineageSignerAlreadyReserved observed",
+        "exit_code": 0,
+        "file": "trace3.log",
+        "id": "detailed_trace3",
+        "sha256": "b0b2ac70bbbc5ec84e446aca92177cf9955f1adf83c2522b3ea8ba6c1edd023a"
+      },
+      {
+        "counts": "same exact carrier; clean worktree/index; upstream/live unchanged",
+        "exit_code": 0,
+        "file": "identity-status-end.log",
+        "id": "identity_status_end",
+        "sha256": "2158f933664b0565536fec6c512b6036b6c0f4e95681789658cf523e5ea73682"
+      }
+    ],
+    "runner_results_sha256": "278b01e687272f5d12f6141b444063abc8408609bcc0886c29980b89e2f208e2"
+  },
+  "residuals": {
+    "elapsed_recovery_time_claimed": false,
+    "formal_external_security_audit_performed": false,
+    "hidden_beneficial_or_custody_overlap_detectable_on_chain": false,
+    "human_audit_performed": false,
+    "numeric_drain_policy_approved": false,
+    "numeric_validity_policy_approved": false,
+    "rpo_approved": false,
+    "rpo_data_loss_slo_claimed": false,
+    "rto_approved": false
+  },
+  "roles": {
+    "canonical_writer": {
+      "human": false,
+      "name": "Reviewer A",
+      "type": "automated read-only reviewer"
+    },
+    "exact_commit_runner": {
+      "human": false,
+      "name": "Reviewer B",
+      "type": "automated read-only reviewer"
+    },
+    "independent_read_only_auditor": {
+      "external": false,
+      "human": false,
+      "name": "Reviewer C",
+      "type": "automated read-only reviewer"
+    }
+  },
+  "schema": "oraclizer.ssgkr.route-lifecycle-recovery-local-drill.v1",
+  "subject": {
+    "branch": "feature/route-lifecycle-recovery",
+    "commit": "e80ae5daf18b1e72fca39dbaa2076f62d6673a46",
+    "parent": "2a55440fae65b58ccdc054d7a0742117900ee729",
+    "tree": "92a6587990464a186e50bbd15d3cdbf7e017b389"
+  },
+  "tests": {
+    "detailed_traces": {
+      "passed": 3,
+      "selected_tests": [
+        "testActiveRouteConsumesAndPreservesV1Identities",
+        "testLineageSignerReuseIsRejectedAndFreshSignersAreReserved",
+        "testRootContextNonceHashChainAndValidityAreFailClosed"
+      ],
+      "total": 3
+    },
+    "format": "pass",
+    "forced_offline_build": {
+      "passed": 17,
+      "total_solidity_source_files": 17
+    },
+    "full_fixed_seed": {
+      "failed": 0,
+      "passed": 33,
+      "skipped": 0,
+      "total": 33
+    },
+    "fuzz": {
+      "properties": 3,
+      "runs_each": 1024,
+      "status": "pass"
+    },
+    "invariants": {
+      "calls_each": 32768,
+      "depth": 128,
+      "handler_reverts": 0,
+      "properties": 2,
+      "runs_each": 256,
+      "status": "pass"
+    },
+    "seed": "0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "v2_drill": {
+      "failed": 0,
+      "passed": 14,
+      "tests": [
+        "testActiveRouteConsumesAndPreservesV1Identities",
+        "testCrossLineageSettlementAndAuthorizationReplayAreRejected",
+        "testDrainAllowsOnlyPredrainRootAndUsesHalfOpenCutoff",
+        "testEip712RejectsWrongChainAndClonedVerifyingContracts",
+        "testEpochOneAndCrossRoleActivationAreRejected",
+        "testIncidentRevocationAndAbandonmentAreFailClosed",
+        "testLifecycleAuthoritiesAreExact",
+        "testLifecycleCasAuthorityAndTransitionGraph",
+        "testLineageSettlementCannotBeReplacedByClone",
+        "testLineageSignerReuseIsRejectedAndFreshSignersAreReserved",
+        "testPfrNonceReuseSkipAndLatentFuturePredecessorAreRejected",
+        "testRegistrationAndConsumptionWindowsAreHalfOpen",
+        "testReplacementUsesStableSettlementAndRouteIndependentNullifier",
+        "testRootContextNonceHashChainAndValidityAreFailClosed"
+      ],
+      "total": 14
+    },
+    "vectors": {
+      "passed": 2,
+      "total": 2,
+      "values": {
+        "vectors/risc0-route-b-destination-policy-v1.json": "29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141",
+        "vectors/route-lifecycle-recovery-v1.json": "089bf1681666d5a0150ebea74296f5f392b552a9cfbc19b90875cc88e05a08af"
+      }
+    }
+  },
+  "toolchain": {
+    "evm_target": "cancun",
+    "foundry_archive_sha256": "6d41121b4bbb809845821c903619cfee75ed364f2bdc58a6787c9b0454114537",
+    "foundry_commit": "4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
+    "foundry_executable_sha256": "6df26c16a6e53519abdd09fcdacf9af1ecdb50e216ee1816fa8012b5a553ef48",
+    "foundry_path": "<LOCAL_WORKSPACE>",
+    "foundry_toml_sha256": "d9a04d654b7e51e1318a105841af2102a2a83e41b81e41d9b8cd61125aec7ab0",
+    "foundry_version": "1.7.1",
+    "offline": true,
+    "solc_binary_sha256": "38cf5df656da822cf88b854cf736475a196c679f4f5f3f15ddd8c85ce5dbb36a",
+    "solc_path": "<LOCAL_WORKSPACE>",
+    "solc_version": "0.8.36+commit.8a079791.Windows.msvc"
+  },
+  "v1_and_existing_evidence_guard": {
+    "diff_empty": true,
+    "evidence_tree_after": "b17749fc9fd942bac40eba3e679bbacdd9559e80",
+    "evidence_tree_before": "b17749fc9fd942bac40eba3e679bbacdd9559e80",
+    "git_blob_oids": {
+      "src/ReceiptRootAuthorityV1.sol": "41b844c106e83be8b669c60597b060d555d31a10",
+      "src/StateSyncGKRSettlementV1.sol": "56110906b44fe23ca8e0a6eb8811480fe8fc86a5",
+      "vectors/risc0-route-b-destination-policy-v1.json": "64a1175d358767f5cdc769445fb845f62154c54e",
+      "vectors/route-lifecycle-recovery-v1.json": "74d8e282e9398120f90416ecf2b99757a87764aa"
+    }
+  },
+  "verified_evidence_carrier": {
+    "commit": "deb56c49accd3eaf68f1cf395d7498a110527e6b",
+    "end": {
+      "head_match": true,
+      "index_clean": true,
+      "live_remote": "e80ae5daf18b1e72fca39dbaa2076f62d6673a46",
+      "upstream": "e80ae5daf18b1e72fca39dbaa2076f62d6673a46",
+      "worktree_clean": true
+    },
+    "local_ahead_by": 1,
+    "remote_equality": false,
+    "remote_equality_pending_non_force_push": true,
+    "start": {
+      "head_match": true,
+      "index_clean": true,
+      "live_remote": "e80ae5daf18b1e72fca39dbaa2076f62d6673a46",
+      "upstream": "e80ae5daf18b1e72fca39dbaa2076f62d6673a46",
+      "worktree_clean": true
+    },
+    "tree": "a6240b893ce20d46e50d0bbc85043a89dd29ed90"
+  }
+}

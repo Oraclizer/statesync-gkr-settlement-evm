@@ -1,0 +1,81 @@
+No files changed, compilation skipped
+
+Ran 14 tests for test/RouteLifecycleRecoveryV2.t.sol:RouteLifecycleRecoveryV2Test
+[PASS] testActiveRouteConsumesAndPreservesV1Identities() (gas: 931299)
+[PASS] testCrossLineageSettlementAndAuthorizationReplayAreRejected() (gas: 6553067)
+[PASS] testDrainAllowsOnlyPredrainRootAndUsesHalfOpenCutoff() (gas: 7376440)
+[PASS] testEip712RejectsWrongChainAndClonedVerifyingContracts() (gas: 3395762)
+[PASS] testEpochOneAndCrossRoleActivationAreRejected() (gas: 2750594)
+[PASS] testIncidentRevocationAndAbandonmentAreFailClosed() (gas: 6486202)
+[PASS] testLifecycleAuthoritiesAreExact() (gas: 41922)
+[PASS] testLifecycleCasAuthorityAndTransitionGraph() (gas: 112854)
+[PASS] testLineageSettlementCannotBeReplacedByClone() (gas: 1686432)
+[PASS] testLineageSignerReuseIsRejectedAndFreshSignersAreReserved() (gas: 10905213)
+[PASS] testPfrNonceReuseSkipAndLatentFuturePredecessorAreRejected() (gas: 1523247)
+[PASS] testRegistrationAndConsumptionWindowsAreHalfOpen() (gas: 13077472)
+[PASS] testReplacementUsesStableSettlementAndRouteIndependentNullifier() (gas: 4423087)
+[PASS] testRootContextNonceHashChainAndValidityAreFailClosed() (gas: 673785)
+Suite result: ok. 14 passed; 0 failed; 0 skipped; finished in 121.58ms (43.59ms CPU time)
+
+Ran 6 tests for test/RouteLifecycleRecoveryV2Fuzz.t.sol:RouteLifecycleRecoveryV2FuzzTest
+[PASS] invariant_LifecycleRevisionCutoffAndTerminalStateAreFailClosed() (runs: 256, calls: 32768, reverts: 0)
+
+╭-----------------------------+-------------------------+-------+---------+----------╮
+| Contract                    | Selector                | Calls | Reverts | Discards |
++====================================================================================+
+| LifecycleInvariantHandlerV2 | step                    | 8157  | 0       | 0        |
+|-----------------------------+-------------------------+-------+---------+----------|
+| RootNonceInvariantHandlerV2 | attemptSkip             | 8239  | 0       | 0        |
+|-----------------------------+-------------------------+-------+---------+----------|
+| RootNonceInvariantHandlerV2 | attemptWrongPredecessor | 8211  | 0       | 0        |
+|-----------------------------+-------------------------+-------+---------+----------|
+| RootNonceInvariantHandlerV2 | step                    | 8161  | 0       | 0        |
+╰-----------------------------+-------------------------+-------+---------+----------╯
+
+[PASS] invariant_NonceAndHashChainAdvanceOnlyTogether() (runs: 256, calls: 32768, reverts: 0)
+
+╭-----------------------------+-------------------------+-------+---------+----------╮
+| Contract                    | Selector                | Calls | Reverts | Discards |
++====================================================================================+
+| LifecycleInvariantHandlerV2 | step                    | 8157  | 0       | 0        |
+|-----------------------------+-------------------------+-------+---------+----------|
+| RootNonceInvariantHandlerV2 | attemptSkip             | 8239  | 0       | 0        |
+|-----------------------------+-------------------------+-------+---------+----------|
+| RootNonceInvariantHandlerV2 | attemptWrongPredecessor | 8211  | 0       | 0        |
+|-----------------------------+-------------------------+-------+---------+----------|
+| RootNonceInvariantHandlerV2 | step                    | 8161  | 0       | 0        |
+╰-----------------------------+-------------------------+-------+---------+----------╯
+
+[PASS] testFuzzEconomicNullifierIsRouteIndependent(bytes32,uint64,bytes32,uint8,bytes32,bytes32) (runs: 1024, μ: 12635, ~: 12635)
+[PASS] testFuzzPfrAuthorizationBindsEveryField(bytes32,uint256) (runs: 1024, μ: 57543, ~: 57543)
+[PASS] testFuzzRootAuthorizationBindsEveryField(bytes32,uint256,address) (runs: 1024, μ: 149116, ~: 149116)
+[PASS] testIndependentCastVectorMatchesSolidityCodec() (gas: 14768)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 6.63s (12.95s CPU time)
+
+Ran 11 tests for test/DestinationEnforcement.t.sol:DestinationEnforcementTest
+[PASS] testCanonicalPackingOddNextLimbAndEdges() (gas: 198478)
+[PASS] testExactEncodingAndSettlementVectorParity() (gas: 135385)
+[PASS] testExactRootRegistrationAndReplayConflict() (gas: 1711183)
+[PASS] testNativeStatementManifestComponentMutationsFailClosed() (gas: 6437139)
+[PASS] testNextCoordinateRequiresStrictNextNonce() (gas: 1985346)
+[PASS] testRootContextNonceOverflowAndBounds() (gas: 4311260)
+[PASS] testRootSignerAndSignatureNegativeParity() (gas: 1858256)
+[PASS] testSettlementAttachmentAndBindingNegatives() (gas: 6775093)
+[PASS] testSettlementHonestConsumeAndAtomicReplay() (gas: 3628479)
+[PASS] testSettlementRoleDestinationBoundsAndOverflow() (gas: 11749036)
+[PASS] testVendoredVectorCustodyAndTypedRows() (gas: 776192)
+Suite result: ok. 11 passed; 0 failed; 0 skipped; finished in 6.63s (58.68ms CPU time)
+
+Ran 2 tests for test/DestinationEnforcementFuzz.t.sol:DestinationEnforcementFuzzTest
+[PASS] invariant_SuccessfulRegistrationsAdvanceCountersAndStrictNonceTogether() (runs: 256, calls: 32768, reverts: 0)
+
+╭----------------------+----------+-------+---------+----------╮
+| Contract             | Selector | Calls | Reverts | Discards |
++==============================================================+
+| RootInvariantHandler | step     | 32768 | 0       | 0        |
+╰----------------------+----------+-------+---------+----------╯
+
+[PASS] testFuzzAuthorizationTupleIsFullyDigestBound(uint64,bytes32,bytes32,bytes32,bytes32,uint32,uint64,bytes32,uint64,bytes32,uint32,uint64) (runs: 1024, μ: 33824, ~: 33824)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 18.73s (18.85s CPU time)
+
+Ran 4 test suites in 18.73s (32.11s CPU time): 33 tests passed, 0 failed, 0 skipped (33 total tests)

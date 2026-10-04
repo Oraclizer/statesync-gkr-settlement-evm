@@ -1,0 +1,136 @@
+{
+  "chain_id": 2151908,
+  "contracts": [
+    {
+      "address": "0xb49fa7dd4d70f773015a9c848a8719fa86d81275",
+      "block_hash": "0x5c1244c2c953e085cba113fd6ff725866a108da1e32729a6d4883c6d1864ac36",
+      "block_number": 728,
+      "contract": "NegativeProbe",
+      "creation_bytes": 8127,
+      "creation_keccak256": "0x0febf89ed523ae4e2b9688b79369adb32a4b075c5321c3af452c9a9f2840e61f",
+      "runtime_bytes": 8101,
+      "runtime_keccak256": "0xeaffb75cd1ea573b63f9e07522731d9a5563537667ba2562ed673d52426c6ed8",
+      "sequencer_replica_byte_equality": true,
+      "transaction_hash": "0x17d7b2df8149a7e6affa30c9c6280d8ded28a0f6f5fe10216c358ce4903d6fe8"
+    },
+    {
+      "address": "0x62bf798edae1b7fde524276864757cc424a5c3dd",
+      "block_hash": "0x079971f0e71ed35473777592073b95c8c9557982573e9ed81c3c9cb5cdab165b",
+      "block_number": 729,
+      "contract": "RouteLifecycleRegistryV2",
+      "creation_bytes": 7592,
+      "creation_keccak256": "0xd43f469e239fdf55f1cdc9d983710870b0b3b60cbe5609701b7fdfb28737e1ef",
+      "runtime_bytes": 6991,
+      "runtime_keccak256": "0x8d9cf7a1b717bb174d47c89ffb01addae255735ebbaf722596e21c43493dbdb0",
+      "sequencer_replica_byte_equality": true,
+      "transaction_hash": "0xfefb54b1f0f5140a54937e4c498612ed0e166e5cd0ea2590a788cc752ffa8248"
+    },
+    {
+      "address": "0x35b83d5c0fd081da9133c590ac9515d8bf917c03",
+      "block_hash": "0xc47abcf61f3b2b8032cfa2e7c6b49d593917f8c084533583c516695fe14f7d9b",
+      "block_number": 730,
+      "contract": "StateSyncGKRSettlementV2",
+      "creation_bytes": 8345,
+      "creation_keccak256": "0x4323e26ec9b97895d3996aaef5d1199e40f5d503704660baf2739e800082d9f3",
+      "runtime_bytes": 7924,
+      "runtime_keccak256": "0x314e12af1dc7de7cbf166757404f2db631f80ec02f3e538fea41223532f1ec3c",
+      "sequencer_replica_byte_equality": true,
+      "transaction_hash": "0xe8a2da123357b5d90f656ef3cd1c521f564089e2ac3917f5d1dc543a6e0bd863"
+    },
+    {
+      "address": "0x9cea3ee97f9eb1c39f3196060f24b7ed52bb7ca3",
+      "block_hash": "0x04fbbb521e5b1e6327805b8392909485bedd90fe330849c104ba89fc7cf96c9e",
+      "block_number": 731,
+      "contract": "ReceiptRootAuthorityV2",
+      "creation_bytes": 8904,
+      "creation_keccak256": "0xe422849166a5b22e2736a113f1975fd0f63fe9c3735e0b184322269ce4e9c19d",
+      "runtime_bytes": 7304,
+      "runtime_keccak256": "0xfbc523d8f4e8a58cf283df38d7b76046ed8826af39933e848a8a1357f6fb08c9",
+      "sequencer_replica_byte_equality": true,
+      "transaction_hash": "0x5d9c2e81192f5cf375adc6ceaaf6edb08355a07f161b569f1c60d3858ecc7c84"
+    },
+    {
+      "address": "0xe293a6b8f558422813499bb5c89b60add8c54636",
+      "block_hash": "0x52afe3b422e73f7bcd830c7ce19ee2534ca24fb17b1ceab57ca6d3a2c4e98b25",
+      "block_number": 732,
+      "contract": "PrimaryFinalityAuthorityV2",
+      "creation_bytes": 5495,
+      "creation_keccak256": "0x9de02fcff62ea07820836d9b1d2013d8bc4977b97c877acf7abd3c806e4d39ab",
+      "runtime_bytes": 4234,
+      "runtime_keccak256": "0x99ee3683994e0942ed81cc83759b7a1b0dc2b5221bfae4706d4b628eead5f461",
+      "sequencer_replica_byte_equality": true,
+      "transaction_hash": "0x4e477f444bf7f6699bd257deeca0043f7fe983d31ca8714bcc23926dac0a10e2"
+    }
+  ],
+  "execute_smoke": {
+    "block_hash": "0x0773e380b83eaf9574bdebd3cb600339573adf248ee0a16af39b4444a4e3d9d1",
+    "block_number": 733,
+    "log_count": 10,
+    "sequencer_replica_block_hash_equality": true,
+    "sequencer_replica_receipt_equality": true,
+    "status": 1,
+    "transaction_hash": "0xd68505332718fbd5055160dacdf11198a09f819796bf833d84eff45ab5813391"
+  },
+  "final_state": {
+    "event_count": 1,
+    "transition_count": 1
+  },
+  "negative_events": [
+    {
+      "observed_selector_topic": "0x1701ddf400000000000000000000000000000000000000000000000000000000",
+      "pfr_after": "0x4bc8e02f33da1cd8b0e89d00cae68227de897326d670e7368e284b757c764a9a",
+      "pfr_before": "0x4bc8e02f33da1cd8b0e89d00cae68227de897326d670e7368e284b757c764a9a",
+      "probe_id": "0x171c9d32423b74e6966b0e956e1daed8a6ee766e2b16a425699720124b6522d6",
+      "settlement_after": "0x55dad1544acc90613f101ff01f8a3888e1d0876af1129ca5ee769c16ab5d93ce",
+      "settlement_before": "0x55dad1544acc90613f101ff01f8a3888e1d0876af1129ca5ee769c16ab5d93ce",
+      "state_unchanged": true
+    },
+    {
+      "observed_selector_topic": "0xcc09486700000000000000000000000000000000000000000000000000000000",
+      "pfr_after": "0x4bc8e02f33da1cd8b0e89d00cae68227de897326d670e7368e284b757c764a9a",
+      "pfr_before": "0x4bc8e02f33da1cd8b0e89d00cae68227de897326d670e7368e284b757c764a9a",
+      "probe_id": "0xbab3b44706b08008aeb27a12938161e062b9bfe249a2209a026c3ea53ce88640",
+      "settlement_after": "0x55dad1544acc90613f101ff01f8a3888e1d0876af1129ca5ee769c16ab5d93ce",
+      "settlement_before": "0x55dad1544acc90613f101ff01f8a3888e1d0876af1129ca5ee769c16ab5d93ce",
+      "state_unchanged": true
+    },
+    {
+      "observed_selector_topic": "0x4899bc7200000000000000000000000000000000000000000000000000000000",
+      "pfr_after": "0x9ac4666431ae65de1a59c10c4dac8a510922dac19ef455197cd82e387eeae8b0",
+      "pfr_before": "0x9ac4666431ae65de1a59c10c4dac8a510922dac19ef455197cd82e387eeae8b0",
+      "probe_id": "0x706f77484a116797aa85a8cd429509d18b8f4b13dcf5ca337548de5ef1ff2427",
+      "settlement_after": "0x3cfd3876c2cf61d02980daf636611abaf7183e196848265e20b14f241cd11977",
+      "settlement_before": "0x3cfd3876c2cf61d02980daf636611abaf7183e196848265e20b14f241cd11977",
+      "state_unchanged": true
+    }
+  ],
+  "nonclaims": [
+    "No native CDK execution proof was generated.",
+    "No Base confirmation or SECONDARY_FINALIZED fact was produced.",
+    "No public testnet or production transaction was sent."
+  ],
+  "product_evm_match": {
+    "next_application_state": true,
+    "raw_statement_sha256": true,
+    "route_id": true,
+    "transition_count": true
+  },
+  "product_reference_event": {
+    "accepted_root": "0x88957f2aa94f0f483d11f6bbc00b37db9fedd7911eee56e15c1661e148453200",
+    "claim_id": "0x260343cb9ff044e67f4bcc4fb7be3adb82932469d8e6238da499e149d29272be",
+    "raw_statement_sha256": "0x959550f3847e15ae2d69ab027d8ef59621282eeb758746262205fa3f61b38721",
+    "settlement_key": "0xd79f243d8205d565d28f3e9a743943a3cb6fe707188ec71745c803b402dff6dc",
+    "transition_count": 1
+  },
+  "schema": "statesync-gkr-cdk-l2-execution-evidence-v1",
+  "scope": "ephemeral-local-stock-cdk-l2-evm-compatibility-only",
+  "settlement_event": {
+    "accepted_root": "0x88957f2aa94f0f483d11f6bbc00b37db9fedd7911eee56e15c1661e148453200",
+    "claim_id": "0x260343cb9ff044e67f4bcc4fb7be3adb82932469d8e6238da499e149d29272be",
+    "lifecycle_revision": 1,
+    "primary_finality_authorization_digest": "0xc38be4196c794dca6c6716d5f2d0c216ed41a27f026b570da9028fdd1ccae069",
+    "primary_finality_record_id": "0xc9ad1b8fc79e94be93701c531640f4ae5aa70c5a3fe7223541a15245aa00f4d5",
+    "route_id": "0x27b40b99a41976f061e94124b84cc8c43ee4e5ed6bad2e94267057e1d375f2ef",
+    "settlement_key": "0xd79f243d8205d565d28f3e9a743943a3cb6fe707188ec71745c803b402dff6dc"
+  }
+}

@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this Settlement EVM reference in research, please cite the repository and exact Git commit."
+title: "StateSync-GKR Settlement EVM"
+type: software
+abstract: >-
+  A Solidity reference for receipt-root authorization, route lifecycle control,
+  and one-leaf transition consumption. Includes deterministic tests, fixed
+  cross-language vectors, and bounded historical execution evidence.
+  Unaudited and not ready for production; no Settlement release tag is claimed.
+authors:
+  - family-names: "Kim"
+    given-names: "Jinwook"
+    orcid: "https://orcid.org/0009-0004-4993-8005"
+    email: "jay@oraclizer.io"
+repository-code: "https://github.com/Oraclizer/statesync-gkr-settlement-evm"
+url: "https://github.com/Oraclizer/statesync-gkr-settlement-evm"
+license:
+  - Apache-2.0
+  - MIT
+keywords:
+  - "Solidity"
+  - "receipt verification"
+  - "route lifecycle"
+  - "StateSync-GKR"

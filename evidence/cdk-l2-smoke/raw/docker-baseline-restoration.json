@@ -1,0 +1,14 @@
+{
+  "schema": "cdk-l2-smoke-docker-baseline-restoration-v1",
+  "container_id_name_equality": true,
+  "volume_name_equality": true,
+  "network_name_driver_scope_equality": true,
+  "bridge_network_id_before": "ae47946c755d0ad2969db69329123ad45aa7114946b5ed937f095e48a876d96c",
+  "bridge_network_id_after": "4d0c9c3543fbead0b756174ff45640ad281449bdec32ad16d2da01fc63c9cb19",
+  "bridge_id_changed": true,
+  "bridge_id_change_reason": "Docker daemon restart after WSL automatic shutdown; built-in network was recreated",
+  "enclave_container_count": 0,
+  "enclave_volume_count": 0,
+  "enclave_network_count": 0,
+  "image_cache_retained": true
+}

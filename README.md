@@ -13,38 +13,49 @@
 
 # StateSync-GKR Settlement EVM
 
-A deterministic EVM reference for destination receipt-root enforcement in the
-StateSync-GKR stack, built with Foundry on a fully pinned toolchain.
+A deterministic Solidity reference for receipt-root authorization, route
+lifecycle control, and one-leaf state-transition consumption in the
+StateSync-GKR stack.
 
-> **Pre-deployment baseline.** The repository establishes its build, security,
-> and contribution boundaries before contract implementation lands; see
-> [`DISCLAIMER.md`](DISCLAIMER.md) for the exact non-claims.
+> **WARNING:** This is unaudited research software. The V2 contracts are not
+> deployed or ready for production. Historical V1 Base Sepolia deployments are
+> permanently abandoned and must not be reactivated.
 
-## Part of the StateSync-GKR stack
+## What is available
 
-The [StateSync-GKR prover](https://github.com/Oraclizer/statesync-gkr) proves
-sparse-Merkle state transitions and emits receipt roots. This repository is
-where those receipt roots meet the EVM: settlement contracts that enforce
-destination policy against quorum vectors produced by the prover, failing
-closed when a receipt does not verify. The prover repository owns proving and
-verification; this repository owns on-chain enforcement.
+The V2 reference combines a lineage registry, a stable Settlement contract,
+and separate Root and Primary-Finality Record (PFR) authorities. It checks
+destination-bound EIP-712 authorizations, strict nonce and predecessor chains,
+route lifecycle revisions, receipt membership, and replay-resistant transition
+consumption. Rejected calls preserve state atomically through EVM reversion.
 
-## Current status
-
-| Area | Status |
+| Surface | Evidence and boundary |
 | --- | --- |
-| Repository policy and Continuous Integration baseline | Present |
-| Fully pinned toolchain (Foundry commit, solc build hash, EVM target, optimizer, seeds) | Present |
-| External Solidity dependencies | Zero: no forge-std, no `lib/`, no submodules |
-| Deterministic bytecode inputs (`bytecode_hash = "none"`, no CBOR metadata) | Present |
-| Sandboxed tests (FFI disabled, empty filesystem permissions, script execution protection) | Present |
-| Warnings promoted to errors | Present |
-| Solidity contracts and cross-language vectors | Land through reviewed pull requests; not yet on the default branch |
-| Independent security audit, release, deployment | Not yet |
+| V2 contracts | Deterministic local tests, fuzzing, invariants and fixed vectors; no production deployment or independent security audit |
+| V1 contracts | Historical Base Sepolia execution evidence; addresses and roles are permanently abandoned |
+| CDK compatibility | Historical execution on an ephemeral stock Polygon CDK L2; no CDK L3, native proof, parent settlement or secondary-finality result |
+| Toolchain | Foundry 1.7.1, exact solc 0.8.36 binary, Cancun, optimizer 200 and via-IR; no external Solidity dependency |
+| Publication identity | Source code identified by Git commit; no Settlement release tag or stable API is claimed |
 
-Passing Continuous Integration at this stage shows that the policy baseline is
-well formed under the pinned toolchain; contract-level assurance arrives with
-the contracts themselves.
+## Relationship to StateSync-GKR
+
+The [StateSync-GKR prover v1.1.0](https://github.com/Oraclizer/statesync-gkr/releases/tag/v1.1.0)
+owns the Rust proof path, Isabelle models, external proof identity and recorded
+public inputs. Its archived source is
+[DOI 10.5281/zenodo.23136385](https://doi.org/10.5281/zenodo.23136385).
+This repository owns the Solidity reference consumers and lifecycle authorities.
+Receipt roots are produced by the external verifier network and authorized for
+consumption by separately configured quorums; the prover does not supply those
+production authorities.
+
+The preserved implementation source is
+[`5efa0d65e73d07afe9f9a2dbc418e31f6247cbc7`](https://github.com/Oraclizer/statesync-gkr-settlement-evm/tree/5efa0d65e73d07afe9f9a2dbc418e31f6247cbc7).
+The raw192 encoding and native one-leaf statement/root formulas agree with the
+prover's v1.1 public inputs. The executable destination evidence uses earlier
+historical fixtures, not a new v1.1 destination run. V2 Root/PFR authorization
+is a separate epoch-2 EIP-712 contract. See the
+[repository relationship and compatibility map](docs/REPOSITORY_RELATIONSHIP.md)
+for the exact source, receipt and assumption boundaries.
 
 ## Quick start
 
@@ -70,8 +81,11 @@ Then run the same checks CI runs:
 
 ```sh
 forge --version
+sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256
+sha256sum -c vectors/route-lifecycle-recovery-v1.json.sha256
 forge fmt --check
 forge build --offline --use ./solc-0.8.36
+forge build --offline --use ./solc-0.8.36 --sizes --skip script
 forge test --offline --use ./solc-0.8.36 --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
 ```
 
@@ -82,79 +96,75 @@ forge Version: 1.7.1
 Commit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8
 ```
 
-These commands require no RPC endpoint, fork, wallet, signature, broadcast, or
-deployment.
+These checks use public, never-production signing fixtures and require no RPC,
+fork, external wallet, broadcast, or deployment. The local CDK smoke script is
+separate from ordinary tests; see its historical evidence and reproduction
+boundary before using it.
 
-## Pinned build profile
+## Contract ownership
 
-| Setting | Value |
-| --- | --- |
-| Foundry | `1.7.1` / `4072e48705af9d93e3c0f6e29e93b5e9a40caed8` |
-| Solidity | `0.8.36+commit.8a079791`, auto-detection disabled, checksum-verified |
-| EVM target | `cancun` |
-| Optimizer | enabled, 200 runs |
-| Fuzzing | 1,024 runs with the checked-in 32-byte seed |
-| Invariants | 256 runs, depth 128, same deterministic test-runner seed |
-| FFI | disabled |
-| Compiler metadata hash | disabled for deterministic bytecode inputs |
+```mermaid
+flowchart LR
+    Registry[RouteLifecycleRegistryV2] --> Settlement[StateSyncGKRSettlementV2]
+    Root[ReceiptRootAuthorityV2] --> Settlement
+    PFR[PrimaryFinalityAuthorityV2] --> Settlement
+    Registry --> Root
+    Registry --> PFR
+```
 
-`cancun` is selected instead of a newer default so future artifacts do not
-silently depend on Prague or Osaka opcodes before a destination network profile
-is explicitly reviewed. A later target change must be treated as a compatibility
-and bytecode-identity change.
+The registry fixes one Settlement for a lineage and controls route lifecycle.
+Root and PFR authorities bind their authorizations to that registry, Settlement,
+route, epoch, revision, nonce, predecessor and validity window. The Settlement
+owns route-independent economic nullifiers. It has no nullifier migration,
+proxy upgrade or automatic successor. On-chain signer-address separation does
+not establish independence of the people or custody systems behind the addresses.
 
-Foundry 1.7.1 exposes the deterministic runner seed through `fuzz.seed` and the
-`--fuzz-seed` flag. The invariant run count and depth are separately pinned in
-`foundry.toml`; Continuous Integration supplies the same runner seed explicitly.
+## Historical evidence and non-claims
+
+The preserved V1 records include Base Sepolia contract creation, root
+registration, receipt consumption and negative-call observations. A published
+skipped-nonce signature and missing destination binding make those epoch-1
+addresses permanently evidence-only. They must not receive further signing,
+registration, consumption or activation.
+
+The V2 tests and local CDK L2 smoke are preserved separately. A smoke result
+does not establish CDK L3 integration, a native execution proof, Base-parent
+settlement, production custody, or secondary finality. No deployment or live
+transaction is performed by publishing this source. Assumptions and operational
+requirements are in [THREAT_MODEL_V2.md](docs/THREAT_MODEL_V2.md) and the
+[predeployment checklist](docs/PREDEPLOYMENT_CHECKLIST.md).
 
 ## Repository map
 
-- [`foundry.toml`](foundry.toml): compiler, EVM, optimizer, fuzz, invariant,
-  formatting, and sandbox settings.
-- [`.github/workflows/ci.yml`](.github/workflows/ci.yml): least-privilege,
-  immutable-action Continuous Integration with a checksum-verified compiler.
-- [`SECURITY.md`](SECURITY.md): private vulnerability reporting and the current
-  support boundary.
-- [`CONTRIBUTING.md`](CONTRIBUTING.md): contribution and validation rules.
-- [`GOVERNANCE.md`](GOVERNANCE.md): review, merge, release, and authority rules.
-- [`SUPPORT.md`](SUPPORT.md): support scope and routing.
-- [`DISCLAIMER.md`](DISCLAIMER.md): plain-language non-claims.
-- [`CHANGELOG.md`](CHANGELOG.md): user-relevant repository changes.
+- [V2 Settlement](src/StateSyncGKRSettlementV2.sol) and
+  [lifecycle registry](src/RouteLifecycleRegistryV2.sol): lineage state and transition consumption.
+- [V2 Root authority](src/ReceiptRootAuthorityV2.sol) and
+  [PFR authority](src/PrimaryFinalityAuthorityV2.sol): destination-bound authorizations.
+- [V1 encoding](docs/ENCODING.md) and [V2 encoding](docs/ENCODING_V2.md): fixed fields and hash formulas.
+- [Vectors](vectors/README.md): content-bound reference inputs and checksums.
+- [Local lifecycle drill](evidence/route-lifecycle-recovery-local-drill-2026-08-18.md): historical deterministic validation.
+- [Base Sepolia evidence](evidence/base-sepolia-destination-enforcement-live-2026-08-15.md): abandoned V1 testnet instances.
+- [CDK L2 smoke evidence](evidence/cdk-l2-smoke/README.md): bounded historical execution and its reproducibility manifest.
+- [Runbook](docs/RUNBOOK.md) and [route lifecycle operations](docs/operations/route-lifecycle-recovery-v1.md): operational boundaries.
+- [Foundry configuration](foundry.toml), [CI](.github/workflows/ci.yml) and [changelog](CHANGELOG.md): build and maintenance.
 
-## Where this repository sits
+## Security, contributing and support
 
-<p align="center">
-  <picture>
-    <source media="(max-width: 900px)" srcset="assets/diagrams/settlement-stack-boundary-mobile.svg">
-    <img src="assets/diagrams/settlement-stack-boundary.svg" width="1100" alt="The sibling StateSync-GKR prover emits receipt roots and quorum vectors, vendored here as content-addressed inputs; this repository owns a root authority registry feeding fail-closed settlement consumption, with destination networks out of scope">
-  </picture>
-</p>
+Report suspected vulnerabilities privately through [SECURITY.md](SECURITY.md),
+never in a public issue. Tests, source review, historical execution evidence,
+formal verification, security audits and production operation are distinct
+claims. No independent security audit or production-readiness finding is claimed.
 
-A contract-level architecture diagram lands together with the first contracts
-on the default branch; it will describe actual state ownership, trust
-boundaries, and fail-closed paths rather than anticipate code that has not
-merged.
+[CONTRIBUTING.md](CONTRIBUTING.md) describes the checks and accepted contributions.
+[GOVERNANCE.md](GOVERNANCE.md) identifies the maintainer and decision process.
+[SUPPORT.md](SUPPORT.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) define support
+and participation boundaries.
 
-## Security
+## License and citation
 
-Report suspected vulnerabilities privately following
-[`SECURITY.md`](SECURITY.md): email `security@oraclizer.io`, never a public
-issue. Source review, tests, fuzzing, invariants, cross-language vectors,
-independent audits, compiler output review, and deployed-bytecode verification
-are distinct assurance layers, and each is claimed only where its evidence
-exists.
-
-## Contributing, governance, and support
-
-Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before proposing a change. Project
-decisions and merge authority are described in [`GOVERNANCE.md`](GOVERNANCE.md).
-General support boundaries are in [`SUPPORT.md`](SUPPORT.md), and all
-participation is governed by [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
-
-## License
-
-Licensed under either the Apache License, Version 2.0 or the MIT License, at your
-option. See [`LICENSE-APACHE`](LICENSE-APACHE) and [`LICENSE-MIT`](LICENSE-MIT).
-
-This README and [`DISCLAIMER.md`](DISCLAIMER.md) summarize important boundaries;
-the license files control the warranty and liability terms.
+Licensed under Apache-2.0 or MIT, at your option. See
+[LICENSE-APACHE](LICENSE-APACHE), [LICENSE-MIT](LICENSE-MIT), and
+[DISCLAIMER.md](DISCLAIMER.md) for the controlling terms and scope.
+Use [CITATION.cff](CITATION.cff) and the exact Git commit when citing this
+Settlement source. The prover's release and DOI identify the prover artifact,
+not a release or security approval of this repository.

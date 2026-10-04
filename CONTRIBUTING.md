@@ -1,8 +1,11 @@
 # Contributing
 
-Thank you for helping improve StateSync-GKR Settlement EVM. The repository is a
-pre-deployment baseline; [`DISCLAIMER.md`](DISCLAIMER.md) records the exact
-boundaries.
+Thank you for helping improve StateSync-GKR Settlement EVM. A historical V1 Base
+Sepolia Root/Settlement evidence deployment exists, but it is unsupported and
+permanently EVIDENCE-ONLY / ABANDONED / NON-ACTIVATABLE. No supported or
+activatable deployment or address exists. V2 remains an unaudited,
+non-deployed local candidate with a frozen test vector; it is not a release or
+production system.
 
 ## Before opening a change
 
@@ -44,13 +47,18 @@ from the official `binaries.soliditylang.org` index, or `svm install 0.8.36`.
 Then run the same checks CI runs:
 
 ```sh
+sha256sum -c vectors/risc0-route-b-destination-policy-v1.json.sha256
+sha256sum -c vectors/route-lifecycle-recovery-v1.json.sha256
 forge fmt --check
 forge build --offline --use ./solc-0.8.36
+forge build --offline --use ./solc-0.8.36 --sizes --skip script
 forge test --offline --use ./solc-0.8.36 --fuzz-seed 0x000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f
 ```
 
-These checks require no RPC endpoint, fork, FFI, wallet, signature, broadcast, or
-deployment. Do not add those operations to ordinary Continuous Integration.
+These checks require no RPC endpoint, fork, FFI, external wallet or signing
+service, real signer, key custody, broadcast, or deployment. Foundry uses only
+deterministic `vm.sign` calls with public, never-production test fixtures. Do not
+add external signing or deployment operations to ordinary Continuous Integration.
 
 ## Change requirements
 
@@ -88,3 +96,11 @@ and that it contains no third-party confidential or improperly copied material.
 You agree that your contribution is licensed under the repository's dual
 Apache-2.0 OR MIT terms. No separate Contributor License Agreement or Developer
 Certificate of Origin is currently required.
+
+## Signed source identity
+
+The first publication-consolidation commit starts the maintainer signing
+policy. Earlier commits retain their original signing status and authorship.
+Later maintainer commits are SSH-signed and merged with their signatures
+preserved. Maintainer pull requests use merge commits; external contributions
+use squash. Rebase merging is disabled. No release tag is claimed by this policy.
