@@ -1,0 +1,365 @@
+{
+  "schema": "statesync-gkr-base-sepolia-destination-enforcement-live-v1",
+  "status": "EVIDENCE_ONLY_ABANDONED_NON_ACTIVATABLE_TECHNICAL_EXECUTION_4_OF_4_PASS_OPERATIONAL_CONDITIONS_1_TO_5_OF_6_PASS_CONDITION_6_REMOTE_DURABILITY_OPEN_ACCEPTANCE_OVERALL_HOLD",
+  "network": {
+    "name": "Base Sepolia",
+    "chainId": 84532,
+    "finalizedEvidencePin": {
+      "number": 45485221,
+      "hash": "0x51954822f52e1a3a6af56d2578461695ee7ec14b2f9ad6216546da1badfff9b1",
+      "timestamp": "2026-08-15T05:18:50+09:00",
+      "stateRoot": "0xc2f6f9cb4daf02c3d6760b213d0732d21e784f48801b66c79f936fc1caedba05"
+    },
+    "safeAndFinalizedContainAllTransitions": true
+  },
+  "provenance": {
+    "productSemanticAuthorityCommit": "superseded-by-content-binding-blob-64a1175d358767f5cdc769445fb845f62154c54e",
+    "productCurrentRemoteHead": "superseded-by-content-binding-blob-64a1175d358767f5cdc769445fb845f62154c54e",
+    "evmImplementationRemoteHead": "f00aef0f9fb3d3430047ec7990a3e9cacfe794f0",
+    "preflightEvidenceParent": "da08917468923d2c7f9d65761b1894dc0197e7c2",
+    "privateLogAcceptanceCheckpoint": "recorded-in-private-operations-log",
+    "privateLogCurrentRemoteHead": "recorded-in-private-operations-log",
+    "privateLogCurrentRemoteHeadParent": "recorded-in-private-operations-log",
+    "privateLogCurrentRemoteHeadProcess": "recorded-in-private-operations-log",
+    "brainCurrentRemoteHeadSemanticallyAssimilated": false,
+    "productVectorSha256": "29a4528629d471ab9d3efcefec4a494477a93b5866e689fbeb3010b1e7627141",
+    "preflightEvidence": "evidence/base-sepolia-destination-enforcement-preflight-2026-08-14.json"
+  },
+  "custody": {
+    "profile": "external-encrypted-json-v3-current-user-dpapi",
+    "testnetOnly": true,
+    "publicManifestSha256": "fb08172276c186dd340eb79ad22d7469b64f387303d0aa282bb3ce657bba041f",
+    "deployer": "0x26245E085100AE21A1A8a55B54a30b41DF64B900",
+    "passwordTransfer": {
+      "dpapiFileRepresentation": "716 lowercase hexadecimal characters decoded to a 358-byte Windows CurrentUser DPAPI blob",
+      "unprotectedRepresentation": "128 bytes UTF-16LE containing 64 ASCII characters",
+      "stdinInput": "the 64 ASCII characters only; no explicit BOM",
+      "temporaryPasswordFile": "redirected-stdin path emitted an implicit UTF-8 BOM followed by the 64 ASCII bytes; exact size 67; prefix efbbbf; mode 0600",
+      "doubleBomDiagnostic": "an explicit BOM was not used; a prior explicit-BOM attempt combined with the redirector BOM and failed keystore MAC validation before signing",
+      "ciphertextOnlyDiagnosticDisclosure": true,
+      "secretValueDisclosureCount": 0,
+      "rawKeyDisclosureCount": 0,
+      "finalSharedMemoryResidueCount": 0
+    }
+  },
+  "funding": {
+    "transactionHash": "0x050d0d9f81655a341c16db3656d41b9e677428d66b27148e9f47df651ae0a491",
+    "blockNumber": 45481276,
+    "blockHash": "0x1cba46405271753cdf62ebecd9d954e41a8d3cbf44f2153e465eea39e5bc183e",
+    "status": 1,
+    "from": "0x6cd01c0f55ce9e0bf78f5e90f72b4345b16d515d",
+    "to": "0x3e4ed2d6d6235f9d26707fd5d5af476fb9c91b0f",
+    "amountWei": "100000000000000",
+    "gasUsed": 116976,
+    "effectiveGasPriceWei": "6000000",
+    "l1FeeWei": "5852018206",
+    "allInFeeWei": "707708018206",
+    "timestamp": "2026-08-15T03:07:20+09:00",
+    "externalFundingLogCount": 1,
+    "externalFundingLog": {
+      "address": "0x3e4ed2d6d6235f9d26707fd5d5af476fb9c91b0f",
+      "topics": ["0x34fcbac0073d7c3d388e51312faf357774904998eeb8fca628b9e6f65ee1cbf7", "0x00000000000000000000000026245e085100ae21a1a8a55b54a30b41df64b900"],
+      "dataKeccak256": "0xd1c82ca4c84916c9860df7ace8c66a31eebc755b80faa082ccd4db253a33fa6e"
+    }
+  },
+  "contracts": {
+    "root": {
+      "address": "0x4EF2d1A2Ea8FC71347801b0E6A4cCF51E6898056",
+      "runtimeBytes": 5538,
+      "runtimeSha256": "91c9d765eeca0318e257ebc14431ec29c551686325aee02b60a7a04ea1cafc5f",
+      "runtimeKeccak256": "0x5892c1b8aeca153e2ed2c0af147f8dfd80e5906b1886a5d581156a3b484c2360",
+      "stateDigest": "0x1c225049612ac7c2042ae68d0dd129713e9e56e3af68bc4f959418a98824dbef"
+    },
+    "settlement": {
+      "address": "0xD5e6befEfE3aD991e3677be744b6D7Fd3F5c02AE",
+      "runtimeBytes": 6689,
+      "runtimeSha256": "61cc9aec11ea7fa532af038c080f4ef0efb8ef9354f3167eb73a5b6cf99d1abe",
+      "runtimeKeccak256": "0x142573c3c22475fe568e14ca3ded54cbdbd28078af23c6b07bf6fbcc5e5c09cb",
+      "stateDigest": "0x8fed68c3f4aa0e1252779eed59afda66e3b912dcc36b1641ef38c1bb9c27a481"
+    },
+    "topology": {
+      "directNonUpgradeableDeployments": true,
+      "adminOwnerUpgraderPauseUpgradeDeleteSurfaces": false,
+      "eip1967FinalizedStorage": {
+        "implementationSlot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "adminSlot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+        "beaconSlot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+        "rootValues": ["0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000"],
+        "settlementValues": ["0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000"]
+      }
+    }
+  },
+  "transactions": [
+    {
+      "nonce": 0,
+      "kind": "ROOT_DIRECT_CREATE",
+      "hash": "0x716a50ea247fe2cb4b7c2ac94be24fc107ae30f13d120905461775fa7a8fbe40",
+      "blockNumber": 45482374,
+      "blockHash": "0x269b375fbb3f57320ee1b7142b7273b4d6792f1322843204be725a948400a23b",
+      "status": 1,
+      "from": "0x26245E085100AE21A1A8a55B54a30b41DF64B900",
+      "contractAddress": "0x4EF2d1A2Ea8FC71347801b0E6A4cCF51E6898056",
+      "gasLimit": 1837085,
+      "gasUsed": 1530904,
+      "effectiveGasPriceWei": "6000000",
+      "l1FeeWei": "234691189448",
+      "allInFeeWei": "9420115189448",
+      "maxFeePerGasWei": "11000000",
+      "maxPriorityFeePerGasWei": "1000000",
+      "valueWei": "0",
+      "inputBytes": 6867,
+      "inputSha256": "a04316fb42145ebb06218dea61beb45f95c98ed4d73da279fda1aab84864ea42",
+      "inputKeccak256": "0xabceb010a87fac332c46e907860b4d8fcbb24ac4f919c54f886859b7acfc7e55",
+      "eventCount": 0,
+      "timestamp": "2026-08-15T03:43:56+09:00"
+    },
+    {
+      "nonce": 1,
+      "kind": "SETTLEMENT_DIRECT_CREATE",
+      "hash": "0xa72ab3796f654e6d7fc0814aefa07792658b302d75e5b47896511826af089157",
+      "blockNumber": 45483228,
+      "blockHash": "0x385dfea1614d7ec5a8479174c08dddf51f8492bfda1b9bbbd9edccdafd7e2b17",
+      "status": 1,
+      "from": "0x26245E085100AE21A1A8a55B54a30b41DF64B900",
+      "contractAddress": "0xD5e6befEfE3aD991e3677be744b6D7Fd3F5c02AE",
+      "gasLimit": 2015350,
+      "gasUsed": 1679458,
+      "effectiveGasPriceWei": "6000000",
+      "l1FeeWei": "279762323937",
+      "allInFeeWei": "10356510323937",
+      "maxFeePerGasWei": "11000000",
+      "maxPriorityFeePerGasWei": "1000000",
+      "valueWei": "0",
+      "inputBytes": 8040,
+      "inputSha256": "9096f046cddcde3385b8e5373f134b1e7ce45abf836eeab888b821452bf44c1a",
+      "inputKeccak256": "0x3bb7beb6f94c89babe95ab77e4f497433f1e1c168738ae91b6faa07885824f04",
+      "eventCount": 0,
+      "timestamp": "2026-08-15T04:12:24+09:00"
+    },
+    {
+      "nonce": 2,
+      "kind": "REGISTER_ROOT",
+      "hash": "0xd292660c9ca7048b1c49ba6f0a8cab9ec817630fddd0fe5e9fc07ca51bc3d638",
+      "blockNumber": 45484403,
+      "blockHash": "0x74085ebd808e143cb175c28c2a9d2c73861eaf1f310b583b178240f49c3fc692",
+      "status": 1,
+      "from": "0x26245E085100AE21A1A8a55B54a30b41DF64B900",
+      "to": "0x4EF2d1A2Ea8FC71347801b0E6A4cCF51E6898056",
+      "gasLimit": 426218,
+      "gasUsed": 355181,
+      "effectiveGasPriceWei": "6000000",
+      "l1FeeWei": "27845403487",
+      "allInFeeWei": "2158931403487",
+      "maxFeePerGasWei": "11000000",
+      "maxPriorityFeePerGasWei": "1000000",
+      "valueWei": "0",
+      "inputBytes": 932,
+      "inputSha256": "f86b437aa89b9b3333b468218477d10a931a4e3a4bc7485176b917b0df0b1875",
+      "inputKeccak256": "0xddfeeadfa52fa7a98b637827edcbaa06823e529b0e9ff11b125c36c7d8ea7ad7",
+      "event": {
+        "name": "ReceiptRootRegistered",
+        "topics": ["0x56ac98d35680d5c5313569bb7727a0530b85403a8982d4a4229dcefe0aa4df15", "0x02642bf98eddfd93180e16bd10f7b00206d37d708e281f3bdb331f689ee94698", "0x7ccc4e3c7d7f38c2f37e515e26edf63b9d3cc8b069b463600961c780ea535c7d"],
+        "dataKeccak256": "0x0950ca083c831e0ef3642efad131414a528bfe8d073a04fa98dcebb29d77196a",
+        "root": "0x7c609ffcf63004e1203188d6fbed6f5431fa344d6f90990c2c45a6db3bbc466e",
+        "authorizationNonce": 1,
+        "attesters": ["0x2CF24739b41CE76476f47a177Eca3cEea79d1e30", "0x3e097e12c9800Ea68c72584eB953E1Af9AAa8dD2", "0x4EaDD8246bdf73244759DD7f022237e50C507536"]
+      },
+      "eventCount": 1,
+      "timestamp": "2026-08-15T04:51:34+09:00"
+    },
+    {
+      "nonce": 3,
+      "kind": "HONEST_RECEIPT_CONSUME",
+      "hash": "0x9e2bde96af3279d955a35afc08b11c05fa2e732b1a8bb95e4867d6aa77fb7036",
+      "blockNumber": 45485219,
+      "blockHash": "0xf9f2e997a706cbb69ba6a75bba8e5daa82f10ecb8616ec8999199a872449cafd",
+      "status": 1,
+      "from": "0x26245E085100AE21A1A8a55B54a30b41DF64B900",
+      "to": "0xD5e6befEfE3aD991e3677be744b6D7Fd3F5c02AE",
+      "gasLimit": 335846,
+      "gasUsed": 279871,
+      "effectiveGasPriceWei": "6000000",
+      "l1FeeWei": "35450186374",
+      "allInFeeWei": "1714676186374",
+      "maxFeePerGasWei": "11000000",
+      "maxPriorityFeePerGasWei": "1000000",
+      "valueWei": "0",
+      "inputBytes": 1604,
+      "inputSha256": "1e6b34057b557ad8d65a5765c8dab5bb252bc799854ab817b9e0b772bd7f1d4d",
+      "inputKeccak256": "0x86128929397db381f8dda1d32d66c1410535bafe8aa305239a95b2a072558b79",
+      "event": {
+        "name": "SettlementConsumed",
+        "topics": ["0xf2db2ce98678a95fb1e06a8162d68102e0d22569aa433f9c206d1192e31063c9", "0xdd781e4b503738241e852484fe1db0af245c61fbb57a9ee4c1c11bd649cd3395", "0x8b95044346966f4f9123d718deee56cc78bcf539e35a5eb4ee7460455fbcddf9", "0x00dc0504fcd956008deed8f46067ead0e7008f40f4dfbf711e016e0aa88f3904"],
+        "dataKeccak256": "0x832e44a36fe17445e04885c1c44deaa7a554a8adb17fa56bd925b66e363c984f",
+        "acceptedRoot": "0x88957f2aa94f0f483d11f6bbc00b37db9fedd7911eee56e15c1661e148453200"
+      },
+      "eventCount": 1,
+      "timestamp": "2026-08-15T05:18:46+09:00"
+    }
+  ],
+  "finalizedGetters": {
+    "deployerNonce": 4,
+    "deployerBalanceWei": "76349766896754",
+    "totalD0TransactionFeesWei": "23650233103246",
+    "root": {
+      "signerSetEpoch": 1,
+      "threshold": 3,
+      "configuredSignerCount": 5,
+      "configuredSigners": ["0x2CF24739b41CE76476f47a177Eca3cEea79d1e30", "0x3e097e12c9800Ea68c72584eB953E1Af9AAa8dD2", "0x4EaDD8246bdf73244759DD7f022237e50C507536", "0x9d129d6316EcB11270fd173F00962A82020Ffa17", "0xfc33aCE1A0e34EeFab1e0d886c02a2d79Be4fcf0"],
+      "sourceNetworkId": "0x63f64f53339e0cfb288c57b0091f4932fa3181361fa87ba1dc583fbc172d836e",
+      "sourceGenesisHash": "0xff7fe5a610f15fe7a0c52f94f86313fb7db7d3786e7f8acf2b66c11d5be7c242",
+      "sourceRuntimeId": "0x7f98ae91ea34aff20365f8f157636ea7b2eccd216212dca424ca4bce2b2b9a8b",
+      "verificationContextHash": "0x676acbc40b7c7b5ba646aee26dd77984104e0674391ebd9f8e70b60d84ca6660",
+      "domainId": 2,
+      "nextAuthorizationNonce": 2,
+      "transitionCount": 1,
+      "eventCount": 1,
+      "coordinateId": "0x02642bf98eddfd93180e16bd10f7b00206d37d708e281f3bdb331f689ee94698",
+      "authorizationDigest": "0x7ccc4e3c7d7f38c2f37e515e26edf63b9d3cc8b069b463600961c780ea535c7d",
+      "sourceBlockNumber": 6726351,
+      "sourceBlockHash": "0xb995cd3981fb8013be45d89009aa360a338935e4ec9feb8e653e7d724af9206c",
+      "aggregationId": 53668,
+      "root": "0x7c609ffcf63004e1203188d6fbed6f5431fa344d6f90990c2c45a6db3bbc466e",
+      "leafCount": 1,
+      "exists": true,
+      "attesters": ["0x2CF24739b41CE76476f47a177Eca3cEea79d1e30", "0x3e097e12c9800Ea68c72584eB953E1Af9AAa8dD2", "0x4EaDD8246bdf73244759DD7f022237e50C507536"]
+    },
+    "settlement": {
+      "rootAuthority": "0x4EF2d1A2Ea8FC71347801b0E6A4cCF51E6898056",
+      "pfrSignerSetEpoch": 1,
+      "threshold": 2,
+      "configuredSignerCount": 3,
+      "configuredSigners": ["0x5c3D78e1102e92f4e1914ce8BFF918828A9D58DE", "0x65816B71b34bFDaf78A174bBbb8dDDc0A176CE0c", "0x81cdBD7726B0cdB14EbDf64b4a9aCc3B8D074f57"],
+      "destinationChainId": 84532,
+      "destinationConsumer": "0x000000000000000000000000d5e6befefe3ad991e3677be744b6d7fd3f5c02ae",
+      "imageId": "0xdd947fec1fe270c41bc0457912e1e77427c16797ac47dc6a1c825a9323648643",
+      "verifierVersionHash": "0xaa24368f9ce9025f58596d966209fc3f322c8cac37dae753bb9b0367d273700d",
+      "transitionCount": 1,
+      "eventCount": 1,
+      "claimId": "0xdd781e4b503738241e852484fe1db0af245c61fbb57a9ee4c1c11bd649cd3395",
+      "settlementKey": "0x8b95044346966f4f9123d718deee56cc78bcf539e35a5eb4ee7460455fbcddf9",
+      "pfrId": "0x00dc0504fcd956008deed8f46067ead0e7008f40f4dfbf711e016e0aa88f3904",
+      "acceptedRoot": "0x88957f2aa94f0f483d11f6bbc00b37db9fedd7911eee56e15c1661e148453200",
+      "claimConsumed": true,
+      "settlementConsumed": true
+    }
+  },
+  "negativeVerification": {
+    "finalizedEip1898VectorCases": {
+      "passed": 25,
+      "total": 25,
+      "basis": "all frozen 33 typed cases except four constructor-only cases, three overflow cases requiring call-local state override, and SettlementReplay requiring an alternate valid PFR",
+      "exactErrorSelectors": true,
+      "stateAndLogsUnchanged": true
+    },
+    "additionalValidlySignedNativeCalls": {
+      "passed": 5,
+      "total": 5,
+      "cases": [
+        {
+          "id": "same_coordinate_root_conflict",
+          "mutation": {"aggregationId":53668,"root":"0x7c609ffcf63004e1203188d6fbed6f5431fa344d6f90990c2c45a6db3bbc466f","authorizationNonce":1},
+          "digest": "0x18b566b89f0c7aa2bd2814f6f5d1ee65b848910f94350345eefac08c507e254c",
+          "expectedSelector": "0x68693590",
+          "signerSubset": "R1-R3",
+          "signatures": ["0xba555c8e0526ea044fa0958175476582614fab731082cbcaaa2170879f8d30f83405454f95b129e54b211b8918e2fcc544a5e22d0fdac8d747991f7c0e5219621c", "0xa8fada39bbd541370c67ecfafb89a6717a5bcea51258a8076dcd3c99639a0fd813ab482f47a6f57c8eecd3afce09f94a74344be6f49b4d6c50e85f153a0caa161b", "0x392ae031dafdb0511d92d10df240a637faa4c5648e31c5e9e5d542348203fa1878b264a442c3b472778d3364996268c72fbdbf4aa5e481f7dd2d6ce0d23de10b1c"]
+        },
+        {
+          "id": "stale_epoch",
+          "mutation": {"signerSetEpoch":0,"aggregationId":53669,"authorizationNonce":2},
+          "digest": "0xedd28283d46693495fbdccf2d0d04fb0738a4e8114cdff9235ef8c2fea3d084d",
+          "expectedSelector": "0xda669d8e",
+          "signerSubset": "R1-R3",
+          "signatures": ["0xb060634f7cef04412ceac98315f9f359eaf60afbf68d6e408bd9083f5947be88188b3c8a7d7e11bb968c53c276add4c975483d0a5ce97efd78091dc2476f4fa21c", "0x589e4df355ddf0401eea731dbdd37b79ed482cb930eaff6b81e30baf6bff88ae473a986975353845505e861ec99877470e2dccc2e6b48c6bfe6b13261088d2f11b", "0x2be2d1a357108078bee3e9ae669ec6565f781c4c6efc18f4b203c79fa70c5892545ef479b0f413b58652651b8de8c4bc384ea5f8061f060594f7a0a6812ac2a91c"]
+        },
+        {
+          "id": "reused_nonce",
+          "mutation": {"signerSetEpoch":1,"aggregationId":53669,"authorizationNonce":1},
+          "digest": "0x75ef8875a0f3bbbcfda01c67fa266125c5baf22f3052fa630aedc72c2198f5fc",
+          "expectedSelector": "0x54d5b1df",
+          "signerSubset": "R1-R3",
+          "signatures": ["0xac623e1788a1bd2996951a35075917a9d1722f6561071e85034e5e26b6703bf47eb0ad6adedd45ca3a552db3be2ee164bbfe8686b471adbc4d49e3f1e05514221c", "0x3ab923451149635c8f2da8c35dc068b4131d06cde1b19275b8eaf4aa2ea2e5cd6ad396aad30a52ed008d99e856dce3d0538966d680118d2c3588c1b7adcb85811b", "0x5e3761b197ff70804f254ba69417be9b32b2ac70a542c26041213be7e4e58fca0429ded653403b7ff4aa4c9f5dd897e645a344e73303cd83f4e8a162e3a862931b"]
+        },
+        {
+          "id": "skipped_nonce",
+          "mutation": {"signerSetEpoch":1,"aggregationId":53669,"authorizationNonce":3},
+          "digest": "0x6ba174d6063146fd603d6708de532c7bcac4592aa0101ad69147419251f0d54f",
+          "expectedSelector": "0x54d5b1df",
+          "signerSubset": "R1-R3",
+          "signatures": ["0xd8cf5b979a2e82ad754bde17a6874f105a4d5bfd40106eebd4ce48702c439a854e0f04c9c8c905b5c83f9e86e3152198599ffedc806a9bb6283d319c233fd79e1c", "0x036014c2b6806b6bc94ef6ae958faa1d3c86344a83d08da55ed635187aacf16848a98e356f77380e9be98650e6bb3b2b5cc27ef7e26339038cb7db3a617b73c91c", "0x8438bb24589dcfe73b28e7e509bac169d5ea689d0dae008ffcdc2507277d69314f191f815a4e20ff9b63fcd0d1c08e194d9d024e58938cbda944a4b9255a85501c"]
+        },
+        {
+          "id": "settlement_replay_alternate_claim",
+          "mutation": {"routeId":"0x27b40b99a41976f061e94124b84cc8c43ee4e5ed6bad2e94267057e1d375f2ee","preclaimHash":"0x199d562d71350fdcf139991ef19a186bf24b4307dff49e18a4c44da18059d325","pfrId":"0xddaf99f53bac422dae96c21ecff3490575b6a0bb5b5e50537c64f271ef104df7","claimId":"0x949e684ec3a67756cdbed583d656a22225d73ca6a74dc6e9455c0fa11edf683f","settlementKey":"0x8b95044346966f4f9123d718deee56cc78bcf539e35a5eb4ee7460455fbcddf9"},
+          "digest": "0xddaf99f53bac422dae96c21ecff3490575b6a0bb5b5e50537c64f271ef104df7",
+          "expectedSelector": "0x1e1e38a4",
+          "signerSubset": "P1-P2",
+          "signatures": ["0x69725a1e1b44d0d079dcc25ff45c6b7e59cdae41867f2d56bf8b084da5216365512e4178aa5cbb5589064b0573061f22baf29d17f2949eacb40ee187df22b8591b", "0x63736fe5c33479d1e6b43cf1585920ec846ef4eed872656dae5f58b1a4f19cf95d62de27316284d40be42f7bcd02c8220554d6498026afdc10be9c6a9fbf976f1c"]
+        }
+      ],
+      "eventCountBeforeAfter": {"root":[1,1],"settlement":[1,1]},
+      "stateDigestBeforeAfter": {"root":["0x1c225049612ac7c2042ae68d0dd129713e9e56e3af68bc4f959418a98824dbef","0x1c225049612ac7c2042ae68d0dd129713e9e56e3af68bc4f959418a98824dbef"],"settlement":["0x8fed68c3f4aa0e1252779eed59afda66e3b912dcc36b1641ef38c1bb9c27a481","0x8fed68c3f4aa0e1252779eed59afda66e3b912dcc36b1641ef38c1bb9c27a481"]},
+      "targetedGettersBeforeAfter": {
+        "newCoordinateId": "0x6c5de78ee2fa360557e4155df0c6d887c8e5b7994f47b2d9e27f374b892ff07d",
+        "newCoordinateRegisteredRoot": ["0x0000000000000000000000000000000000000000000000000000000000000000", "0x0000000000000000000000000000000000000000000000000000000000000000"],
+        "newCoordinateExists": [false, false],
+        "originalCoordinateId": "0x02642bf98eddfd93180e16bd10f7b00206d37d708e281f3bdb331f689ee94698",
+        "originalCoordinateRoot": ["0x7c609ffcf63004e1203188d6fbed6f5431fa344d6f90990c2c45a6db3bbc466e", "0x7c609ffcf63004e1203188d6fbed6f5431fa344d6f90990c2c45a6db3bbc466e"],
+        "rootNextAuthorizationNonce": [2, 2],
+        "alternateClaimId": "0x949e684ec3a67756cdbed583d656a22225d73ca6a74dc6e9455c0fa11edf683f",
+        "alternateClaimConsumed": [false, false],
+        "originalSettlementKey": "0x8b95044346966f4f9123d718deee56cc78bcf539e35a5eb4ee7460455fbcddf9",
+        "originalSettlementConsumed": [true, true]
+      },
+      "nativeEip1898EthCallExactSelectorCount": 5,
+      "debugTraceCallTracerWithLogCount": 0
+    },
+    "callLocalStateOverride": {
+      "passed": 9,
+      "total": 9,
+      "coverage": ["coordinate conflict", "stale epoch", "reused nonce", "skipped nonce", "authority context mismatch", "wrong authorization", "settlement replay", "root counter overflow", "settlement counter overflow"],
+      "debugTraceCallLogCount": 0,
+      "contractStorageDiffCount": 0,
+      "persistentChainMutationCount": 0
+    },
+    "publicLatentAuthorizationHazard": {
+      "caseId": "skipped_nonce",
+      "digest": "0x6ba174d6063146fd603d6708de532c7bcac4592aa0101ad69147419251f0d54f",
+      "signerSetEpoch": 1,
+      "aggregationId": 53669,
+      "authorizationNonce": 3,
+      "signaturesPublicAndValid": true,
+      "currentNextAuthorizationNonce": 2,
+      "temporarilyRejectedSelector": "0x54d5b1df",
+      "becomesSubmitReadyAfterAnyValidNonce2Registration": true,
+      "digestBindsDestinationChainId": false,
+      "digestBindsDestinationContractAddress": false,
+      "replayableAgainstMatchingFreshEpoch1Clone": true,
+      "response": "PERMANENT_EVIDENCE_ONLY_ABANDONED_NON_ACTIVATABLE"
+    }
+  },
+  "gate": {
+    "technicalExecutionChecksPassed": 4,
+    "technicalExecutionChecksTotal": 4,
+    "d50ConditionsPassed": 5,
+    "d50ConditionsTotal": 6,
+    "completed": ["finalized direct bytecode and topology", "immutable role and getter binding", "finalized honest live receipt consume", "frozen and additional negative state/log invariance"],
+    "operationalFailClosedPolicy": {
+      "authority": "private operations log",
+      "onChainPauseRotationRevocationOwnerUpgradePrimitive": false,
+      "currentAddresses": "PERMANENT_EVIDENCE_ONLY_ABANDONED_NON_ACTIVATABLE",
+      "currentNextAuthorizationNonceFrozen": 2,
+      "futureApprovalCanReactivateCurrentAddresses": false,
+      "futureCurrentEpoch1D0RootPfrSigningRegistrationConsumeAllowed": false,
+      "requiredResponse": ["permanent non-activation", "halt all D0/root/PFR signing", "abandon both addresses and epoch-1 roles", "use nonreused keys if a fresh epoch-2 direct deployment is separately approved", "repeat full evidence gate"],
+      "status": "PASS"
+    },
+    "openCondition": 6,
+    "open": "exact recorded evidence commit independent audit and remote durability",
+    "a11Overall": "HOLD",
+    "productionActivation": false,
+    "formalIndependentSecurityAudit": false,
+    "grandpaClaim": false,
+    "additionalTransactionAuthorization": false
+  }
+}

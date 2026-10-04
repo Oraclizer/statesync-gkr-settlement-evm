@@ -1,27 +1,37 @@
 # Changelog
 
-All notable user-visible changes will be documented in this file.
-
-The project has no release, stable API, contract, deployed bytecode, or supported
-deployment. Version headings will be added only when an actual release identity
-exists.
+User-visible changes follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+No Settlement release tag, stable API or supported production deployment is
+claimed. Git commits identify the source independently of the prover's releases.
 
 ## Unreleased
 
 ### Added
 
-- Established the private, pre-deployment repository-production baseline.
-- Pinned Foundry `1.7.1` at commit
-  `4072e48705af9d93e3c0f6e29e93b5e9a40caed8`, Solidity `0.8.36`, and the
-  `cancun` EVM target.
-- Added deterministic formatting, build, fuzz, and invariant configuration with
-  FFI disabled and no RPC, fork, broadcast, deployment, or wallet workflow.
-- Added least-privilege Continuous Integration with immutable action pins,
-  community health files, dual Apache-2.0 OR MIT licensing, and explicit
-  security, support, governance, contribution, and disclaimer boundaries.
+- Consolidated the existing V1 and V2 contracts, deterministic tests, vectors
+  and historical execution evidence into the maintained branch while preserving
+  their authored history and source bytes.
+- Included the lineage registry, stable Settlement, epoch-2 Root/PFR authorities,
+  destination-bound EIP-712 authorization, strict nonce and predecessor chains,
+  expiry and draining rules, terminal route states, direct signer-address
+  nonreuse and route-independent economic nullifiers.
+- Preserved historical V1 Base Sepolia evidence and local Polygon CDK L2 smoke
+  results. V1 addresses remain permanently abandoned; V2 is non-deployed.
+- Added a repository relationship and compatibility map, citation metadata,
+  public contribution guidance and a maintainer signing policy.
 
-### Scope
+### Build and validation
 
-- This baseline covers repository policy, toolchain pinning, and Continuous
-  Integration. Contracts, cross-language vectors, audits, releases, and
-  deployments arrive in later entries as they land.
+- Foundry 1.7.1 at commit `4072e48705af9d93e3c0f6e29e93b5e9a40caed8`,
+  exact solc 0.8.36, Cancun, optimizer 200, via-IR, deterministic fuzz seeds,
+  FFI disabled and read-only vector permissions remain unchanged from the
+  validated implementation source.
+- CI preserves frozen-vector checksum checks, full compilation, production
+  size reporting with non-deployed smoke scripts excluded, and deterministic
+  tests. Checkout uses the current main's immutable v7 action pin.
+
+### Limits
+
+No new contract behavior, vector, execution experiment or formal proof is added.
+Publication does not activate contracts, authorize transactions, establish
+production safety, or turn historical fixtures into a v1.1 destination run.

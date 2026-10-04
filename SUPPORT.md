@@ -2,10 +2,14 @@
 
 ## Current status
 
-This repository is private, pre-deployment, unaudited, and contains no contract,
-release, deployed address, supported network, stable API, or production service.
-No production support, maintenance period, uptime, compatibility, or response-time
-commitment is offered.
+This repository contains unaudited reference contracts. A historical V1 Base Sepolia
+Root/Settlement evidence deployment exists, but it is unsupported and
+permanently EVIDENCE-ONLY / ABANDONED / NON-ACTIVATABLE. No supported or
+activatable deployment or address exists. V2 remains an unaudited,
+non-deployed candidate with local reference contracts and a frozen test vector.
+There is no release, approved production principal, supported network, stable
+API, or production service. No production support, maintenance period, uptime,
+compatibility, or response-time commitment is offered.
 
 ## Where to ask
 
