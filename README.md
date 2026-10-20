@@ -1,6 +1,8 @@
+<!-- Hero variants follow the GitHub README column width: mobile below 440 px, medium from 440 to 680 px, desktop above. -->
 <p align="center">
   <picture>
-    <source media="(max-width: 900px)" srcset="assets/brand/statesync-gkr-settlement-hero-mobile.svg">
+    <source media="(max-width: 505px), (min-width: 768px) and (max-width: 801px)" srcset="assets/brand/statesync-gkr-settlement-hero-mobile.svg">
+    <source media="(max-width: 745px), (min-width: 768px) and (max-width: 1121px)" srcset="assets/brand/statesync-gkr-settlement-hero-medium.svg">
     <img src="assets/brand/statesync-gkr-settlement-hero.svg" width="1200" alt="StateSync-GKR Settlement EVM: a deterministic reference for receipt-root settlement enforcement">
   </picture>
 </p>
